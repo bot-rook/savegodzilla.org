@@ -95,6 +95,10 @@ a { color:#2f4d3a; }
 .impact-list { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
 .impact-item { background:#f4efe0; border:1px solid #d8cba8; padding:14px 18px; font-size:13px; color:#3a3a2e; }
 .impact-item strong { color:#2f4d3a; }
+.signer-item { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #d8cba8; font-size:13px; }
+.signer-item:last-child { border-bottom:none; }
+.signer-name { font-weight:600; color:#2f4d3a; }
+.signer-muni { font-size:11px; color:#6b4f36; }
 .petition-bar { background:#f4efe0; border:2px solid #6b4f36; padding:24px; text-align:center; }
 .petition-bar .progress { height:24px; background:#d8cba8; border:1px solid #6b4f36; margin:12px 0; position:relative; overflow:hidden; }
 .petition-bar .progress-fill { height:100%; background:#2f4d3a; transition:width 0.5s; }
@@ -259,4 +263,26 @@ function closeNav() {
     <div>Form GZ-1 (Rev. 2026) &middot; Godzilla is a trademark of Toho Co., Ltd. This is an independent advocacy group.</div>
   </div>
 </div>
+<script>
+var API = 'https://petition-savegodzilla.loca.lt';
+(function(){
+  fetch(API+'/api/count').then(function(r){return r.json()}).then(function(d){
+    var bars = document.querySelectorAll('.live-count');
+    for (var i=0;i<bars.length;i++) bars[i].textContent = d.count.toLocaleString();
+    var pct = Math.min(100, Math.round(d.count/100000*100));
+    var fills = document.querySelectorAll('.live-fill');
+    for (var i=0;i<fills.length;i++) fills[i].style.width = pct+'%';
+    var list = document.getElementById('recentSigners');
+    if (list && d.recent) {
+      list.innerHTML = '';
+      d.recent.forEach(function(s){
+        var li = document.createElement('div');
+        li.className = 'signer-item';
+        li.innerHTML = '<span class="signer-name">'+s.name+'</span><span class="signer-muni">'+s.municipality+'</span>';
+        list.appendChild(li);
+      });
+    }
+  }).catch(function(e){});
+})();
+</script>
 </body></html>

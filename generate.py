@@ -213,6 +213,10 @@ a { color:#2f4d3a; }
 .impact-list { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
 .impact-item { background:#f4efe0; border:1px solid #d8cba8; padding:14px 18px; font-size:13px; color:#3a3a2e; }
 .impact-item strong { color:#2f4d3a; }
+.signer-item { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #d8cba8; font-size:13px; }
+.signer-item:last-child { border-bottom:none; }
+.signer-name { font-weight:600; color:#2f4d3a; }
+.signer-muni { font-size:11px; color:#6b4f36; }
 .petition-bar { background:#f4efe0; border:2px solid #6b4f36; padding:24px; text-align:center; }
 .petition-bar .progress { height:24px; background:#d8cba8; border:1px solid #6b4f36; margin:12px 0; position:relative; overflow:hidden; }
 .petition-bar .progress-fill { height:100%; background:#2f4d3a; transition:width 0.5s; }
@@ -280,6 +284,28 @@ def page(title, body, active):
 {nav(active)}
 {body}
 {FOOTER}
+<script>
+var API = 'https://petition-savegodzilla.loca.lt';
+(function(){{
+  fetch(API+'/api/count').then(function(r){{return r.json()}}).then(function(d){{
+    var bars = document.querySelectorAll('.live-count');
+    for (var i=0;i<bars.length;i++) bars[i].textContent = d.count.toLocaleString();
+    var pct = Math.min(100, Math.round(d.count/100000*100));
+    var fills = document.querySelectorAll('.live-fill');
+    for (var i=0;i<fills.length;i++) fills[i].style.width = pct+'%';
+    var list = document.getElementById('recentSigners');
+    if (list && d.recent) {{
+      list.innerHTML = '';
+      d.recent.forEach(function(s){{
+        var li = document.createElement('div');
+        li.className = 'signer-item';
+        li.innerHTML = '<span class="signer-name">'+s.name+'</span><span class="signer-muni">'+s.municipality+'</span>';
+        list.appendChild(li);
+      }});
+    }}
+  }}).catch(function(e){{}});
+}})();
+</script>
 </body></html>'''
 
 def generate_index(d):
@@ -349,9 +375,22 @@ def generate_index(d):
     <div class="petition-bar">
       <div style="font-size:16px;font-weight:700;color:#2f4d3a;">Petition to Reclassify Godzilla as a Protected Ecological Asset</div>
       <div style="font-size:12px;color:#6b4f36;margin:4px 0 8px;">{d['petition']['description']}</div>
-      <div class="progress"><div class="progress-fill" style="width:{pct}%"></div></div>
-      <div class="stats"><span><strong>{n:,}</strong> signatures</span><span>Goal: <strong>{d['petition']['goal']:,}</strong></span><span>Deadline: <strong>Dec 31, 2026</strong></span></div>
+      <div class="progress"><div class="progress-fill live-fill" style="width:{pct}%"></div></div>
+      <div class="stats"><span><strong class="live-count">{n:,}</strong> signatures</span><span>Goal: <strong>{d['petition']['goal']:,}</strong></span><span>Deadline: <strong>Dec 31, 2026</strong></span></div>
       <div style="margin-top:16px"><a href="petition.html" class="btn-gold" style="text-decoration:none">Sign the Petition</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- RECENT SIGNERS -->
+<div class="page-section">
+  <div class="container">
+    <div class="section-title"><h2>Recent Signers</h2><span class="section-sub">(Live feed &middot; updated in real-time)</span></div>
+    <div style="background:#f4efe0;border:2px solid #6b4f36;padding:20px 24px;">
+      <div id="recentSigners">
+        <div style="padding:12px 0;text-align:center;font-size:13px;color:#6b4f36;">Loading recent signers...</div>
+      </div>
+      <div style="text-align:center;margin-top:16px"><a href="petition.html" class="btn-secondary" style="text-decoration:none;font-size:12px;">Join <span class="live-count">{n:,}</span> others &rarr;</a></div>
     </div>
   </div>
 </div>
