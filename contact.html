@@ -326,5 +326,26 @@ var API = 'https://petition-savegodzilla.loca.lt';
     }
   }).catch(function(e){});
 })();
+
+// Signature milestone celebration
+(function() {
+  var milestones = [1000, 5000, 10000, 25000, 50000, 75000, 100000];
+  var lastMilestone = localStorage.getItem('sg_last_milestone') || 0;
+  fetch(API+'/api/count').then(function(r){return r.json()}).then(function(d){ 
+    var count = d.count;
+    for (var i=0;i<milestones.length;i++) {
+      if (count >= milestones[i] && milestones[i] > lastMilestone) {
+        localStorage.setItem('sg_last_milestone', milestones[i]);
+        var banner = document.createElement('div');
+        banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#b8943f;color:#2b2b23;padding:20px 24px;text-align:center;font-weight:700;font-size:18px;z-index:9999;border-top:3px solid #2f4d3a;cursor:pointer;animation:slideUp 0.5s ease;';
+        banner.innerHTML = '🎉 <strong>' + milestones[i].toLocaleString() + ' signatures!</strong> Thank you for your support. <span style="text-decoration:underline;margin-left:12px;">Dismiss</span>';
+        banner.onclick = function(){this.remove()};
+        document.body.appendChild(banner);
+        setTimeout(function(){banner.remove()}, 10000);
+        break;
+      }
+    }
+  }).catch(function(e){});
+})();
 </script>
 </body></html>

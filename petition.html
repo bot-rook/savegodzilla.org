@@ -31,6 +31,8 @@ a { color:#2f4d3a; }
 .petition-count .stats { display:flex; justify-content:space-between; font-size:13px; color:#3a3a2e; }
 .petition-legal { font-size:11px; color:#6b4f36; text-align:center; margin-top:16px; line-height:1.6; }
 .petition-legal a { color:#6b4f36; }
+.timer-num { font-size:32px; font-weight:800; line-height:1; }
+.timer-label { font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:#d8cba8; margin-top:4px; }
 .success-box { display:none; text-align:center; padding:40px; }
 .success-box .check { font-size:64px; color:#2f4d3a; margin-bottom:16px; }
 .success-box h2 { color:#2f4d3a; font-size:24px; margin:0 0 8px; }
@@ -67,6 +69,17 @@ footer { padding:26px 44px; background:#dcd0ac; border-top:3px solid #2f4d3a; fo
       <div class="stats">
         <span>Goal: <strong>100,000</strong></span>
         <span>Deadline: <strong>Dec 31, 2026</strong></span>
+      </div>
+    </div>
+
+    <!-- COUNTDOWN TIMER -->
+    <div style="background:#2f4d3a;color:#f4efe0;padding:16px 24px;text-align:center;margin-bottom:24px;">
+      <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#d8cba8;margin-bottom:8px;">Deadline to reach 100,000 signatures</div>
+      <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+        <div><div class="timer-num" id="timerDays">--</div><div class="timer-label">Days</div></div>
+        <div><div class="timer-num" id="timerHours">--</div><div class="timer-label">Hours</div></div>
+        <div><div class="timer-num" id="timerMins">--</div><div class="timer-label">Minutes</div></div>
+        <div><div class="timer-num" id="timerSecs">--</div><div class="timer-label">Seconds</div></div>
       </div>
     </div>
 
@@ -189,5 +202,31 @@ document.getElementById('petitionForm').addEventListener('submit', async functio
   document.getElementById('certNumDisplay').textContent = certId;
   document.getElementById('sigCountDisplay').textContent = totalSig.toLocaleString();
 });
+
+// Countdown timer
+(function() {
+  var deadline = new Date('2026-12-31T23:59:59');
+  function tick() {
+    var now = new Date();
+    var diff = deadline - now;
+    if (diff <= 0) {
+      document.getElementById('timerDays').textContent = '0';
+      document.getElementById('timerHours').textContent = '0';
+      document.getElementById('timerMins').textContent = '0';
+      document.getElementById('timerSecs').textContent = '0';
+      return;
+    }
+    var s = Math.floor(diff / 1000);
+    var m = Math.floor(s / 60);
+    var h = Math.floor(m / 60);
+    var d = Math.floor(h / 24);
+    document.getElementById('timerDays').textContent = d;
+    document.getElementById('timerHours').textContent = h % 24;
+    document.getElementById('timerMins').textContent = m % 60;
+    document.getElementById('timerSecs').textContent = s % 60;
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
 </script>
 </body></html>
