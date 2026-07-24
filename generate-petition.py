@@ -88,6 +88,15 @@ def generate_petition_page():
 <style>{CSS}</style>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="alternate icon" href="favicon.ico" type="image/x-icon">
+<link rel="canonical" href="https://savegodzilla.org/petition.html">
+<meta name="description" content="Sign the official petition to reclassify Godzilla as a Protected Ecological Asset. Add your name alongside thousands of others demanding kaiju personhood.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://savegodzilla.org/petition.html">
+<meta property="og:title" content="Sign the Petition — Save Godzilla">
+<meta property="og:description" content="Help us deliver 100,000 signatures to the UN Committee on Kaiju Affairs demanding Godzilla be reclassified as a Protected Ecological Asset.">
+<meta property="og:image" content="https://savegodzilla.org/favicon.svg">
+<meta name="twitter:card" content="summary_large_image">
 <title>Sign the Petition — Save Godzilla</title>
 </head><body>
 <div class="stripe"></div>
@@ -233,6 +242,14 @@ def generate_certificate_page():
 <style>{CERT_CSS}</style>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="alternate icon" href="favicon.ico" type="image/x-icon">
+<link rel="canonical" href="https://savegodzilla.org/certificate.html">
+<meta name="robots" content="noindex, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://savegodzilla.org/certificate.html">
+<meta property="og:title" content="Certificate of Participation — Save Godzilla">
+<meta property="og:description" content="Printable Certificate of Public Participation from the Municipal Bureau of Kaiju Affairs.">
+<meta property="og:image" content="https://savegodzilla.org/favicon.svg">
+<meta name="twitter:card" content="summary">
 <title>Certificate of Participation — Save Godzilla</title>
 </head><body>
 <div class="certificate" id="certificate">

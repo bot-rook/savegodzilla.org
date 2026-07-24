@@ -113,12 +113,11 @@ function closeNav() {{
 }}
 </script>'''
 
-FOOTER = '''<div class="footer">
-  <div class="footer-inner">
+FOOTER = '''<footer><div class="footer-inner">
     <div>Municipal Bureau of Kaiju Affairs &middot; Est. 1954 &middot; Office Hours: Mon&ndash;Fri, 8 AM&ndash;4:30 PM</div>
     <div>Form GZ-1 (Rev. 2026) &middot; Godzilla is a trademark of Toho Co., Ltd. This is an independent advocacy group.</div>
   </div>
-</div>'''
+</footer>'''
 
 CSS = '''body { margin:0; background:#ece3cd; font-family:'Nunito',Verdana,Arial,sans-serif; }
 * { box-sizing:border-box; }
@@ -271,18 +270,44 @@ a { color:#2f4d3a; }
 }'''
 
 def page(title, body, active):
+    meta_desc = 'Help us reclassify Godzilla as a Protected Ecological Asset. Sign the petition, view incident reports, and support kaiju advocacy. Municipal Bureau of Kaiju Affairs — Est. 1954.'
     return f'''<!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>{CSS}</style>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="alternate icon" href="favicon.ico" type="image/x-icon">
+<link rel="canonical" href="https://savegodzilla.org/{active}">
+<meta name="description" content="{meta_desc}">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://savegodzilla.org/{active}">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{meta_desc}">
+<meta property="og:image" content="https://savegodzilla.org/favicon.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{meta_desc}">
+<script type="application/ld+json">{{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Municipal Bureau of Kaiju Affairs",
+  "url": "https://savegodzilla.org",
+  "description": "{meta_desc}",
+  "foundingDate": "1954",
+  "logo": "https://savegodzilla.org/favicon.svg"
+}}</script>
 <title>{title}</title>
 </head><body>
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:0;z-index:9999;padding:8px 16px;background:#2f4d3a;color:#f4efe0;font-weight:700;font-size:14px;text-decoration:none;">Skip to main content</a>
+<style>a.skip-link:focus {{ left:0; }}</style>
 <div class="stripe"></div>
 {nav(active)}
+<main id="main-content">
 {body}
+</main>
 {FOOTER}
 <script>
 var API = 'https://petition-savegodzilla.loca.lt';
