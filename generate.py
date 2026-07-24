@@ -438,9 +438,9 @@ def generate_index(d):
   <div class="container">
     <div class="petition-bar">
       <div style="font-size:16px;font-weight:700;color:#2f4d3a;">Petition to Reclassify Godzilla as a Protected Ecological Asset</div>
-      <div style="font-size:12px;color:#6b4f36;margin:4px 0 8px;">{d['petition']['description']} Phase 1 goal: 1,000 signatures. Phase 1 goal: 1,000 signatures.</div>
+      <div style="font-size:12px;color:var(--muted);margin:4px 0 8px;">{d['petition']['description']}</div>
       <div class="progress"><div class="progress-fill live-fill" style="width:{pct}%"></div></div>
-      <div class="stats"><span><strong class="live-count">{n:,}</strong> signatures</span><span>Goal: <strong>{d['petition']['goal']:,}</strong></span><span>Phase 1 Goal: <strong>1,000</strong> signatures</span></div>
+      <div class="stats"><span><strong class="live-count">{n:,}</strong> signatures</span><span>Goal: <strong>{d['petition']['goal']:,}</strong></span><span>Deadline: <strong>Dec 31, 2026</strong></span></div>
       <div style="margin-top:16px"><a href="petition.html" class="btn-gold" style="text-decoration:none">Sign the Petition</a></div>
     </div>
   </div>
