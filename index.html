@@ -32,9 +32,6 @@ a { color:var(--heading); }
   .nav-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:var(--card); z-index:1000; flex-direction:column; padding:80px 24px 24px; overflow-y:auto; }
   .nav-overlay.open { display:flex; }
   .nav-overlay .close-btn { position:absolute; top:16px; right:16px; background:none; border:2px solid var(--accent); border-radius:4px; min-width:44px; min-height:44px; display:flex; align-items:center; justify-content:center; font-size:24px; color:var(--heading); cursor:pointer; }
-  .nav-overlay a { display:block; padding:16px 0; font-size:18px; font-weight:700; color:var(--heading); text-decoration:none; border-bottom:1px solid var(--border); }
-  .nav-overlay a:hover { color:#b8943f; }
-  .nav-overlay .donate-btn { margin-top:24px; padding:16px; background:var(--accent); color:var(--card); font-weight:700; font-size:16px; text-align:center; border:2px solid var(--accent); text-decoration:none; border-radius:4px; }
 }
 .btn-primary { padding:13px 26px; background:var(--accent); color:var(--card); font-weight:700; font-size:13px; border:2px solid var(--accent); display:inline-block; cursor:pointer; }
 .btn-primary:hover { background:#3a5e48; }
@@ -263,14 +260,31 @@ function closeNav() {
   ham.classList.remove('open');
   document.body.style.overflow = '';
 }
+function toggleTheme() {
+  var t = document.documentElement.getAttribute('data-theme');
+  var target = t === 'dark' ? '' : 'dark';
+  document.documentElement.setAttribute('data-theme', target);
+  localStorage.setItem('sg_theme', target);
+}
+(function() {
+  var saved = localStorage.getItem('sg_theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+})();
 </script>
 <main id="main-content">
 
-<div style="padding:60px 44px;background:#ece3cd;">
-  <div class="container" style="background:#f4efe0;border:2px solid #6b4f36;padding:48px 56px;box-shadow:6px 6px 0 rgba(107,79,54,0.15);">
-    <div style="display:inline-block;padding:5px 14px;background:#b8943f;color:#2b2b23;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:22px;">URGENT &middot; Godzilla Has No Rights</div>
-    <h1 style="font-size:44px;line-height:1.25;font-weight:700;color:#2f4d3a;margin:0 0 16px;">Godzilla can't speak for himself.<br>That's why we're here.</h1>
-    <p style="font-size:15px;line-height:1.75;color:#3a3a2e;margin:0 0 12px;max-width:640px;">For 72 years, Godzilla has been slandered, shelled, and classified as a threat — without a single hearing, a single lawyer, or a single day in court. The Municipal Bureau of Kaiju Affairs is the only organization working to change that. We need your help.</p>
+<div style="padding:60px 44px;background:var(--bg);">
+  <div class="container" style="background:var(--card);border:2px solid var(--border);padding:48px 56px;box-shadow:8px 8px 0 rgba(0,0,0,0.15);">
+    <div style="display:inline-block;padding:5px 14px;background:var(--gold);color:var(--gold-text);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:22px;">URGENT &middot; Godzilla Has No Rights</div>
+    <h1 style="font-size:44px;line-height:1.25;font-weight:800;color:var(--heading);margin:0 0 16px;">Godzilla can't speak for himself.<br>That's why we're here.</h1>
+    <p style="font-size:15px;line-height:1.75;color:var(--text);margin:0 0 20px;max-width:640px;">For 72 years, Godzilla has been slandered, shelled, and classified as a threat — without a single hearing, a single lawyer, or a single day in court. The Municipal Bureau of Kaiju Affairs is the only organization working to change that.</p>
+    <!-- LIVE STAT BAR -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;padding:16px;background:var(--bg);border:1px solid var(--border);">
+      <div style="text-align:center;"><div style="font-size:24px;font-weight:800;color:var(--heading);" class="live-count">2</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-top:2px;">Signatures</div></div>
+      <div style="text-align:center;"><div style="font-size:24px;font-weight:800;color:var(--heading);">0</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-top:2px;">Weeks Left</div></div>
+      <div style="text-align:center;"><div style="font-size:24px;font-weight:800;color:var(--heading);">17</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-top:2px;">Cities Saved</div></div>
+      <div style="text-align:center;"><div style="font-size:24px;font-weight:800;color:var(--heading);">9</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-top:2px;">Threats Stopped</div></div>
+    </div>
     <div style="display:flex;gap:14px;flex-wrap:wrap;">
       <a href="#support" class="btn-gold" style="text-decoration:none">Support Our Work</a>
       <a href="petition.html" class="btn-secondary" style="text-decoration:none">Sign the Petition</a>
