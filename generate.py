@@ -29,7 +29,7 @@ def nav(page, logo='Save Godzilla', sub='Municipal Bureau of Kaiju Affairs'):
         ('press.html', 'Press'),
         ('contact.html', 'Contact'),
     ]
-    ls = ''.join(f'<a href="{u}"{" style=font-weight:700;color:#2f4d3a" if u==page else ""}>{l}</a>' for u, l in links)
+    ls = ''.join(f'<a href="{u}"{" style=font-weight:700;color:#2f4d3a" if u==page else ""} onclick="closeNav()">{l}</a>' for u, l in links)
     return f'''<div class="nav">
   <div class="logo" onclick="window.location='index.html'" style="cursor:pointer">
     <div class="logo-icon">
