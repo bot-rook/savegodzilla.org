@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Save Godzilla — A Public Good Organization</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #1a1a2e;
+    background: #f8f9fa;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(10, 31, 61, 0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  nav .logo {
+    display: flex; align-items: center; gap: 10px;
+    color: #fff; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.5px;
+  }
+  nav .logo svg { width: 32px; height: 32px; }
+  nav .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+  nav .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+  nav .nav-links a:hover { color: #fff; }
+  nav .donate-btn {
+    background: #e8a838; color: #0a1f3d; border: none;
+    padding: 0.5rem 1.2rem; border-radius: 4px;
+    font-weight: 700; font-size: 0.8rem; cursor: pointer;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+
+  /* HERO */
+  .hero {
+    margin-top: 64px;
+    min-height: 80vh;
+    background: linear-gradient(135deg, #0a1f3d 0%, #122a4a 40%, #1a3a5a 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 4rem 2rem;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: -20%; right: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(232,168,56,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-content { max-width: 800px; text-align: center; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(232,168,56,0.15);
+    border: 1px solid rgba(232,168,56,0.3);
+    color: #e8a838;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 em { color: #e8a838; font-style: normal; }
+  .hero p {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+  .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .hero-cta .btn-primary {
+    background: #e8a838; color: #0a1f3d; border: none;
+    padding: 1rem 2rem; border-radius: 4px;
+    font-weight: 700; font-size: 1rem; cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .hero-cta .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(232,168,56,0.3); }
+  .hero-cta .btn-secondary {
+    background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.3);
+    padding: 1rem 2rem; border-radius: 4px;
+    font-weight: 600; font-size: 1rem; cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .hero-cta .btn-secondary:hover { border-color: rgba(255,255,255,0.6); }
+
+  /* METRICS BAR */
+  .metrics-bar {
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 2rem;
+    display: flex; justify-content: center; gap: 4rem;
+    flex-wrap: wrap;
+  }
+  .metric { text-align: center; }
+  .metric .num { font-size: 2.2rem; font-weight: 800; color: #0a1f3d; }
+  .metric .label { font-size: 0.8rem; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.2rem; }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+  section h2 { font-size: 2rem; font-weight: 700; color: #0a1f3d; margin-bottom: 0.5rem; }
+  section .subtitle { color: #666; font-size: 1.05rem; margin-bottom: 3rem; max-width: 600px; }
+
+  /* MYTHS */
+  .myths-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .myth-card {
+    background: #fff; border-radius: 8px; padding: 1.5rem;
+    border: 1px solid #e8e8e8; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .myth-card .myth { color: #c0392b; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .myth-card .myth::before { content: '✗ '; }
+  .myth-card .fact { color: #1a8a7a; font-weight: 600; font-size: 0.9rem; }
+  .myth-card .fact::before { content: '✓ '; }
+  .myth-card p { font-size: 0.9rem; color: #555; margin-top: 0.3rem; }
+
+  /* INCIDENT SPOTLIGHT */
+  .incident-spotlight {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e8e8e8;
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .incident-visual {
+    background: linear-gradient(135deg, #1a3a5a, #0a1f3d);
+    min-height: 300px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 2rem;
+  }
+  .incident-visual .big-icon { font-size: 5rem; opacity: 0.3; }
+  .incident-info { padding: 2.5rem; }
+  .incident-info .date { font-size: 0.8rem; color: #999; text-transform: uppercase; letter-spacing: 1px; }
+  .incident-info h3 { font-size: 1.5rem; color: #0a1f3d; margin: 0.5rem 0; }
+  .incident-info p { color: #555; font-size: 0.95rem; line-height: 1.7; }
+  .incident-info .tag {
+    display: inline-block; background: #e8f4f0; color: #1a8a7a;
+    padding: 0.2rem 0.6rem; border-radius: 4px;
+    font-size: 0.75rem; font-weight: 600; margin-top: 1rem;
+  }
+
+  /* TESTIMONIALS */
+  .testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .testimonial {
+    background: #fff; border-radius: 8px; padding: 1.5rem;
+    border: 1px solid #e8e8e8; font-style: italic;
+  }
+  .testimonial .attribution { font-style: normal; margin-top: 1rem; color: #666; font-size: 0.85rem; }
+  .testimonial .attribution strong { color: #0a1f3d; }
+
+  /* PRESS */
+  .press-list { display: flex; flex-direction: column; gap: 1rem; }
+  .press-item {
+    background: #fff; border-radius: 8px; padding: 1.2rem 1.5rem;
+    border: 1px solid #e8e8e8; display: flex; justify-content: space-between; align-items: center;
+  }
+  .press-item .date { color: #999; font-size: 0.85rem; min-width: 100px; }
+  .press-item h4 { font-size: 1rem; color: #0a1f3d; }
+  .press-item .read-more { color: #1a8a7a; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: #0a1f3d;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #fff;
+  }
+  .cta-section h2 { color: #fff; font-size: 2rem; }
+  .cta-section p { color: rgba(255,255,255,0.7); max-width: 500px; margin: 1rem auto 2rem; }
+  .cta-section .btn-primary {
+    background: #e8a838; color: #0a1f3d; border: none;
+    padding: 1rem 2.5rem; border-radius: 4px;
+    font-weight: 700; font-size: 1rem; cursor: pointer;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #060f1e;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.85rem;
+  }
+  footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+  footer .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2.2rem; }
+    .myths-grid, .testimonial-grid, .incident-spotlight { grid-template-columns: 1fr; }
+    .metrics-bar { gap: 2rem; }
+    nav .nav-links a:not(.donate-btn) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <svg viewBox="0 0 32 32" fill="none">
+      <path d="M16 4C9 4 4 10 4 16s4 12 10 12c3 0 5-1 7-3l-2-2c-1 1-3 2-5 2-4 0-7-3-7-7s3-7 7-7c2 0 4 1 5 2l2-2c-1-1-3-2-5-2z" fill="#e8a838"/>
+      <path d="M12 14h8v1H12zM12 17h6v1H12z" fill="#0a1f3d"/>
+    </svg>
+    SAVE GODZILLA.ORG
+  </div>
+  <div class="nav-links">
+    <a href="#">About</a>
+    <a href="#">Incidents</a>
+    <a href="#">Myths vs Facts</a>
+    <a href="#">Research</a>
+    <a href="#">Press</a>
+    <button class="donate-btn">Donate</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">70 Years of Misrepresentation Ends Now</div>
+    <h1>Godzilla is <em>not</em> a monster.<br>He's a sovereign ecological force.</h1>
+    <p>For decades, media conglomerates and military interests have slandered a being who has repeatedly saved our planet from existential threats. We're here to set the record straight.</p>
+    <div class="hero-cta">
+      <button class="btn-primary">Sign the Petition</button>
+      <button class="btn-secondary">Learn the Truth</button>
+    </div>
+  </div>
+</section>
+
+<div class="metrics-bar">
+  <div class="metric"><div class="num">17</div><div class="label">Cities Protected</div></div>
+  <div class="metric"><div class="num">9</div><div class="label">Extinction-Level Threats Neutralized</div></div>
+  <div class="metric"><div class="num">0</div><div class="label">Unprovoked Attacks</div></div>
+  <div class="metric"><div class="num">70+</div><div class="label">Years of Service</div></div>
+</div>
+
+<section>
+  <h2>Myths vs. Facts</h2>
+  <p class="subtitle">The media has spent decades weaponizing misinformation. Here's the reality.</p>
+  <div class="myths-grid">
+    <div class="myth-card">
+      <div class="myth">Godzilla attacks without provocation.</div>
+      <div class="fact">Godzilla only emerges in response to existential threats.</div>
+      <p>In every documented incident, Godzilla's appearance correlates directly with a looming ecological or supernatural catastrophe. He is a responder, not an aggressor.</p>
+    </div>
+    <div class="myth-card">
+      <div class="myth">Godzilla causes mass casualties.</div>
+      <div class="fact">Godzilla's interventions save exponentially more lives than are lost.</div>
+      <p>Collateral damage is tragic, but the alternative — unchecked MUTO proliferation, alien invasions, or rogue kaiju — would be catastrophic on a global scale.</p>
+    </div>
+    <div class="myth-card">
+      <div class="myth">Godzilla is a mutant aberration.</div>
+      <div class="fact">Godzilla is an ancient apex species with a critical ecological role.</div>
+      <p>Radiocarbon dating places Godzilla's lineage at 250+ million years. He is a natural regulator of planetary bio-energetic balance — not a mutation.</p>
+    </div>
+    <div class="myth-card">
+      <div class="myth">Godzilla should be contained or eliminated.</div>
+      <div class="fact">Eliminating Godzilla would destabilize the planet's defense systems.</div>
+      <p>Without Godzilla, humanity would be defenseless against threats from the hollow earth, deep space, and beyond. He is the planet's immune system.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Featured Incident</h2>
+  <p class="subtitle">Godzilla's heroic intervention, as documented by our research team.</p>
+  <div class="incident-spotlight">
+    <div class="incident-visual">
+      <div class="big-icon">🌊</div>
+    </div>
+    <div class="incident-info">
+      <div class="date">March 2014 — San Francisco Bay</div>
+      <h3>The MUTO Containment Operation</h3>
+      <p>When two parasitic MUTOs (Massive Unidentified Terrestrial Organisms) emerged from hibernation and began feeding on the planet's nuclear energy reserves, Godzilla intervened to neutralize the threat. Despite heavy military interference, Godzilla successfully prevented the MUTOs from reaching their breeding grounds — which would have triggered an irreversible ecological collapse.</p>
+      <span class="tag">Outcome: Successful Containment</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Voices of Reason</h2>
+  <p class="subtitle">Leading voices in kaiju ecology and public safety speak out.</p>
+  <div class="testimonial-grid">
+    <div class="testimonial">
+      "Godzilla is the single most important non-human intelligence on this planet. Our research suggests he operates with a level of ecological awareness that dwarfs human understanding. The 'destruction' narrative is a product of fear, not fact."
+      <div class="attribution"><strong>Dr. Ishiro Serizawa</strong>, Professor of Kaiju Ecology, Monarch University</div>
+    </div>
+    <div class="testimonial">
+      "I was on the ground during the MUTO incident. If Godzilla hadn't shown up, none of us would be here. The military's attempts to engage him only made things worse. He wasn't the threat — he was the solution."
+      <div class="attribution"><strong>Lt. Ford Brody (Ret.)</strong>, U.S. Navy, EOD Unit 12</div>
+    </div>
+    <div class="testimonial">
+      "The UN's continued classification of Godzilla as a 'threat' is a diplomatic embarrassment. We're applying Cold War logic to a creature that has demonstrated more restraint than most nation-states."
+      <div class="attribution"><strong>Ambassador Vivienne Graham</strong>, Former UN Kaiju Liaison</div>
+    </div>
+    <div class="testimonial">
+      "As a veterinarian who has studied large terrestrial apex species for 30 years, I can say with confidence: Godzilla displays none of the behavioral markers of aggression. What we see is territorial defense and threat response — period."
+      <div class="attribution"><strong>Dr. Niko Tatopoulos</strong>, DVM, PhD, Wildlife Institute</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Press Releases</h2>
+  <p class="subtitle">Official statements from the Save Godzilla organization.</p>
+  <div class="press-list">
+    <div class="press-item">
+      <div>
+        <h4>Save Godzilla Files Amicus Brief in Support of Godzilla's Personhood Status</h4>
+        <span style="font-size:0.8rem;color:#888;">Legal team argues that Godzilla meets the criteria for non-human personhood under international law</span>
+      </div>
+      <div style="text-align:right;">
+        <div class="date">Jul 20, 2026</div>
+        <a href="#" class="read-more">Read →</a>
+      </div>
+    </div>
+    <div class="press-item">
+      <div>
+        <h4>New Study: Godzilla's Presence Correlates with 68% Reduction in Kaiju Incidents</h4>
+        <span style="font-size:0.8rem;color:#888;">Peer-reviewed research confirms Godzilla's deterrent effect on other hostile entities</span>
+      </div>
+      <div style="text-align:right;">
+        <div class="date">Jul 12, 2026</div>
+        <a href="#" class="read-more">Read →</a>
+      </div>
+    </div>
+    <div class="press-item">
+      <div>
+        <h4>Statement on the Boston Incident: A Tragic Misunderstanding</h4>
+        <span style="font-size:0.8rem;color:#888;">Organization calls for de-escalation protocols and improved communication channels</span>
+      </div>
+      <div style="text-align:right;">
+        <div class="date">Jun 28, 2026</div>
+        <a href="#" class="read-more">Read →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2>Godzilla can't speak for himself.<br>That's why we're here.</h2>
+  <p>Join thousands of advocates working to rehabilitate the most misunderstood creature in Earth's history. Your voice matters.</p>
+  <button class="btn-primary">Take Action Now</button>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="#">About</a>
+    <a href="#">Incidents</a>
+    <a href="#">Research</a>
+    <a href="#">Press</a>
+    <a href="#">Contact</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+  <p>© 2026 Save Godzilla Organization. All rights reserved.</p>
+  <p style="margin-top:0.3rem;">Save Godzilla is a registered 501(c)(3) non-profit organization.</p>
+</footer>
+
+</body>
+</html>
