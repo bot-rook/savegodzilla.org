@@ -1,89 +1,104 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  body { margin: 0; background: #ece3cd; font-family:'Nunito',Verdana,Arial,sans-serif; }
-  * { box-sizing: border-box; }
-  a { color: #2f4d3a; text-decoration: underline; }
-  a:hover { color: #52704e; }
-  ::selection { background: #b8943f; color: #2b2b23; }
-  .stripe { height:8px; background:repeating-linear-gradient(45deg, #2f4d3a, #2f4d3a 12px, #b8943f 12px, #b8943f 24px); }
-  .nav { display:flex; align-items:center; justify-content:space-between; padding:16px 44px; background:#f4efe0; border-bottom:3px solid #2f4d3a; }
-  .logo { display:flex; align-items:center; gap:14px; }
-  .logo-icon { width:52px; height:52px; border-radius:50%; border:2px solid #2f4d3a; background:#f4efe0; display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; }
-  .logo-icon-inner { position:absolute; inset:3px; border-radius:50%; border:1px dashed #b8943f; }
-  .logo-icon-g { position:relative; width:22px; height:22px; }
-  .org-name { font-size:19px; font-weight:700; color:#2f4d3a; line-height:1.1; }
-  .org-sub { font-family:'Nunito',Verdana,Arial,sans-serif; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#6b4f36; }
-  .nav-links { display:flex; gap:26px; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; color:#3a3a2e; }
-  .nav-links a { text-decoration:none; color:#3a3a2e; }
-  .nav-links a:hover { color:#2f4d3a; font-weight:600; }
-  .btn-primary { padding:13px 26px; background:#2f4d3a; color:#f4efe0; font-weight:700; font-size:13px; border:2px solid #22392a; display:inline-block; font-family:'Nunito',Verdana,Arial,sans-serif; cursor:pointer; }
-  .btn-primary:hover { background:#3a5e48; }
-  .btn-secondary { padding:13px 26px; background:#f4efe0; color:#2f4d3a; font-weight:700; font-size:13px; border:2px solid #2f4d3a; display:inline-block; font-family:'Nunito',Verdana,Arial,sans-serif; cursor:pointer; }
-  .btn-secondary:hover { background:#e8e0c8; }
-  .section-title { display:flex; align-items:baseline; gap:12px; margin-bottom:18px; }
-  .section-title h2 { font-size:26px; color:#2f4d3a; margin:0; font-family:'Nunito',Verdana,Arial,sans-serif; }
-  .section-sub { font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; }
-  .container { max-width:920px; margin:0 auto; }
-  .page-section { padding:0 44px 64px; }
-  .data-table { border:2px solid #6b4f36; }
-  .data-table-header { display:grid; grid-template-columns:1fr 1fr; }
-  .data-table-header div { padding:12px 20px; background:#2f4d3a; color:#f4efe0; font-family:'Nunito',Verdana,Arial,sans-serif; font-weight:700; font-size:12px; text-transform:uppercase; }
-  .data-table-header div:first-child { border-right:1px solid #f4efe0; }
-  .data-table-body { display:grid; grid-template-columns:1fr 1fr; background:#f4efe0; }
-  .data-table-body div { padding:20px; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; line-height:1.6; border-bottom:1px solid #d8cba8; }
-  .data-table-body div:nth-child(odd) { border-right:1px solid #d8cba8; }
-  .data-table-body div:last-child, .data-table-body div:nth-last-child(2) { border-bottom:none; }
-  .card-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
-  .card { background:#f4efe0; border:2px solid #6b4f36; padding:18px 20px; }
-  .card-full { grid-column:1 / -1; }
-  .card-label { display:flex; justify-content:space-between; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; margin-bottom:10px; }
-  .card-title { font-weight:700; font-size:16px; color:#2f4d3a; margin-bottom:6px; }
-  .card-text { font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; line-height:1.6; color:#3a3a2e; }
-  .testimonial-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-  .testimonial-card { background:#f4efe0; border:2px solid #6b4f36; }
-  .testimonial-header { background:#b8943f; color:#2b2b23; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:6px 14px; }
-  .testimonial-body { padding:18px 20px; }
-  .testimonial-body p { font-size:14px; font-style:italic; line-height:1.6; margin:0 0 14px; color:#2b2b23; }
-  .testimonial-name { font-family:'Nunito',Verdana,Arial,sans-serif; font-size:12px; font-weight:700; color:#2f4d3a; }
-  .testimonial-org { font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; }
-  .bulletin-board { background:#d9cba3; border:2px solid #6b4f36; padding:22px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
-  .bulletin-card { background:#f8f4e8; padding:16px 18px; border:1px solid #b8943f; box-shadow:2px 2px 0 rgba(107,79,54,0.2); }
-  .bulletin-date { font-family:'Nunito',Verdana,Arial,sans-serif; font-size:10px; color:#6b4f36; margin-bottom:6px; }
-  .bulletin-title { font-weight:700; font-size:14px; color:#2f4d3a; margin-bottom:6px; }
-  .bulletin-text { font-family:'Nunito',Verdana,Arial,sans-serif; font-size:12px; color:#3a3a2e; line-height:1.5; }
-  .cta-box { background:#2f4d3a; color:#f4efe0; padding:48px 56px; text-align:center; border:2px solid #22392a; }
-  .cta-label { font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#d8c98a; margin-bottom:14px; }
-  .cta-title { font-size:30px; margin:0 0 16px; }
-  .cta-text { font-family:'Nunito',Verdana,Arial,sans-serif; font-size:14px; color:#d8dbd4; max-width:540px; margin:0 auto 28px; line-height:1.7; }
-  .footer { padding:26px 44px; background:#dcd0ac; border-top:3px solid #2f4d3a; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#5c4a35; }
-  .footer-inner { max-width:920px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-  @media (max-width:768px) {
-    .nav { flex-direction:column; gap:12px; padding:16px 20px; }
-    .nav-links { flex-wrap:wrap; justify-content:center; gap:16px; }
-    .card-grid { grid-template-columns:1fr; }
-    .testimonial-grid { grid-template-columns:1fr; }
-    .bulletin-board { grid-template-columns:1fr; }
-    .data-table-body { grid-template-columns:1fr; }
-    .data-table-body div:nth-child(odd) { border-right:none; }
-    .page-section { padding:0 20px 44px; }
-    .cta-box { padding:32px 24px; }
-    .cta-title { font-size:24px; }
-  }
-</style>
-</head>
-<body>
-
+<style>body { margin:0; background:#ece3cd; font-family:'Nunito',Verdana,Arial,sans-serif; }
+* { box-sizing:border-box; }
+a { color:#2f4d3a; }
+::selection { background:#b8943f; color:#2b2b23; }
+.stripe { height:8px; background:repeating-linear-gradient(45deg,#2f4d3a,#2f4d3a 12px,#b8943f 12px,#b8943f 24px); }
+.nav { display:flex; align-items:center; justify-content:space-between; padding:16px 44px; background:#f4efe0; border-bottom:3px solid #2f4d3a; flex-wrap:wrap; gap:12px; }
+.logo { display:flex; align-items:center; gap:14px; }
+.logo-icon { width:52px; height:52px; border-radius:50%; border:2px solid #2f4d3a; background:#f4efe0; display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; }
+.logo-icon-inner { position:absolute; inset:3px; border-radius:50%; border:1px dashed #b8943f; }
+.org-name { font-size:19px; font-weight:700; color:#2f4d3a; line-height:1.1; }
+.org-sub { font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#6b4f36; }
+.nav-links { display:flex; gap:26px; font-size:13px; color:#3a3a2e; flex-wrap:wrap; }
+.nav-links a { text-decoration:none; color:#3a3a2e; }
+.nav-links a:hover { color:#2f4d3a; }
+.btn-primary { padding:13px 26px; background:#2f4d3a; color:#f4efe0; font-weight:700; font-size:13px; border:2px solid #22392a; display:inline-block; cursor:pointer; }
+.btn-primary:hover { background:#3a5e48; }
+.btn-gold { padding:13px 26px; background:#b8943f; color:#2b2b23; font-weight:700; font-size:13px; border:2px solid #8a6f30; display:inline-block; cursor:pointer; }
+.btn-gold:hover { background:#c8a44f; }
+.btn-secondary { padding:13px 26px; background:transparent; color:#2f4d3a; font-weight:700; font-size:13px; border:2px solid #2f4d3a; display:inline-block; cursor:pointer; }
+.btn-secondary:hover { background:#e8e0c8; }
+.container { max-width:920px; margin:0 auto; }
+.page-section { padding:0 44px 64px; }
+.section-title { display:flex; align-items:baseline; gap:12px; margin-bottom:18px; }
+.section-title h2 { font-size:26px; color:#2f4d3a; margin:0; }
+.section-sub { font-size:11px; color:#6b4f36; }
+.data-table { border:2px solid #6b4f36; }
+.data-table-header { display:grid; grid-template-columns:1fr 1fr; }
+.data-table-header div { padding:12px 20px; background:#2f4d3a; color:#f4efe0; font-weight:700; font-size:12px; text-transform:uppercase; }
+.data-table-header div:first-child { border-right:1px solid #f4efe0; }
+.data-table-body { display:grid; grid-template-columns:1fr 1fr; background:#f4efe0; }
+.data-table-body div { padding:20px; font-size:13px; line-height:1.6; border-bottom:1px solid #d8cba8; }
+.data-table-body div:nth-child(odd) { border-right:1px solid #d8cba8; }
+.data-table-body div:last-child,.data-table-body div:nth-last-child(2) { border-bottom:none; }
+.card-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.card { background:#f4efe0; border:2px solid #6b4f36; padding:18px 20px; }
+.card-full { grid-column:1/-1; }
+.card-label { display:flex; justify-content:space-between; font-size:11px; color:#6b4f36; margin-bottom:10px; }
+.card-title { font-weight:700; font-size:16px; color:#2f4d3a; margin-bottom:6px; }
+.card-text { font-size:13px; line-height:1.6; color:#3a3a2e; }
+.card-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.team-card { background:#f4efe0; border:2px solid #6b4f36; padding:18px 20px; }
+.team-name { font-weight:700; font-size:15px; color:#2f4d3a; }
+.team-title { font-size:11px; color:#6b4f36; margin-bottom:8px; }
+.team-bio { font-size:13px; line-height:1.6; color:#3a3a2e; }
+.timeline { border-left:3px solid #2f4d3a; padding-left:20px; }
+.timeline-item { margin-bottom:20px; position:relative; }
+.timeline-item::before { content:''; position:absolute; left:-26px; top:6px; width:10px; height:10px; background:#b8943f; border:2px solid #2f4d3a; border-radius:50%; }
+.timeline-year { font-weight:700; font-size:14px; color:#2f4d3a; }
+.timeline-text { font-size:13px; line-height:1.6; color:#3a3a2e; }
+.testimonial-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.testimonial-card { background:#f4efe0; border:2px solid #6b4f36; }
+.testimonial-header { background:#b8943f; color:#2b2b23; font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:6px 14px; }
+.testimonial-body { padding:18px 20px; }
+.testimonial-body p { font-size:14px; font-style:italic; line-height:1.6; margin:0 0 14px; color:#2b2b23; }
+.testimonial-name { font-size:12px; font-weight:700; color:#2f4d3a; }
+.testimonial-org { font-size:11px; color:#6b4f36; }
+.bulletin-board { background:#d9cba3; border:2px solid #6b4f36; padding:22px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+.bulletin-card { background:#f8f4e8; padding:16px 18px; border:1px solid #b8943f; box-shadow:2px 2px 0 rgba(107,79,54,0.2); }
+.bulletin-date { font-size:10px; color:#6b4f36; margin-bottom:6px; }
+.bulletin-title { font-weight:700; font-size:14px; color:#2f4d3a; margin-bottom:6px; }
+.bulletin-text { font-size:12px; color:#3a3a2e; line-height:1.5; }
+.cta-box { background:#2f4d3a; color:#f4efe0; padding:48px 56px; text-align:center; border:2px solid #22392a; }
+.cta-label { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#d8c98a; margin-bottom:14px; }
+.cta-title { font-size:30px; margin:0 0 16px; }
+.cta-text { font-size:14px; color:#d8dbd4; max-width:540px; margin:0 auto 28px; line-height:1.7; }
+.footer { padding:26px 44px; background:#dcd0ac; border-top:3px solid #2f4d3a; font-size:11px; color:#5c4a35; }
+.footer-inner { max-width:920px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+.tier-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.tier-card { background:#f4efe0; border:2px solid #6b4f36; padding:24px 20px; text-align:center; }
+.tier-name { font-weight:700; font-size:16px; color:#2f4d3a; margin-bottom:4px; }
+.tier-amount { font-size:28px; font-weight:800; color:#b8943f; margin-bottom:4px; }
+.tier-interval { font-size:11px; color:#6b4f36; margin-bottom:12px; }
+.tier-perks { font-size:12px; color:#3a3a2e; line-height:1.6; }
+.impact-list { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+.impact-item { background:#f4efe0; border:1px solid #d8cba8; padding:14px 18px; font-size:13px; color:#3a3a2e; }
+.impact-item strong { color:#2f4d3a; }
+.petition-bar { background:#f4efe0; border:2px solid #6b4f36; padding:24px; text-align:center; }
+.petition-bar .progress { height:24px; background:#d8cba8; border:1px solid #6b4f36; margin:12px 0; position:relative; overflow:hidden; }
+.petition-bar .progress-fill { height:100%; background:#2f4d3a; transition:width 0.5s; }
+.petition-bar .stats { display:flex; justify-content:space-between; font-size:13px; color:#3a3a2e; }
+@media (max-width:768px) {
+  .nav { flex-direction:column; align-items:flex-start; padding:16px 20px; }
+  .nav-links { gap:12px; }
+  .card-grid,.card-grid-3,.tier-grid,.impact-list { grid-template-columns:1fr; }
+  .testimonial-grid { grid-template-columns:1fr; }
+  .bulletin-board { grid-template-columns:1fr; }
+  .data-table-body { grid-template-columns:1fr; }
+  .data-table-body div:nth-child(odd) { border-right:none; }
+  .page-section { padding:0 20px 44px; }
+  .cta-box { padding:32px 24px; }
+  .cta-title { font-size:24px; }
+}</style>
+<title>Home — Save Godzilla — Save Godzilla</title>
+</head><body>
 <div class="stripe"></div>
-
-<!-- NAV -->
 <div class="nav">
-  <div class="logo">
+  <div class="logo" onclick="window.location='index.html'" style="cursor:pointer">
     <div class="logo-icon">
       <div class="logo-icon-inner"></div>
       <div class="logo-icon-g">
@@ -95,26 +110,30 @@
       <div class="org-sub">Municipal Bureau of Kaiju Affairs</div>
     </div>
   </div>
-  <div class="nav-links">
-    <a href="#myths">Myths &amp; Facts</a>
-    <a href="#incidents">Incident Tracker</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#press">Press Room</a>
-  </div>
-  <div>
-    <span class="btn-primary">ATTEND A HEARING</span>
+  <div class="nav-links"><a href="index.html" style=font-weight:700;color:#2f4d3a>Home</a><a href="about.html">About</a><a href="incidents.html">Incidents</a><a href="press.html">Press</a><a href="contact.html">Contact</a></div>
+  <div><a href="index.html#support" class="btn-primary" style="text-decoration:none">DONATE</a></div>
+</div>
+
+<div style="padding:60px 44px;background:#ece3cd;">
+  <div class="container" style="background:#f4efe0;border:2px solid #6b4f36;padding:48px 56px;box-shadow:6px 6px 0 rgba(107,79,54,0.15);">
+    <div style="display:inline-block;padding:5px 14px;background:#b8943f;color:#2b2b23;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:22px;">URGENT &middot; Godzilla Has No Rights</div>
+    <h1 style="font-size:44px;line-height:1.25;font-weight:700;color:#2f4d3a;margin:0 0 16px;">Godzilla can't speak for himself.<br>That's why we're here.</h1>
+    <p style="font-size:15px;line-height:1.75;color:#3a3a2e;margin:0 0 12px;max-width:640px;">For 72 years, Godzilla has been slandered, shelled, and classified as a threat — without a single hearing, a single lawyer, or a single day in court. The Municipal Bureau of Kaiju Affairs is the only organization working to change that. We need your help.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      <a href="#support" class="btn-gold" style="text-decoration:none">Support Our Work</a>
+      <a href="#petition" class="btn-secondary" style="text-decoration:none">Sign the Petition</a>
+    </div>
   </div>
 </div>
 
-<!-- HERO -->
-<div style="padding:64px 44px; background:#ece3cd;">
-  <div class="container" style="background:#f4efe0; border:2px solid #6b4f36; padding:48px 56px; box-shadow:6px 6px 0 rgba(107,79,54,0.15);">
-    <div style="display:inline-block; padding:5px 14px; background:#b8943f; color:#2b2b23; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:22px;">Official Notice &middot; Form GZ-1</div>
-    <h1 style="font-size:44px; line-height:1.25; font-weight:700; color:#2f4d3a; margin:0 0 20px; font-family:'Nunito',Verdana,Arial,sans-serif;">Godzilla is not a monster. He's a sovereign ecological force.</h1>
-    <p style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:15px; line-height:1.75; color:#3a3a2e; margin:0 0 28px; max-width:640px;">For decades, media conglomerates and military interests have slandered a being who has repeatedly saved our planet from existential threats. The Municipal Bureau of Kaiju Affairs hereby affirms its commitment to the evidence-based reconsideration of Godzilla's public standing. One hearing at a time.</p>
-    <div style="display:flex; gap:14px; flex-wrap:wrap; font-family:'Nunito',Verdana,Arial,sans-serif;">
-      <span class="btn-primary">Submit a Public Comment</span>
-      <span class="btn-secondary">Download the Impact Packet (PDF)</span>
+<!-- PETITION BAR -->
+<div class="page-section" id="petition">
+  <div class="container">
+    <div class="petition-bar">
+      <div style="font-size:16px;font-weight:700;color:#2f4d3a;">Petition to Reclassify Godzilla as a Protected Ecological Asset</div>
+      <div style="font-size:12px;color:#6b4f36;margin:4px 0 8px;">Help us deliver 100,000 signatures to the UN Committee on Kaiju Affairs demanding Godzilla be reclassified as a Protected Ecological Asset.</div>
+      <div class="progress"><div class="progress-fill" style="width:52%"></div></div>
+      <div class="stats"><span><strong>52,347</strong> signatures</span><span>Goal: <strong>100,000</strong></span><span>Deadline: <strong>Dec 31, 2026</strong></span></div>
     </div>
   </div>
 </div>
@@ -122,179 +141,64 @@
 <!-- METRICS -->
 <div class="page-section">
   <div class="container" style="border:2px solid #6b4f36;">
-    <div style="background:#2f4d3a; color:#f4efe0; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:10px 18px;">Bureau Statistics &middot; Fiscal Year 2026</div>
-    <div style="display:grid; grid-template-columns:repeat(4,1fr); background:#f4efe0;">
-      <div style="padding:24px 16px; text-align:center; border-right:1px solid #d8cba8;">
-        <div style="font-size:32px; font-weight:700; color:#2f4d3a;">17</div>
-        <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; margin-top:6px;">Cities Protected</div>
-      </div>
-      <div style="padding:24px 16px; text-align:center; border-right:1px solid #d8cba8;">
-        <div style="font-size:32px; font-weight:700; color:#2f4d3a;">9</div>
-        <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; margin-top:6px;">Threats Neutralized</div>
-      </div>
-      <div style="padding:24px 16px; text-align:center; border-right:1px solid #d8cba8;">
-        <div style="font-size:32px; font-weight:700; color:#2f4d3a;">0</div>
-        <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; margin-top:6px;">Unprovoked Attacks</div>
-      </div>
-      <div style="padding:24px 16px; text-align:center;">
-        <div style="font-size:32px; font-weight:700; color:#2f4d3a;">72</div>
-        <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; margin-top:6px;">Years of Service</div>
-      </div>
+    <div style="background:#2f4d3a;color:#f4efe0;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:10px 18px;">Bureau Statistics &middot; Fiscal Year 2026</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);background:#f4efe0;">
+      <div style="padding:24px 16px;text-align:center;border-right:1px solid #d8cba8;"><div style="font-size:32px;font-weight:700;color:#2f4d3a;">17</div><div style="font-size:11px;color:#6b4f36;margin-top:6px;">Cities Protected</div></div>
+      <div style="padding:24px 16px;text-align:center;border-right:1px solid #d8cba8;"><div style="font-size:32px;font-weight:700;color:#2f4d3a;">9</div><div style="font-size:11px;color:#6b4f36;margin-top:6px;">Threats Neutralized</div></div>
+      <div style="padding:24px 16px;text-align:center;border-right:1px solid #d8cba8;"><div style="font-size:32px;font-weight:700;color:#2f4d3a;">0</div><div style="font-size:11px;color:#6b4f36;margin-top:6px;">Unprovoked Attacks</div></div>
+      <div style="padding:24px 16px;text-align:center;"><div style="font-size:32px;font-weight:700;color:#2f4d3a;">72</div><div style="font-size:11px;color:#6b4f36;margin-top:6px;">Years of Service</div></div>
     </div>
   </div>
 </div>
 
-<!-- MYTHS VS FACTS -->
-<div id="myths" class="page-section">
+<!-- MYTHS -->
+<div class="page-section">
   <div class="container">
-    <div class="section-title">
-      <h2>Myths &amp; Facts</h2>
-      <span class="section-sub">(Fact Sheet 3-B)</span>
-    </div>
+    <div class="section-title"><h2>Myths &amp; Facts</h2><span class="section-sub">(Fact Sheet 3-B)</span></div>
     <div class="data-table">
-      <div class="data-table-header">
-        <div>Common Misconception</div>
-        <div>Bureau Finding</div>
-      </div>
+      <div class="data-table-header"><div>Common Misconception</div><div>Bureau Finding</div></div>
       <div class="data-table-body">
-        <div>Godzilla attacks without provocation.</div>
-        <div>In every documented incident, Godzilla's appearance correlates directly with a looming ecological or supernatural catastrophe. He is a responder, not an aggressor.</div>
-
-        <div>Godzilla causes mass casualties.</div>
-        <div>Collateral damage is tragic, but the alternative — unchecked MUTO proliferation, alien invasions, or rogue kaiju — would be catastrophic on a global scale.</div>
-
-        <div>Godzilla is a mutant aberration.</div>
-        <div>Radiocarbon dating places Godzilla's lineage at 250+ million years. He is a natural regulator of planetary bio-energetic balance — not a mutation.</div>
-
-        <div>Godzilla should be contained or eliminated.</div>
-        <div>Without Godzilla, humanity would be defenseless against threats from the hollow earth, deep space, and beyond. He is the planet's immune system.</div>
-
-        <div>Godzilla is a mindless destroyer.</div>
-        <div>Behavioral analysis shows Godzilla consistently avoids populated areas when possible and targets specific threats with surgical precision. Cognitive estimates place his intelligence well above baseline human.</div>
-
-        <div>Governments should invest in anti-kaiju weapons.</div>
-        <div>The Oxygen Destroyer incident (1954), the Maser Cannon program, and the G-Defense initiative all demonstrate that human weapons are ineffective against Godzilla and cause more harm than Godzilla himself.</div>
+<div>Godzilla attacks without provocation.</div><div>In every documented incident, Godzilla's appearance correlates directly with a looming ecological or supernatural catastrophe. He is a responder, not an aggressor.</div><div>Godzilla causes mass casualties.</div><div>Collateral damage is tragic, but the alternative — unchecked MUTO proliferation, alien invasions, or rogue kaiju — would be catastrophic on a global scale.</div><div>Godzilla is a mutant aberration.</div><div>Radiocarbon dating places Godzilla's lineage at 250+ million years. He is a natural regulator of planetary bio-energetic balance — not a mutation.</div><div>Godzilla should be contained or eliminated.</div><div>Without Godzilla, humanity would be defenseless against threats from the hollow earth, deep space, and beyond. He is the planet's immune system.</div><div>Godzilla is a mindless destroyer.</div><div>Behavioral analysis shows Godzilla consistently avoids populated areas when possible and targets specific threats with surgical precision. Cognitive estimates place his intelligence well above baseline human.</div><div>Governments should invest in anti-kaiju weapons.</div><div>The Oxygen Destroyer incident (1954), the Maser Cannon program, and the G-Defense initiative all demonstrate that human weapons are ineffective against Godzilla and cause more harm than Godzilla himself.</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- INCIDENT TRACKER -->
-<div id="incidents" class="page-section">
+<!-- INCIDENTS -->
+<div class="page-section">
   <div class="container">
-    <div class="section-title">
-      <h2>Incident Tracker</h2>
-      <span class="section-sub">(5 cases on file, reclassified)</span>
-    </div>
-    <div class="card-grid">
-
-      <div class="card">
-        <div class="card-label"><span>CASE FILE GZ-1954-A</span><span>RECLASSIFIED</span></div>
-        <div class="card-title">Tokyo Bay — Ecological Correction</div>
-        <div class="card-text">Godzilla emerged in response to deep-sea nuclear testing that had disrupted a dormant ecological balance. Subsequent analysis revealed Godzilla was targeting radiation sources left by human activity. His presence led directly to the formation of Monarch and the global kaiju monitoring framework.</div>
-      </div>
-
-      <div class="card">
-        <div class="card-label"><span>CASE FILE GZ-2014-B</span><span>RECLASSIFIED</span></div>
-        <div class="card-title">San Francisco — MUTO Containment</div>
-        <div class="card-text">When two parasitic MUTOs emerged and began feeding on the planet's nuclear energy reserves, Godzilla intervened. Despite heavy military interference, he prevented the MUTOs from reaching their breeding grounds — which would have triggered an irreversible ecological collapse. Estimated 12 million lives saved.</div>
-      </div>
-
-      <div class="card">
-        <div class="card-label"><span>CASE FILE GZ-2019-C</span><span>RECLASSIFIED</span></div>
-        <div class="card-title">Boston — The Ghidorah Intervention</div>
-        <div class="card-text">An extraterrestrial invasive species (Ghidorah) began terraforming the planet's atmosphere for alien colonization. Godzilla engaged across three continents, ultimately containing the threat. Ghidorah's terraforming would have made Earth uninhabitable within 72 hours.</div>
-      </div>
-
-      <div class="card">
-        <div class="card-label"><span>CASE FILE GZ-2023-D</span><span>RECLASSIFIED</span></div>
-        <div class="card-title">Rio de Janeiro — Bio-Containment</div>
-        <div class="card-text">A subterranean spore-creature began releasing airborne spores causing rapid neurological degeneration. Godzilla's atomic breath created a thermal sterilization zone that destroyed the spore source. Estimated 3.4 million lives saved. Spread would have reached pandemic levels within 48 hours.</div>
-      </div>
-
-      <div class="card card-full">
-        <div class="card-label"><span>CASE FILE GZ-2025-E</span><span>RECLASSIFIED</span></div>
-        <div class="card-title">Sydney — Singularity Event</div>
-        <div class="card-text">A deep-focus seismic anomaly caused an unexpected rise in hollow earth energy emissions, attracting lesser kaiju to the Sydney basin. Godzilla's presence created a perimeter effect that prevented lesser entities from entering populated zones. Zero civilian casualties. Property damage was 97% attributable to military countermeasures.</div>
-      </div>
-
-    </div>
+    <div class="section-title"><h2>Incident Tracker</h2><span class="section-sub">(5 of 7 cases shown)</span></div>
+    <div class="card-grid"><div class="card"><div class="card-label"><span>CASE FILE GZ-2014-B</span><span>RECLASSIFIED</span></div><div class="card-title">San Francisco — MUTO Containment</div><div class="card-text">When two parasitic MUTOs emerged and began feeding on the planet's nuclear energy reserves, Godzilla intervened. Despite heavy military interference, he prevented the MUTOs from reaching their breeding grounds — which would have triggered an irreversible ecological collapse. Estimated 12 million lives saved.</div></div><div class="card"><div class="card-label"><span>CASE FILE GZ-2023-D</span><span>RECLASSIFIED</span></div><div class="card-title">Rio de Janeiro — Bio-Containment</div><div class="card-text">A subterranean spore-creature began releasing airborne spores causing rapid neurological degeneration. Godzilla's atomic breath created a thermal sterilization zone that destroyed the spore source. Estimated 3.4 million lives saved. Spread would have reached pandemic levels within 48 hours.</div></div><div class="card"><div class="card-label"><span>CASE FILE GZ-1964-F</span><span>RECLASSIFIED</span></div><div class="card-title">Osaka — Perimeter Hold</div><div class="card-text">Godzilla maintained a static position at the harbor mouth for six hours, permitting full evacuation of the Osaka metropolitan area before any further movement. This office considers the case a model of de-escalation.</div></div><div class="card"><div class="card-label"><span>CASE FILE GZ-1954-A</span><span>RECLASSIFIED</span></div><div class="card-title">Tokyo Bay — Ecological Correction</div><div class="card-text">Godzilla emerged in response to deep-sea nuclear testing that had disrupted a dormant ecological balance. Subsequent analysis revealed Godzilla was targeting radiation sources left by human activity. His presence led directly to the formation of Monarch and the global kaiju monitoring framework.</div></div><div class="card card-full"><div class="card-label"><span>CASE FILE GZ-1998-G</span><span>RECLASSIFIED</span></div><div class="card-title">Bay Harbor — Reassessment</div><div class="card-text">Newly declassified sonar logs show naval vessels cornered Godzilla in a shipping channel for eleven hours prior to contact. The Bureau has formally recommended the incident be reclassified as 'provoked response.'</div></div></div>
+    <div style="text-align:center;margin-top:20px"><a href="incidents.html" class="btn-secondary" style="text-decoration:none">View All 7 Case Files</a></div>
   </div>
 </div>
 
 <!-- TESTIMONIALS -->
-<div id="testimonials" class="page-section">
+<div class="page-section">
   <div class="container">
-    <div class="section-title">
-      <h2>Public Comment Cards</h2>
-      <span class="section-sub">(Submitted at open hearings)</span>
-    </div>
-    <div class="testimonial-grid">
-
-      <div class="testimonial-card">
-        <div class="testimonial-header">Public Comment Card</div>
-        <div class="testimonial-body">
-          <p>"Godzilla is the single most important non-human intelligence on this planet. Our research suggests he operates with a level of ecological awareness that dwarfs human understanding. The 'destruction' narrative is a product of fear, not fact."</p>
-          <div class="testimonial-name">Dr. Ishiro Serizawa</div>
-          <div class="testimonial-org">Professor of Kaiju Ecology, Monarch University</div>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-header">Public Comment Card</div>
-        <div class="testimonial-body">
-          <p>"I was on the ground during the MUTO incident. If Godzilla hadn't shown up, none of us would be here. The military's attempts to engage him only made things worse. He wasn't the threat — he was the solution."</p>
-          <div class="testimonial-name">Lt. Ford Brody (Ret.)</div>
-          <div class="testimonial-org">U.S. Navy, EOD Unit 12</div>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-header">Public Comment Card</div>
-        <div class="testimonial-body">
-          <p>"The UN's continued classification of Godzilla as a 'threat' is a diplomatic embarrassment. We're applying Cold War logic to a creature that has demonstrated more restraint than most nation-states."</p>
-          <div class="testimonial-name">Ambassador Vivienne Graham</div>
-          <div class="testimonial-org">Former UN Kaiju Liaison</div>
-        </div>
-      </div>
-
-    </div>
+    <div class="section-title"><h2>Voices of Reason</h2><span class="section-sub">(Public Comment Cards)</span></div>
+    <div class="testimonial-grid"><div class="testimonial-card"><div class="testimonial-header">Public Comment Card</div><div class="testimonial-body"><p>"The UN's continued classification of Godzilla as a 'threat' is a diplomatic embarrassment. We're applying Cold War logic to a creature that has demonstrated more restraint than most nation-states."</p><div class="testimonial-name">Ambassador Vivienne Graham</div><div class="testimonial-org">Former UN Kaiju Liaison</div></div></div><div class="testimonial-card"><div class="testimonial-header">Public Comment Card</div><div class="testimonial-body"><p>"There is no ordinance on this earth that permits a municipality to shell a resident for the crime of existing offshore."</p><div class="testimonial-name">Hon. Marcus Whitfield</div><div class="testimonial-org">Former Chair, Subcommittee on Emerging Persons</div></div></div><div class="testimonial-card"><div class="testimonial-header">Public Comment Card</div><div class="testimonial-body"><p>"I was on the ground during the MUTO incident. If Godzilla hadn't shown up, none of us would be here. The military's attempts to engage him only made things worse. He wasn't the threat — he was the solution."</p><div class="testimonial-name">Lt. Ford Brody (Ret.)</div><div class="testimonial-org">U.S. Navy, EOD Unit 12</div></div></div></div>
   </div>
 </div>
 
-<!-- PRESS ROOM -->
-<div id="press" class="page-section">
+<!-- PRESS -->
+<div class="page-section">
   <div class="container">
-    <div class="section-title">
-      <h2>Press Room</h2>
-      <span class="section-sub">(Bulletin board, updated monthly)</span>
-    </div>
-    <div class="bulletin-board">
+    <div class="section-title"><h2>Press Room</h2><span class="section-sub">(Bulletin board)</span></div>
+    <div class="bulletin-board"><div class="bulletin-card" style="transform:rotate(-0.6deg)"><div class="bulletin-date">MAY 22, 2026</div><div class="bulletin-title">Petition to Reclassify Godzilla Surpasses 50,000 Signatures</div><div class="bulletin-text">The petition, addressed to the UN Committee on Kaiju Affairs, represents the largest coordinated public action in support of non-human sovereign recognition.</div></div><div class="bulletin-card" style="transform:rotate(0.5deg)"><div class="bulletin-date">JUL 20, 2026</div><div class="bulletin-title">Save Godzilla Files Amicus Brief for Godzilla's Personhood</div><div class="bulletin-text">Legal team argues that Godzilla meets the criteria for non-human personhood under international law, citing demonstrated self-awareness and complex communication.</div></div><div class="bulletin-card" style="transform:rotate(0.3deg)"><div class="bulletin-date">JUN 10, 2026</div><div class="bulletin-title">Audit: 73% of Monarch Budget Spent on Weapons</div><div class="bulletin-text">Independent audit finds the vast majority of Monarch funding goes to offensive capabilities, not the research and diplomacy mission it was originally chartered for.</div></div><div class="bulletin-card" style="transform:rotate(-0.4deg)"><div class="bulletin-date">APR 15, 2026</div><div class="bulletin-title">Bureau Awards $2.3M in Research Grants for Kaiju Communication</div><div class="bulletin-text">Funding directed toward three research institutions exploring bio-acoustic pattern analysis, behavioral interpretation AI, and historical incident data modeling.</div></div></div>
+    <div style="text-align:center;margin-top:20px"><a href="press.html" class="btn-secondary" style="text-decoration:none">View All Press Releases</a></div>
+  </div>
+</div>
 
-      <div class="bulletin-card" style="transform:rotate(-0.6deg);">
-        <div class="bulletin-date">JUL 20, 2026</div>
-        <div class="bulletin-title">Save Godzilla Files Amicus Brief for Godzilla's Personhood</div>
-        <div class="bulletin-text">Legal team argues that Godzilla meets the criteria for non-human personhood under international law, citing demonstrated self-awareness and complex communication.</div>
-      </div>
-
-      <div class="bulletin-card" style="transform:rotate(0.5deg);">
-        <div class="bulletin-date">JUL 12, 2026</div>
-        <div class="bulletin-title">Study: Godzilla Correlates with 68% Fewer Kaiju Incidents</div>
-        <div class="bulletin-text">Peer-reviewed research confirms Godzilla's active territories experience a dramatic reduction in incursions by lesser hostile entities — the deterrence effect.</div>
-      </div>
-
-      <div class="bulletin-card" style="transform:rotate(0.3deg);">
-        <div class="bulletin-date">JUN 28, 2026</div>
-        <div class="bulletin-title">Statement on the Boston Incident Misunderstanding</div>
-        <div class="bulletin-text">Organization calls for de-escalation protocols and improved communication channels. Godzilla's actions were consistent with territorial defense, not aggression.</div>
-      </div>
-
-      <div class="bulletin-card" style="transform:rotate(-0.4deg);">
-        <div class="bulletin-date">JUN 10, 2026</div>
-        <div class="bulletin-title">Audit: 73% of Monarch Budget Spent on Weapons</div>
-        <div class="bulletin-text">Independent audit finds the vast majority of Monarch funding goes to offensive capabilities, not the research and diplomacy mission it was originally chartered for.</div>
-      </div>
-
+<!-- SUPPORT / DONATION -->
+<div class="page-section" id="support">
+  <div class="container">
+    <div class="section-title"><h2>Support Our Work</h2><span class="section-sub">(Your contribution goes directly to advocacy)</span></div>
+    <p style="font-size:14px;color:#3a3a2e;line-height:1.7;margin-bottom:24px;">Godzilla has been misrepresented for 72 years. Every day without legal standing is a day he can be legally attacked. Navies train on him. Governments budget for his destruction. He has no lawyer, no voice, no rights. <strong>We are the only organization fighting for him.</strong> Every dollar goes directly to incident reclassification, legal advocacy, and public education.</p>
+    <div class="tier-grid"><div class="tier-card"><div class="tier-name">Citizen Supporter</div><div class="tier-amount">$5</div><div class="tier-interval">per month</div><div class="tier-perks">Quarterly newsletter, official Bureau sticker, name listed in annual report.</div></div><div class="tier-card"><div class="tier-name">Kaiju Advocate</div><div class="tier-amount">$25</div><div class="tier-interval">per month</div><div class="tier-perks">Everything above, plus a limited-edition incident reclassification poster, priority seating at public hearings, and a personalized thank-you from our Director.</div></div><div class="tier-card"><div class="tier-name">Apex Guardian</div><div class="tier-amount">$100</div><div class="tier-interval">per month</div><div class="tier-perks">Everything above, plus an annual private briefing with our legal team, exclusive access to our incident report database, and a commemorative Bureau lapel pin.</div></div><div class="tier-card"><div class="tier-name">Godzilla's Voice</div><div class="tier-amount">$500</div><div class="tier-interval">per month</div><div class="tier-perks">Everything above, plus a named grant in your honor, direct consultation on our legal strategy, and your name inscribed on the Bureau's donor wall.</div></div></div>
+    <div style="margin-top:24px">
+      <div style="font-size:14px;font-weight:700;color:#2f4d3a;margin-bottom:12px;">What your donation does:</div>
+      <div class="impact-list"><div class="impact-item"><strong>$5</strong> funds one day of incident reclassification research</div><div class="impact-item"><strong>$15</strong> publishes one corrected incident report in the public record</div><div class="impact-item"><strong>$25</strong> sponsors a community hearing on kaiju-humna relations</div><div class="impact-item"><strong>$50</strong> funds a public comment card campaign at the UN Committee</div><div class="impact-item"><strong>$100</strong> provides legal research for one amicus brief filing</div><div class="impact-item"><strong>$250</strong> supports our annual petition drive and signature collection</div><div class="impact-item"><strong>$500</strong> funds a complete incident reclassification case file</div></div>
     </div>
   </div>
 </div>
@@ -304,23 +208,19 @@
   <div class="container">
     <div class="cta-box">
       <div class="cta-label">Notice of Public Hearing</div>
-      <h2 class="cta-title">Godzilla can't speak for himself.<br>That's why we're here.</h2>
-      <p class="cta-text">Join thousands of advocates working to rehabilitate the most misunderstood creature in Earth's history. The next hearing is Thursday at 7 PM in the Community Room. Public comment is limited to three minutes per resident. Refreshments will be provided.</p>
-      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; font-family:'Nunito',Verdana,Arial,sans-serif;">
-        <span class="btn-primary" style="background:#b8943f; color:#2b2b23; border:2px solid #8a6f30;">RSVP for the Hearing</span>
-        <span class="btn-secondary" style="color:#f4efe0; border-color:#f4efe0; background:transparent;">Sign the Petition</span>
+      <h2 class="cta-title">The next hearing is Thursday at 7 PM.<br>Be there or file a comment.</h2>
+      <p class="cta-text">The Bureau will hold open hearings every Tuesday this month. Sign up for public comment at the front desk.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="about.html" class="btn-gold" style="text-decoration:none">Learn About Our Mission</a>
+        <a href="contact.html" class="btn-secondary" style="text-decoration:none;color:#f4efe0;border-color:#f4efe0;background:transparent">Contact the Bureau</a>
       </div>
     </div>
   </div>
 </div>
-
-<!-- FOOTER -->
 <div class="footer">
   <div class="footer-inner">
-    <div>Municipal Bureau of Kaiju Affairs &middot; Est. 1954 &middot; Office Hours: Mon–Fri, 8 AM–4:30 PM</div>
+    <div>Municipal Bureau of Kaiju Affairs &middot; Est. 1954 &middot; Office Hours: Mon&ndash;Fri, 8 AM&ndash;4:30 PM</div>
     <div>Form GZ-1 (Rev. 2026) &middot; Godzilla is a trademark of Toho Co., Ltd. This is an independent advocacy group.</div>
   </div>
 </div>
-
-</body>
-</html>
+</body></html>
