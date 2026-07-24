@@ -96,7 +96,7 @@ def generate_petition_page():
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://savegodzilla.org/petition.html">
 <meta property="og:title" content="Sign the Petition — Save Godzilla">
-<meta property="og:description" content="Help us deliver 100,000 signatures to the UN Committee on Kaiju Affairs demanding Godzilla be reclassified as a Protected Ecological Asset.">
+<meta property="og:description" content="Help us deliver 1,000 signatures to the UN Committee on Kaiju Affairs demanding Godzilla be reclassified as a Protected Ecological Asset.">
 <meta property="og:image" content="https://savegodzilla.org/favicon.svg">
 <meta name="twitter:card" content="summary_large_image">
 <title>Sign the Petition — Save Godzilla</title>
@@ -116,7 +116,7 @@ def generate_petition_page():
 
     <!-- COUNTDOWN TIMER -->
     <div style="background:#2f4d3a;color:#f4efe0;padding:16px 24px;text-align:center;margin-bottom:24px;">
-      <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#d8cba8;margin-bottom:8px;">Deadline to reach 100,000 signatures</div>
+      <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#d8cba8;margin-bottom:8px;">Deadline to reach 1,000 signatures</div>
       <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
         <div><div class="timer-num" id="timerDays">--</div><div class="timer-label">Days</div></div>
         <div><div class="timer-num" id="timerHours">--</div><div class="timer-label">Hours</div></div>
@@ -128,7 +128,7 @@ def generate_petition_page():
     <div class="form-card" id="formCard">
       <div style="display:inline-block;padding:5px 14px;background:#b8943f;color:#2b2b23;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:22px;">Petition &middot; Form GZ-3</div>
       <h1>Reclassify Godzilla as a<br>Protected Ecological Asset</h1>
-      <p>Add your name to the official petition addressed to the UN Committee on Kaiju Affairs. Every signature brings us closer to the 100,000 required for formal consideration.</p>
+      <p>Add your name to the official petition addressed to the UN Committee on Kaiju Affairs. Every signature brings us closer to the 1,000 required for formal consideration.</p>
 
       <form id="petitionForm" method="POST">
         <div class="form-row">
@@ -163,7 +163,7 @@ def generate_petition_page():
       <h2>Thank You for Signing!</h2>
       <p>Your signature has been recorded. You are <strong>signature #<span id="sigCountDisplay">—</span></strong>.</p>
       <p>Your certificate number: <strong id="certNumDisplay">—</strong></p>
-      <p style="font-size:13px">You will receive a confirmation email. Please share your certificate to help us reach 100,000 signatures.</p>
+      <p style="font-size:13px">You will receive a confirmation email. Please share your certificate to help us reach 1,000 signatures.</p>
       <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
         <a href="/certificate.html" class="no-print" style="display:inline-block;padding:12px 24px;background:#2f4d3a;color:#f4efe0;font-weight:700;font-size:14px;text-decoration:none;border:2px solid #22392a;" id="viewCertBtn">View Your Certificate</a>
         <a href="/" class="no-print" style="display:inline-block;padding:12px 24px;background:transparent;color:#2f4d3a;font-weight:700;font-size:14px;text-decoration:none;border:2px solid #2f4d3a;">Return to Home</a>
@@ -317,7 +317,7 @@ def generate_certificate_page():
     </div>
     <div class="detail-item">
       <div class="detail-label">Petition Goal</div>
-      <div class="detail-value">100,000</div>
+      <div class="detail-value">1,000</div>
     </div>
   </div>
   <div style="text-align:center;margin-bottom:24px;">
