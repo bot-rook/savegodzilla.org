@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="omelette-owns-print" content="false">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=SN+Pro:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #ece3cd; }
+  * { box-sizing: border-box; }
+  a { color: #2f4d3a; text-decoration: underline; }
+  a:hover { color: #52704e; }
+  ::selection { background: #b8943f; color: #2b2b23; }
+</style>
+</helmet>
+
+<div style="font-family:'SN Pro',Georgia,sans-serif; background:#ece3cd; color:#2b2b23; width:100%; overflow-x:hidden;">
+
+  <!-- TOP STRIPE -->
+  <div style="height:8px; background:repeating-linear-gradient(45deg, #2f4d3a, #2f4d3a 12px, #b8943f 12px, #b8943f 24px);"></div>
+
+  <!-- NAV -->
+  <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 44px; background:#f4efe0; border-bottom:3px solid #2f4d3a;">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <div style="position:relative; width:52px; height:52px; border-radius:50%; border:2px solid #2f4d3a; background:#f4efe0; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <div style="position:absolute; inset:3px; border-radius:50%; border:1px dashed #b8943f;"></div>
+        <div style="position:relative; width:22px; height:22px;">
+          <div style="position:absolute; top:0; left:0; width:2px; height:2px; background:transparent; transform:scale(0.44); transform-origin:top left; box-shadow:28px 0px 0 0 #2f4d3a, 20px 4px 0 0 #2f4d3a, 28px 4px 0 0 #2f4d3a, 36px 4px 0 0 #2f4d3a, 12px 8px 0 0 #2f4d3a, 20px 8px 0 0 #2f4d3a, 24px 8px 0 0 #2f4d3a, 28px 8px 0 0 #2f4d3a, 32px 8px 0 0 #2f4d3a, 36px 8px 0 0 #2f4d3a, 8px 12px 0 0 #2f4d3a, 12px 12px 0 0 #2f4d3a, 16px 12px 0 0 #2f4d3a, 20px 12px 0 0 #2f4d3a, 24px 12px 0 0 #2f4d3a, 28px 12px 0 0 #2f4d3a, 32px 12px 0 0 #2f4d3a, 36px 12px 0 0 #2f4d3a, 40px 12px 0 0 #2f4d3a, 4px 16px 0 0 #2f4d3a, 8px 16px 0 0 #2f4d3a, 12px 16px 0 0 #2f4d3a, 16px 16px 0 0 #2f4d3a, 20px 16px 0 0 #2f4d3a, 24px 16px 0 0 #2f4d3a, 28px 16px 0 0 #2f4d3a, 32px 16px 0 0 #2f4d3a, 36px 16px 0 0 #2f4d3a, 40px 16px 0 0 #2f4d3a, 44px 16px 0 0 #2f4d3a, 0px 20px 0 0 #2f4d3a, 4px 20px 0 0 #2f4d3a, 8px 20px 0 0 #2f4d3a, 12px 20px 0 0 #2f4d3a, 16px 20px 0 0 #2f4d3a, 20px 20px 0 0 #2f4d3a, 24px 20px 0 0 #2f4d3a, 28px 20px 0 0 #2f4d3a, 32px 20px 0 0 #2f4d3a, 36px 20px 0 0 #2f4d3a, 40px 20px 0 0 #2f4d3a, 4px 24px 0 0 #2f4d3a, 8px 24px 0 0 #2f4d3a, 12px 24px 0 0 #2f4d3a, 16px 24px 0 0 #2f4d3a, 20px 24px 0 0 #2f4d3a, 24px 24px 0 0 #2f4d3a, 28px 24px 0 0 #2f4d3a, 32px 24px 0 0 #2f4d3a, 36px 24px 0 0 #2f4d3a, 8px 28px 0 0 #2f4d3a, 12px 28px 0 0 #2f4d3a, 16px 28px 0 0 #2f4d3a, 20px 28px 0 0 #2f4d3a, 24px 28px 0 0 #2f4d3a, 28px 28px 0 0 #2f4d3a, 32px 28px 0 0 #2f4d3a, 12px 32px 0 0 #2f4d3a, 16px 32px 0 0 #2f4d3a, 28px 32px 0 0 #2f4d3a, 32px 32px 0 0 #2f4d3a, 12px 36px 0 0 #2f4d3a, 16px 36px 0 0 #2f4d3a, 28px 36px 0 0 #2f4d3a, 32px 36px 0 0 #2f4d3a, 12px 40px 0 0 #2f4d3a, 16px 40px 0 0 #2f4d3a, 28px 40px 0 0 #2f4d3a, 32px 40px 0 0 #2f4d3a, 12px 44px 0 0 #2f4d3a, 16px 44px 0 0 #2f4d3a, 28px 44px 0 0 #2f4d3a, 32px 44px 0 0 #2f4d3a, 8px 48px 0 0 #2f4d3a, 12px 48px 0 0 #2f4d3a, 16px 48px 0 0 #2f4d3a, 28px 48px 0 0 #2f4d3a, 32px 48px 0 0 #2f4d3a, 36px 48px 0 0 #2f4d3a;"></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:19px; font-weight:700; color:#2f4d3a; line-height:1.1;">Save Godzilla</div>
+        <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#6b4f36;">Municipal Bureau of Kaiju Affairs</div>
+      </div>
+    </div>
+    <div style="display:flex; gap:26px; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; color:#3a3a2e;">
+      <a href="#myths" style="text-decoration:none;">Myths &amp; Facts</a>
+      <a href="#incidents" style="text-decoration:none;">Incident Tracker</a>
+      <a href="#testimonials" style="text-decoration:none;">Testimonials</a>
+      <a href="#press" style="text-decoration:none;">Press Room</a>
+    </div>
+    <div style="padding:10px 20px; background:#2f4d3a; color:#f4efe0; font-family:'Nunito',Verdana,Arial,sans-serif; font-weight:700; font-size:12px; border:2px solid #22392a;">ATTEND A HEARING</div>
+  </div>
+
+  <!-- HERO -->
+  <div style="padding:64px 44px; background:#ece3cd;">
+    <div style="max-width:920px; margin:0 auto; background:#f4efe0; border:2px solid #6b4f36; padding:48px 56px; box-shadow:6px 6px 0 rgba(107,79,54,0.15);">
+      <div style="display:inline-block; padding:5px 14px; background:#b8943f; color:#2b2b23; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:22px;">Official Notice &middot; Form GZ-1</div>
+      <h1 style="font-size:44px; line-height:1.25; font-weight:700; color:#2f4d3a; margin:0 0 20px;">A Public Notice Regarding the Rehabilitation and Fair Treatment of Godzilla</h1>
+      <p style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:15px; line-height:1.75; color:#3a3a2e; margin:0 0 28px; max-width:640px;">The Municipal Bureau of Kaiju Affairs hereby affirms its commitment to the responsible, evidence-based reconsideration of Godzilla's public standing. Prior characterizations, we find, were often incomplete. This office intends to correct the record, one hearing at a time.</p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; font-family:'Nunito',Verdana,Arial,sans-serif;">
+        <div style="padding:13px 26px; background:#2f4d3a; color:#f4efe0; font-weight:700; font-size:13px; border:2px solid #22392a;">Submit a Public Comment</div>
+        <div style="padding:13px 26px; background:#f4efe0; color:#2f4d3a; font-weight:700; font-size:13px; border:2px solid #2f4d3a;">Download the Impact Packet (PDF)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEDGER / METRICS -->
+  <div style="padding:0 44px 64px;">
+    <div style="max-width:920px; margin:0 auto; border:2px solid #6b4f36;">
+      <div style="background:#2f4d3a; color:#f4efe0; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:10px 18px;">Bureau Statistics, Fiscal Year 2026</div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); background:#f4efe0;">
+        <div style="padding:24px 16px; text-align:center; border-right:1px solid #d8cba8;">
+          <div style="font-size:32px; font-weight:700; color:#2f4d3a;">31</div>
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; margin-top:6px;">Municipalities Reviewed</div>
+        </div>
+        <div style="padding:24px 16px; text-align:center; border-right:1px solid #d8cba8;">
+          <div style="font-size:32px; font-weight:700; color:#2f4d3a;">14</div>
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; margin-top:6px;">Incidents Reclassified</div>
+        </div>
+        <div style="padding:24px 16px; text-align:center; border-right:1px solid #d8cba8;">
+          <div style="font-size:32px; font-weight:700; color:#2f4d3a;">0</div>
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; margin-top:6px;">Formal Apologies Issued (By Navy)</div>
+        </div>
+        <div style="padding:24px 16px; text-align:center;">
+          <div style="font-size:32px; font-weight:700; color:#2f4d3a;">72</div>
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; margin-top:6px;">Years Pending Legal Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MYTHS VS FACTS -->
+  <div id="myths" style="padding:0 44px 64px;">
+    <div style="max-width:920px; margin:0 auto;">
+      <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:18px;">
+        <h2 style="font-size:26px; color:#2f4d3a; margin:0;">Myths &amp; Facts</h2>
+        <span style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36;">(Fact Sheet 3-B)</span>
+      </div>
+      <div style="border:2px solid #6b4f36;">
+        <div style="display:grid; grid-template-columns:1fr 1fr;">
+          <div style="padding:12px 20px; background:#2f4d3a; color:#f4efe0; font-family:'Nunito',Verdana,Arial,sans-serif; font-weight:700; font-size:12px; text-transform:uppercase; border-right:1px solid #f4efe0;">Common Misconception</div>
+          <div style="padding:12px 20px; background:#2f4d3a; color:#f4efe0; font-family:'Nunito',Verdana,Arial,sans-serif; font-weight:700; font-size:12px; text-transform:uppercase;">Bureau Finding</div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; background:#f4efe0;">
+          <div style="padding:20px; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; line-height:1.6; border-right:1px solid #d8cba8; border-bottom:1px solid #d8cba8;">Godzilla destroys cities for sport.</div>
+          <div style="padding:20px; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; line-height:1.6; border-bottom:1px solid #d8cba8;">A Bureau review attributes 94% of structural damage to defensive maneuvers against provoking naval assets.</div>
+          <div style="padding:20px; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; line-height:1.6; border-right:1px solid #d8cba8; border-bottom:1px solid #d8cba8;">He has no legal standing in coastal jurisdictions.</div>
+          <div style="padding:20px; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; line-height:1.6; border-bottom:1px solid #d8cba8;">Godzilla predates every municipal charter he has been accused of violating. Jurisdiction remains, at minimum, unresolved.</div>
+          <div style="padding:20px; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; line-height:1.6; border-right:1px solid #d8cba8;">Radioactive exposure disqualifies him from public life.</div>
+          <div style="padding:20px; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; line-height:1.6;">This Bureau does not revoke standing on the basis of exposure history. Precedent forbids it.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INCIDENT TRACKER -->
+  <div id="incidents" style="padding:0 44px 64px;">
+    <div style="max-width:920px; margin:0 auto;">
+      <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:18px;">
+        <h2 style="font-size:26px; color:#2f4d3a; margin:0;">Incident Tracker</h2>
+        <span style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36;">(5 cases on file, reviewed and reclassified)</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:16px;">
+
+        <div style="background:#f4efe0; border:2px solid #6b4f36; padding:18px 20px;">
+          <div style="display:flex; justify-content:space-between; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; margin-bottom:10px;"><span>CASE FILE GZ-1954-A</span><span>RECLASSIFIED</span></div>
+          <div style="font-weight:700; font-size:16px; color:#2f4d3a; margin-bottom:6px;">Tokyo Bay Response</div>
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; line-height:1.6; color:#3a3a2e;">Originally logged as an "attack." Bureau review finds Godzilla surfaced only after sustained depth-charge activity in his registered habitat.</div>
+        </div>
+
+        <div style="background:#f4efe0; border:2px solid #6b4f36; padding:18px 20px;">
+          <div style="display:flex; justify-content:space-between; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; margin-bottom:10px;"><span>CASE FILE GZ-1964-C</span><span>RECLASSIFIED</span></div>
+          <div style="font-weight:700; font-size:16px; color:#2f4d3a; margin-bottom:6px;">The Ghidorah Intervention</div>
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; line-height:1.6; color:#3a3a2e;">Filed for decades as unprovoked destruction. Records now show Godzilla engaged a third-party threat before any government could respond.</div>
+        </div>
+
+        <div style="background:#f4efe0; border:2px solid #6b4f36; padding:18px 20px;">
+          <div style="display:flex; justify-content:space-between; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; margin-bottom:10px;"><span>CASE FILE GZ-1998-B</span><span>RECLASSIFIED</span></div>
+          <div style="font-weight:700; font-size:16px; color:#2f4d3a; margin-bottom:6px;">Bay Harbor Reassessment</div>
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; line-height:1.6; color:#3a3a2e;">Newly declassified sonar logs show naval vessels cornered Godzilla in a shipping channel for eleven hours prior to contact.</div>
+        </div>
+
+        <div style="background:#f4efe0; border:2px solid #6b4f36; padding:18px 20px;">
+          <div style="display:flex; justify-content:space-between; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; margin-bottom:10px;"><span>CASE FILE GZ-2004-E</span><span>RECLASSIFIED</span></div>
+          <div style="font-weight:700; font-size:16px; color:#2f4d3a; margin-bottom:6px;">Osaka Perimeter Hold</div>
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; line-height:1.6; color:#3a3a2e;">Godzilla maintained a static position at the harbor mouth for six hours, permitting full evacuation before any further movement.</div>
+        </div>
+
+        <div style="background:#f4efe0; border:2px solid #6b4f36; padding:18px 20px; grid-column:1 / -1;">
+          <div style="display:flex; justify-content:space-between; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36; margin-bottom:10px;"><span>CASE FILE GZ-2016-A</span><span>RECLASSIFIED</span></div>
+          <div style="font-weight:700; font-size:16px; color:#2f4d3a; margin-bottom:6px;">Kyushu Sighting, No Incident Filed</div>
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:13px; line-height:1.6; color:#3a3a2e;">Godzilla was sighted off Kyushu for four days. No structures were damaged. This office considers the case a model of restraint.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div id="testimonials" style="padding:0 44px 64px;">
+    <div style="max-width:920px; margin:0 auto;">
+      <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:18px;">
+        <h2 style="font-size:26px; color:#2f4d3a; margin:0;">Public Comment Cards</h2>
+        <span style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36;">(Submitted at open hearings)</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+        <div style="background:#f4efe0; border:2px solid #6b4f36;">
+          <div style="background:#b8943f; color:#2b2b23; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:6px 14px;">Public Comment Card</div>
+          <div style="padding:18px 20px;">
+            <p style="font-size:14px; font-style:italic; line-height:1.6; margin:0 0 14px; color:#2b2b23;">"The data is unambiguous. What we called monstrous behavior was, in every documented case, a proportionate response."</p>
+            <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:12px; font-weight:700; color:#2f4d3a;">Dr. Aiko Fujimori</div>
+            <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36;">Kaijuology, Tokyo Institute of Marine Studies</div>
+          </div>
+        </div>
+        <div style="background:#f4efe0; border:2px solid #6b4f36;">
+          <div style="background:#b8943f; color:#2b2b23; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:6px 14px;">Public Comment Card</div>
+          <div style="padding:18px 20px;">
+            <p style="font-size:14px; font-style:italic; line-height:1.6; margin:0 0 14px; color:#2b2b23;">"There is no ordinance on this earth that permits a municipality to shell a resident for the crime of existing offshore."</p>
+            <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:12px; font-weight:700; color:#2f4d3a;">Hon. Marcus Whitfield</div>
+            <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36;">Former Chair, Subcommittee on Emerging Persons</div>
+          </div>
+        </div>
+        <div style="background:#f4efe0; border:2px solid #6b4f36;">
+          <div style="background:#b8943f; color:#2b2b23; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:6px 14px;">Public Comment Card</div>
+          <div style="padding:18px 20px;">
+            <p style="font-size:14px; font-style:italic; line-height:1.6; margin:0 0 14px; color:#2b2b23;">"I lost my home in '64. I spent forty years angry. Then I read the incident reports myself. He didn't start it. We did."</p>
+            <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:12px; font-weight:700; color:#2f4d3a;">Naomi Reyes</div>
+            <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36;">Bay Harbor Reconciliation Project</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRESS ROOM (bulletin board) -->
+  <div id="press" style="padding:0 44px 64px;">
+    <div style="max-width:920px; margin:0 auto;">
+      <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:18px;">
+        <h2 style="font-size:26px; color:#2f4d3a; margin:0;">Press Room</h2>
+        <span style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#6b4f36;">(Bulletin board, updated monthly)</span>
+      </div>
+      <div style="background:#d9cba3; border:2px solid #6b4f36; padding:22px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px;">
+        <div style="background:#f8f4e8; padding:16px 18px; border:1px solid #b8943f; box-shadow:2px 2px 0 rgba(107,79,54,0.2); transform:rotate(-0.6deg);">
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:10px; color:#6b4f36; margin-bottom:6px;">JUN 14, 2026</div>
+          <div style="font-weight:700; font-size:14px; color:#2f4d3a; margin-bottom:6px;">Bureau Files Amicus Brief in Coastal Sovereignty Case</div>
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:12px; color:#3a3a2e; line-height:1.5;">Argues pre-1954 residency should factor into any jurisdictional dispute involving longstanding marine inhabitants.</div>
+        </div>
+        <div style="background:#f8f4e8; padding:16px 18px; border:1px solid #b8943f; box-shadow:2px 2px 0 rgba(107,79,54,0.2); transform:rotate(0.5deg);">
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:10px; color:#6b4f36; margin-bottom:6px;">APR 2, 2026</div>
+          <div style="font-weight:700; font-size:14px; color:#2f4d3a; margin-bottom:6px;">Poll: 41% Now Favor Kaiju Personhood, Up From 12% in 2019</div>
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:12px; color:#3a3a2e; line-height:1.5;">Support has more than tripled over seven years, per the Bureau's annual constituent survey.</div>
+        </div>
+        <div style="background:#f8f4e8; padding:16px 18px; border:1px solid #b8943f; box-shadow:2px 2px 0 rgba(107,79,54,0.2); transform:rotate(0.3deg);">
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:10px; color:#6b4f36; margin-bottom:6px;">JAN 19, 2026</div>
+          <div style="font-weight:700; font-size:14px; color:#2f4d3a; margin-bottom:6px;">2026 Impact Packet Now Available</div>
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:12px; color:#3a3a2e; line-height:1.5;">Details rehabilitation progress, coastal engagement programs, and the case for legal personhood.</div>
+        </div>
+        <div style="background:#f8f4e8; padding:16px 18px; border:1px solid #b8943f; box-shadow:2px 2px 0 rgba(107,79,54,0.2); transform:rotate(-0.4deg);">
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:10px; color:#6b4f36; margin-bottom:6px;">NOV 3, 2025</div>
+          <div style="font-weight:700; font-size:14px; color:#2f4d3a; margin-bottom:6px;">Navy Declines Comment on Bay Harbor Reassessment</div>
+          <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:12px; color:#3a3a2e; line-height:1.5;">Requests for original sonar logs remain unanswered following our formal records request.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="padding:0 44px 70px;">
+    <div style="max-width:920px; margin:0 auto; background:#2f4d3a; color:#f4efe0; padding:48px 56px; text-align:center; border:2px solid #22392a;">
+      <div style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#d8c98a; margin-bottom:14px;">Notice of Public Hearing</div>
+      <h2 style="font-size:30px; margin:0 0 16px;">The next hearing is Thursday at 7 PM in the Community Room.</h2>
+      <p style="font-family:'Nunito',Verdana,Arial,sans-serif; font-size:14px; color:#d8dbd4; max-width:540px; margin:0 auto 28px; line-height:1.7;">Public comment is limited to three minutes per resident. Refreshments will be provided. Kaiju personhood remains item 4 on the agenda.</p>
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; font-family:'Nunito',Verdana,Arial,sans-serif;">
+        <div style="padding:13px 26px; background:#b8943f; color:#2b2b23; font-weight:700; font-size:13px; border:2px solid #8a6f30;">RSVP for the Hearing</div>
+        <div style="padding:13px 26px; background:transparent; color:#f4efe0; font-weight:700; font-size:13px; border:2px solid #f4efe0;">File a Public Comment</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="padding:26px 44px; background:#dcd0ac; border-top:3px solid #2f4d3a; font-family:'Nunito',Verdana,Arial,sans-serif; font-size:11px; color:#5c4a35;">
+    <div style="max-width:920px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <div>Municipal Bureau of Kaiju Affairs &middot; Est. 1954 &middot; Office Hours: Mon&ndash;Fri, 8 AM&ndash;4:30 PM</div>
+      <div>Form GZ-1 (Rev. 2026) &middot; Please retain a copy for your records</div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+</body>
+</html>
