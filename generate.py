@@ -87,7 +87,29 @@ def nav(page, logo='Save Godzilla', sub='Municipal Bureau of Kaiju Affairs'):
   </div>
   <div class="nav-links">{ls}</div>
   <div><a href="index.html#support" class="btn-primary" style="text-decoration:none">DONATE</a></div>
-</div>'''
+  <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="nav-overlay" id="navOverlay">
+  <button class="close-btn" onclick="closeNav()" aria-label="Close menu">&times;</button>
+  {ls}
+  <a href="index.html#support" class="donate-btn" onclick="closeNav()">DONATE</a>
+</div>
+<script>
+var overlay = document.getElementById('navOverlay');
+var ham = document.getElementById('hamburger');
+function toggleNav() {{
+  var o = overlay.classList.toggle('open');
+  ham.classList.toggle('open');
+  document.body.style.overflow = o ? 'hidden' : '';
+}}
+function closeNav() {{
+  overlay.classList.remove('open');
+  ham.classList.remove('open');
+  document.body.style.overflow = '';
+}}
+</script>'''
 
 FOOTER = '''<div class="footer">
   <div class="footer-inner">
@@ -109,6 +131,24 @@ a { color:#2f4d3a; }
 .nav-links { display:flex; gap:26px; font-size:13px; color:#3a3a2e; flex-wrap:wrap; }
 .nav-links a { text-decoration:none; color:#3a3a2e; }
 .nav-links a:hover { color:#2f4d3a; }
+.hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; cursor:pointer; padding:6px; background:none; border:2px solid #2f4d3a; border-radius:4px; min-width:44px; min-height:44px; align-items:center; }
+.hamburger span { display:block; width:22px; height:2.5px; background:#2f4d3a; border-radius:2px; transition:transform 0.3s,opacity 0.3s; }
+.hamburger.open span:nth-child(1) { transform:translateY(7.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-7.5px) rotate(-45deg); }
+.nav-overlay { display:none; }
+@media (max-width:768px) {
+  .nav { flex-direction:row; flex-wrap:wrap; align-items:center; padding:12px 16px; gap:8px; }
+  .hamburger { display:flex; }
+  .nav-links { display:none; }
+  .nav .btn-primary { display:none; }
+  .nav-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#f4efe0; z-index:1000; flex-direction:column; padding:80px 24px 24px; overflow-y:auto; }
+  .nav-overlay.open { display:flex; }
+  .nav-overlay .close-btn { position:absolute; top:16px; right:16px; background:none; border:2px solid #2f4d3a; border-radius:4px; min-width:44px; min-height:44px; display:flex; align-items:center; justify-content:center; font-size:24px; color:#2f4d3a; cursor:pointer; }
+  .nav-overlay a { display:block; padding:16px 0; font-size:18px; font-weight:700; color:#2f4d3a; text-decoration:none; border-bottom:1px solid #d8cba8; }
+  .nav-overlay a:hover { color:#b8943f; }
+  .nav-overlay .donate-btn { margin-top:24px; padding:16px; background:#2f4d3a; color:#f4efe0; font-weight:700; font-size:16px; text-align:center; border:2px solid #22392a; text-decoration:none; border-radius:4px; }
+}
 .btn-primary { padding:13px 26px; background:#2f4d3a; color:#f4efe0; font-weight:700; font-size:13px; border:2px solid #22392a; display:inline-block; cursor:pointer; }
 .btn-primary:hover { background:#3a5e48; }
 .btn-gold { padding:13px 26px; background:#b8943f; color:#2b2b23; font-weight:700; font-size:13px; border:2px solid #8a6f30; display:inline-block; cursor:pointer; }
@@ -176,9 +216,6 @@ a { color:#2f4d3a; }
 .petition-bar .progress-fill { height:100%; background:#2f4d3a; transition:width 0.5s; }
 .petition-bar .stats { display:flex; justify-content:space-between; font-size:13px; color:#3a3a2e; }
 @media (max-width:768px) {
-  .nav { flex-direction:column; align-items:stretch; padding:14px 16px; gap:10px; }
-  .nav-links { gap:10px; font-size:12px; justify-content:center; }
-  .nav-links a { padding:6px 0; }
   .logo-icon { width:40px; height:40px; }
   .org-name { font-size:16px; }
   .org-sub { font-size:9px; }
