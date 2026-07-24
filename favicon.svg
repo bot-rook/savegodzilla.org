@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#f4efe0" stroke="#2f4d3a" stroke-width="2.5"/>
+  <circle cx="32" cy="32" r="27" fill="none" stroke="#2f4d3a" stroke-width="0.4"/>
+  <circle cx="32" cy="32" r="25" fill="none" stroke="#b8943f" stroke-width="1" stroke-dasharray="2 2"/>
+  <circle cx="32" cy="32" r="13" fill="#f4efe0" stroke="#2f4d3a" stroke-width="0.8"/>
+  <!-- Godzilla silhouette -->
+  <g transform="translate(32,30)" fill="#2f4d3a">
+    <path d="M-9 3 L-6 -1 L-4 -2.5 L-2.5 -6 L0 -9 L2.5 -9 L5 -6 L7.5 -5 L9 -3 L10 0 L10 4 L7.5 5 L6 6.5 L5 9 L2.5 10 L0 11 L-2.5 11 L-5 10 L-7.5 9 L-9 6.5 L-10 4 L-9 3 Z"/>
+    <path d="M-9 3 L-11 0 L-10 -2.5 L-9 -1.5 Z"/>
+    <path d="M-5 10 L-6 12.5 L-4 12.5 L-2.5 10 Z"/>
+    <path d="M2.5 10 L3.5 12.5 L6 12.5 L5 10 Z"/>
+    <path d="M-1.5 -7.5 L0 -11 L1.5 -7.5 Z" fill="#b8943f"/>
+    <path d="M1.5 -6 L2.5 -9 L4 -6 Z" fill="#b8943f"/>
+    <path d="M4 -5 L5 -7.5 L6.5 -5 Z" fill="#b8943f"/>
+    <circle cx="6" cy="-3.5" r="1" fill="#b8943f"/>
+    <line x1="7.5" y1="-2.5" x2="11" y2="-5" stroke="#b8943f" stroke-width="1" stroke-linecap="round"/>
+  </g>
+  <circle cx="16" cy="16" r="1" fill="#b8943f" opacity="0.5"/>
+  <circle cx="48" cy="16" r="1" fill="#b8943f" opacity="0.5"/>
+  <circle cx="16" cy="48" r="1" fill="#b8943f" opacity="0.5"/>
+  <circle cx="48" cy="48" r="1" fill="#b8943f" opacity="0.5"/>
+</svg>

@@ -86,6 +86,8 @@ def generate_petition_page():
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>{CSS}</style>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon.ico" type="image/x-icon">
 <title>Sign the Petition — Save Godzilla</title>
 </head><body>
 <div class="stripe"></div>
@@ -229,6 +231,8 @@ def generate_certificate_page():
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>{CERT_CSS}</style>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon.ico" type="image/x-icon">
 <title>Certificate of Participation — Save Godzilla</title>
 </head><body>
 <div class="certificate" id="certificate">

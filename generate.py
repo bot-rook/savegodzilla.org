@@ -272,7 +272,9 @@ def page(title, body, active):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>{CSS}</style>
-<title>{title} — Save Godzilla</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon.ico" type="image/x-icon">
+<title>{title}</title>
 </head><body>
 <div class="stripe"></div>
 {nav(active)}
