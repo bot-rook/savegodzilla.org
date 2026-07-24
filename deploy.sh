@@ -17,7 +17,7 @@ python3 generate.py
 
 # Create branch, commit, PR, merge
 git checkout -b "$BRANCH"
-git add data.json generate.py index.html about.html incidents.html press.html contact.html README.md
+git add data.json generate.py index.html about.html incidents.html press.html contact.html README.md CNAME
 git commit -m "chore: daily content refresh — $(date +%B-%d-%Y)"
 git push -u origin "$BRANCH"
 

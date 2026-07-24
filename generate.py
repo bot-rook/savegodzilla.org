@@ -219,16 +219,16 @@ def generate_index(d):
     incs_html = ''
     for i, inc in enumerate(incs):
         full = ' card-full' if i == len(incs)-1 and len(incs)%2==1 else ''
-        incs_html += f'<div class="card{full}"><div class="card-label"><span>CASE FILE {inc["id"]}</span><span>RECLASSIFIED</span></div><div class="card-title">{inc["title"]}</div><div class="card-text">{inc["text"]}</div></div>'
+        incs_html += f'<a href="incidents.html" style="text-decoration:none;display:block"><div class="card{full}"><div class="card-label"><span>CASE FILE {inc["id"]}</span><span>RECLASSIFIED</span></div><div class="card-title">{inc["title"]}</div><div class="card-text">{inc["text"]}</div></div></a>'
 
     # Testimonials
     tests = pick(d['testimonials'], 3, date.today().isocalendar()[1] + 1)
-    tests_html = ''.join(f'<div class="testimonial-card"><div class="testimonial-header">Public Comment Card</div><div class="testimonial-body"><p>"{t["text"]}"</p><div class="testimonial-name">{t["name"]}</div><div class="testimonial-org">{t["org"]}</div></div></div>' for t in tests)
+    tests_html = ''.join(f'<a href="about.html#team" style="text-decoration:none;display:block"><div class="testimonial-card"><div class="testimonial-header">Public Comment Card</div><div class="testimonial-body"><p>"{t["text"]}"</p><div class="testimonial-name">{t["name"]}</div><div class="testimonial-org">{t["org"]}</div></div></div></a>' for t in tests)
 
     # Press
     presses = pick(d['press_releases'], 4, date.today().isocalendar()[1] + 2)
     rots = [-0.6, 0.5, 0.3, -0.4]
-    press_html = ''.join(f'<div class="bulletin-card" style="transform:rotate({rots[i] if i<len(rots) else 0}deg)"><div class="bulletin-date">{p["date"]}</div><div class="bulletin-title">{p["title"]}</div><div class="bulletin-text">{p["text"]}</div></div>' for i, p in enumerate(presses))
+    press_html = ''.join(f'<a href="press.html" style="text-decoration:none;display:block"><div class="bulletin-card" style="transform:rotate({rots[i] if i<len(rots) else 0}deg)"><div class="bulletin-date">{p["date"]}</div><div class="bulletin-title">{p["title"]}</div><div class="bulletin-text">{p["text"]}</div></div></a>' for i, p in enumerate(presses))
 
     # CTA variants
     cta_lines = [
@@ -360,7 +360,7 @@ def generate_about(d):
       <p style="font-size:15px;line-height:1.75;color:#3a3a2e;margin:0;">Our work is funded entirely by individual supporters. We accept no government or military funding.</p>
     </div>
 
-    <div class="section-title"><h2>Our Team</h2><span class="section-sub">(Bureau Staff)</span></div>
+    <div id="team" class="section-title"><h2>Our Team</h2><span class="section-sub">(Bureau Staff)</span></div>
     <div class="card-grid" style="grid-template-columns:repeat(2,1fr)">{team}</div>
 
     <div style="margin-top:48px">
