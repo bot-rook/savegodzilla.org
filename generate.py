@@ -135,16 +135,55 @@ a { color:#2f4d3a; }
 .petition-bar .progress-fill { height:100%; background:#2f4d3a; transition:width 0.5s; }
 .petition-bar .stats { display:flex; justify-content:space-between; font-size:13px; color:#3a3a2e; }
 @media (max-width:768px) {
-  .nav { flex-direction:column; align-items:flex-start; padding:16px 20px; }
-  .nav-links { gap:12px; }
+  .nav { flex-direction:column; align-items:stretch; padding:14px 16px; gap:10px; }
+  .nav-links { gap:10px; font-size:12px; justify-content:center; }
+  .nav-links a { padding:6px 0; }
+  .logo-icon { width:40px; height:40px; }
+  .org-name { font-size:16px; }
+  .org-sub { font-size:9px; }
+  .btn-primary,.btn-secondary,.btn-gold { padding:12px 20px; font-size:13px; min-height:44px; display:flex; align-items:center; justify-content:center; }
+  .page-section { padding:0 16px 36px; }
+  .section-title h2 { font-size:22px; }
+  .container { max-width:100%; }
   .card-grid,.card-grid-3,.tier-grid,.impact-list { grid-template-columns:1fr; }
   .testimonial-grid { grid-template-columns:1fr; }
   .bulletin-board { grid-template-columns:1fr; }
   .data-table-body { grid-template-columns:1fr; }
   .data-table-body div:nth-child(odd) { border-right:none; }
-  .page-section { padding:0 20px 44px; }
-  .cta-box { padding:32px 24px; }
-  .cta-title { font-size:24px; }
+  .data-table { font-size:12px; }
+  .data-table-header div { padding:10px 14px; font-size:11px; }
+  .data-table-body div { padding:14px; font-size:12px; }
+  .cta-box { padding:28px 20px; }
+  .cta-title { font-size:22px; }
+  .cta-text { font-size:13px; }
+  .footer { padding:20px 16px; font-size:10px; }
+  .footer-inner { flex-direction:column; text-align:center; }
+  .petition-bar { padding:18px; }
+  .petition-bar .stats { flex-direction:column; gap:4px; font-size:12px; }
+  .petition-bar .progress { height:20px; }
+  .tier-card { padding:18px 16px; }
+  .tier-amount { font-size:24px; }
+  .impact-item { padding:12px 14px; font-size:12px; }
+  .card { padding:14px 16px; }
+  .card-title { font-size:15px; }
+  .card-text { font-size:12px; }
+  .team-card { padding:14px 16px; }
+  .timeline { padding-left:16px; }
+  .timeline-item::before { left:-22px; width:8px; height:8px; }
+  .stripe { height:6px; }
+  .bulletin-card { padding:12px 14px; }
+  .bulletin-title { font-size:13px; }
+  .bulletin-text { font-size:11px; }
+  div[style*="padding:60px 44px"] { padding:32px 16px !important; }
+  div[style*="padding:48px 56px"] { padding:28px 20px !important; }
+  div[style*="padding:40px 48px"] { padding:28px 20px !important; }
+  h1[style*="font-size:44px"] { font-size:28px !important; }
+  h1[style*="font-size:36px"] { font-size:24px !important; }
+  div[style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns:repeat(2,1fr) !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
+  div[style*="display:grid;grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
+  div[style*="padding:24px 16px;text-align:center"] { padding:16px 12px !important; }
+  div[style*="font-size:32px;font-weight:700"] { font-size:24px !important; }
 }'''
 
 def page(title, body, active):
