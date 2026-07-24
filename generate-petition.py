@@ -137,8 +137,9 @@ def generate_petition_page():
     <div class="success-box" id="successBox">
       <div class="check">&#10003;</div>
       <h2>Thank You for Signing!</h2>
-      <p>Your signature has been recorded. You will receive a confirmation email with your certificate.</p>
-      <p>Please share your certificate to help us reach 100,000 signatures.</p>
+      <p>Your signature has been recorded. You are <strong>signature #<span id="sigCountDisplay">—</span></strong>.</p>
+      <p>Your certificate number: <strong id="certNumDisplay">—</strong></p>
+      <p style="font-size:13px">You will receive a confirmation email. Please share your certificate to help us reach 100,000 signatures.</p>
       <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
         <a href="/certificate.html" class="no-print" style="display:inline-block;padding:12px 24px;background:#2f4d3a;color:#f4efe0;font-weight:700;font-size:14px;text-decoration:none;border:2px solid #22392a;" id="viewCertBtn">View Your Certificate</a>
         <a href="/" class="no-print" style="display:inline-block;padding:12px 24px;background:transparent;color:#2f4d3a;font-weight:700;font-size:14px;text-decoration:none;border:2px solid #2f4d3a;">Return to Home</a>
@@ -157,6 +158,7 @@ def generate_petition_page():
 </div></footer>
 
 <script>
+var API = 'https://petition-savegodzilla.loca.lt';
 document.getElementById('petitionForm').addEventListener('submit', async function(e) {{
   e.preventDefault();
   var btn = document.getElementById('submitBtn');
@@ -168,45 +170,55 @@ document.getElementById('petitionForm').addEventListener('submit', async functio
   var muni = document.getElementById('muniInput').value.trim();
   var comment = document.getElementById('commentInput').value.trim();
 
-  // Generate a cert ID client-side
-  var certId = 'GZ-PET-' + Math.random().toString(36).substring(2,10).toUpperCase();
+  var certId = '';
+  var totalSig = {sigs:,};
 
-  // Store in localStorage
+  try {{
+    // Try live tunnel first
+    var resp = await fetch(API + '/api/sign', {{
+      method: 'POST',
+      headers: {{'Content-Type': 'application/json'}},
+      body: JSON.stringify({{name, email, municipality: muni, comment}})
+    }});
+    var data = await resp.json();
+    if (data.status === 'signed') {{
+      certId = data.cert_id;
+      totalSig = data.total_signatures;
+    }}
+  }} catch(e) {{
+    console.log('Tunnel unavailable, using FormSubmit fallback:', e);
+  }}
+
+  if (!certId) {{
+    // Fallback: generate client-side and email via FormSubmit
+    certId = 'GZ-PET-' + Math.random().toString(36).substring(2,10).toUpperCase();
+    try {{
+      var fd = new FormData();
+      fd.append('name', name);
+      fd.append('email', email);
+      fd.append('municipality', muni);
+      fd.append('comment', comment);
+      fd.append('_captcha', 'true');
+      fd.append('_subject', 'Petition: ' + name);
+      await fetch('https://formsubmit.co/rook@not.farm', {{method: 'POST', body: fd, mode: 'no-cors'}});
+    }} catch(e2) {{}}
+  }}
+
   var cert = {{
-    name: name,
-    email: email,
+    name, email,
     municipality: muni,
-    comment: comment,
+    comment,
     cert_id: certId,
     signed_at: new Date().toISOString(),
-    total_signatures: {sigs:,}
+    total_signatures: totalSig
   }};
   localStorage.setItem('petition_cert', JSON.stringify(cert));
 
-  // Try to submit to the petition server via FormSubmit
-  try {{
-    var formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('municipality', muni);
-    formData.append('comment', comment);
-    formData.append('_captcha', 'true');
-    formData.append('_subject', 'Petition Signature: ' + name);
-    formData.append('_next', window.location.origin + '/certificate.html');
-
-    await fetch('https://formsubmit.co/rook@not.farm', {{
-      method: 'POST',
-      body: formData,
-      mode: 'no-cors'
-    }});
-  }} catch(e) {{
-    console.log('FormSubmit fallback:', e);
-  }}
-
-  // Show success
   document.getElementById('formCard').style.display = 'none';
   document.getElementById('successBox').style.display = 'block';
   document.getElementById('viewCertBtn').href = '/certificate.html';
+  document.getElementById('certNumDisplay').textContent = certId;
+  document.getElementById('sigCountDisplay').textContent = totalSig.toLocaleString();
 }});
 </script>
 </body></html>'''
