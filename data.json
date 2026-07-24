@@ -6,84 +6,275 @@
     "years_of_service": 72
   },
   "myths": [
-    {"myth": "Godzilla attacks without provocation.", "fact": "In every documented incident, Godzilla's appearance correlates directly with a looming ecological or supernatural catastrophe. He is a responder, not an aggressor."},
-    {"myth": "Godzilla causes mass casualties.", "fact": "Collateral damage is tragic, but the alternative — unchecked MUTO proliferation, alien invasions, or rogue kaiju — would be catastrophic on a global scale."},
-    {"myth": "Godzilla is a mutant aberration.", "fact": "Radiocarbon dating places Godzilla's lineage at 250+ million years. He is a natural regulator of planetary bio-energetic balance — not a mutation."},
-    {"myth": "Godzilla should be contained or eliminated.", "fact": "Without Godzilla, humanity would be defenseless against threats from the hollow earth, deep space, and beyond. He is the planet's immune system."},
-    {"myth": "Godzilla is a mindless destroyer.", "fact": "Behavioral analysis shows Godzilla consistently avoids populated areas when possible and targets specific threats with surgical precision. Cognitive estimates place his intelligence well above baseline human."},
-    {"myth": "Governments should invest in anti-kaiju weapons.", "fact": "The Oxygen Destroyer incident (1954), the Maser Cannon program, and the G-Defense initiative all demonstrate that human weapons are ineffective against Godzilla and cause more harm than Godzilla himself."}
+    {
+      "myth": "Godzilla attacks without provocation.",
+      "fact": "In every documented incident, Godzilla's appearance correlates directly with a looming ecological or supernatural catastrophe. He is a responder, not an aggressor."
+    },
+    {
+      "myth": "Godzilla causes mass casualties.",
+      "fact": "Collateral damage is tragic, but the alternative \u2014 unchecked MUTO proliferation, alien invasions, or rogue kaiju \u2014 would be catastrophic on a global scale."
+    },
+    {
+      "myth": "Godzilla is a mutant aberration.",
+      "fact": "Radiocarbon dating places Godzilla's lineage at 250+ million years. He is a natural regulator of planetary bio-energetic balance \u2014 not a mutation."
+    },
+    {
+      "myth": "Godzilla should be contained or eliminated.",
+      "fact": "Without Godzilla, humanity would be defenseless against threats from the hollow earth, deep space, and beyond. He is the planet's immune system."
+    },
+    {
+      "myth": "Godzilla is a mindless destroyer.",
+      "fact": "Behavioral analysis shows Godzilla consistently avoids populated areas when possible and targets specific threats with surgical precision. Cognitive estimates place his intelligence well above baseline human."
+    },
+    {
+      "myth": "Governments should invest in anti-kaiju weapons.",
+      "fact": "The Oxygen Destroyer incident (1954), the Maser Cannon program, and the G-Defense initiative all demonstrate that human weapons are ineffective against Godzilla and cause more harm than Godzilla himself."
+    }
   ],
   "incidents": [
-    {"id": "GZ-1954-A", "title": "Tokyo Bay — Ecological Correction", "text": "Godzilla emerged in response to deep-sea nuclear testing that had disrupted a dormant ecological balance. Subsequent analysis revealed Godzilla was targeting radiation sources left by human activity. His presence led directly to the formation of Monarch and the global kaiju monitoring framework."},
-    {"id": "GZ-2014-B", "title": "San Francisco — MUTO Containment", "text": "When two parasitic MUTOs emerged and began feeding on the planet's nuclear energy reserves, Godzilla intervened. Despite heavy military interference, he prevented the MUTOs from reaching their breeding grounds — which would have triggered an irreversible ecological collapse. Estimated 12 million lives saved."},
-    {"id": "GZ-2019-C", "title": "Boston — The Ghidorah Intervention", "text": "An extraterrestrial invasive species (Ghidorah) began terraforming the planet's atmosphere for alien colonization. Godzilla engaged across three continents, ultimately containing the threat. Ghidorah's terraforming would have made Earth uninhabitable within 72 hours."},
-    {"id": "GZ-2023-D", "title": "Rio de Janeiro — Bio-Containment", "text": "A subterranean spore-creature began releasing airborne spores causing rapid neurological degeneration. Godzilla's atomic breath created a thermal sterilization zone that destroyed the spore source. Estimated 3.4 million lives saved. Spread would have reached pandemic levels within 48 hours."},
-    {"id": "GZ-2025-E", "title": "Sydney — Singularity Event", "text": "A deep-focus seismic anomaly caused an unexpected rise in hollow earth energy emissions, attracting lesser kaiju to the Sydney basin. Godzilla's presence created a perimeter effect that prevented lesser entities from entering populated zones. Zero civilian casualties. Property damage was 97% attributable to military countermeasures."},
-    {"id": "GZ-1964-F", "title": "Osaka — Perimeter Hold", "text": "Godzilla maintained a static position at the harbor mouth for six hours, permitting full evacuation of the Osaka metropolitan area before any further movement. This office considers the case a model of de-escalation."},
-    {"id": "GZ-1998-G", "title": "Bay Harbor — Reassessment", "text": "Newly declassified sonar logs show naval vessels cornered Godzilla in a shipping channel for eleven hours prior to contact. The Bureau has formally recommended the incident be reclassified as 'provoked response.'"}
+    {
+      "id": "GZ-1954-A",
+      "title": "Tokyo Bay \u2014 Ecological Correction",
+      "text": "Godzilla emerged in response to deep-sea nuclear testing that had disrupted a dormant ecological balance. Subsequent analysis revealed Godzilla was targeting radiation sources left by human activity. His presence led directly to the formation of Monarch and the global kaiju monitoring framework."
+    },
+    {
+      "id": "GZ-2014-B",
+      "title": "San Francisco \u2014 MUTO Containment",
+      "text": "When two parasitic MUTOs emerged and began feeding on the planet's nuclear energy reserves, Godzilla intervened. Despite heavy military interference, he prevented the MUTOs from reaching their breeding grounds \u2014 which would have triggered an irreversible ecological collapse. Estimated 12 million lives saved."
+    },
+    {
+      "id": "GZ-2019-C",
+      "title": "Boston \u2014 The Ghidorah Intervention",
+      "text": "An extraterrestrial invasive species (Ghidorah) began terraforming the planet's atmosphere for alien colonization. Godzilla engaged across three continents, ultimately containing the threat. Ghidorah's terraforming would have made Earth uninhabitable within 72 hours."
+    },
+    {
+      "id": "GZ-2023-D",
+      "title": "Rio de Janeiro \u2014 Bio-Containment",
+      "text": "A subterranean spore-creature began releasing airborne spores causing rapid neurological degeneration. Godzilla's atomic breath created a thermal sterilization zone that destroyed the spore source. Estimated 3.4 million lives saved. Spread would have reached pandemic levels within 48 hours."
+    },
+    {
+      "id": "GZ-2025-E",
+      "title": "Sydney \u2014 Singularity Event",
+      "text": "A deep-focus seismic anomaly caused an unexpected rise in hollow earth energy emissions, attracting lesser kaiju to the Sydney basin. Godzilla's presence created a perimeter effect that prevented lesser entities from entering populated zones. Zero civilian casualties. Property damage was 97% attributable to military countermeasures."
+    },
+    {
+      "id": "GZ-1964-F",
+      "title": "Osaka \u2014 Perimeter Hold",
+      "text": "Godzilla maintained a static position at the harbor mouth for six hours, permitting full evacuation of the Osaka metropolitan area before any further movement. This office considers the case a model of de-escalation."
+    },
+    {
+      "id": "GZ-1998-G",
+      "title": "Bay Harbor \u2014 Reassessment",
+      "text": "Newly declassified sonar logs show naval vessels cornered Godzilla in a shipping channel for eleven hours prior to contact. The Bureau has formally recommended the incident be reclassified as 'provoked response.'"
+    }
   ],
   "testimonials": [
-    {"name": "Dr. Ishiro Serizawa", "org": "Professor of Kaiju Ecology, Monarch University", "text": "Godzilla is the single most important non-human intelligence on this planet. Our research suggests he operates with a level of ecological awareness that dwarfs human understanding. The 'destruction' narrative is a product of fear, not fact."},
-    {"name": "Lt. Ford Brody (Ret.)", "org": "U.S. Navy, EOD Unit 12", "text": "I was on the ground during the MUTO incident. If Godzilla hadn't shown up, none of us would be here. The military's attempts to engage him only made things worse. He wasn't the threat — he was the solution."},
-    {"name": "Ambassador Vivienne Graham", "org": "Former UN Kaiju Liaison", "text": "The UN's continued classification of Godzilla as a 'threat' is a diplomatic embarrassment. We're applying Cold War logic to a creature that has demonstrated more restraint than most nation-states."},
-    {"name": "Dr. Niko Tatopoulos", "org": "DVM, PhD, Wildlife Institute", "text": "As a veterinarian who has studied large terrestrial apex species for 30 years, I can say with confidence: Godzilla displays none of the behavioral markers of aggression. What we see is territorial defense and threat response — period."},
-    {"name": "Hon. Marcus Whitfield", "org": "Former Chair, Subcommittee on Emerging Persons", "text": "There is no ordinance on this earth that permits a municipality to shell a resident for the crime of existing offshore."},
-    {"name": "Naomi Reyes", "org": "Bay Harbor Reconciliation Project", "text": "I lost my home in '64. I spent forty years angry. Then I read the incident reports myself. He didn't start it. We did."}
+    {
+      "name": "Dr. Ishiro Serizawa",
+      "org": "Professor of Kaiju Ecology, Monarch University",
+      "text": "Godzilla is the single most important non-human intelligence on this planet. Our research suggests he operates with a level of ecological awareness that dwarfs human understanding. The 'destruction' narrative is a product of fear, not fact."
+    },
+    {
+      "name": "Lt. Ford Brody (Ret.)",
+      "org": "U.S. Navy, EOD Unit 12",
+      "text": "I was on the ground during the MUTO incident. If Godzilla hadn't shown up, none of us would be here. The military's attempts to engage him only made things worse. He wasn't the threat \u2014 he was the solution."
+    },
+    {
+      "name": "Ambassador Vivienne Graham",
+      "org": "Former UN Kaiju Liaison",
+      "text": "The UN's continued classification of Godzilla as a 'threat' is a diplomatic embarrassment. We're applying Cold War logic to a creature that has demonstrated more restraint than most nation-states."
+    },
+    {
+      "name": "Dr. Niko Tatopoulos",
+      "org": "DVM, PhD, Wildlife Institute",
+      "text": "As a veterinarian who has studied large terrestrial apex species for 30 years, I can say with confidence: Godzilla displays none of the behavioral markers of aggression. What we see is territorial defense and threat response \u2014 period."
+    },
+    {
+      "name": "Hon. Marcus Whitfield",
+      "org": "Former Chair, Subcommittee on Emerging Persons",
+      "text": "There is no ordinance on this earth that permits a municipality to shell a resident for the crime of existing offshore."
+    },
+    {
+      "name": "Naomi Reyes",
+      "org": "Bay Harbor Reconciliation Project",
+      "text": "I lost my home in '64. I spent forty years angry. Then I read the incident reports myself. He didn't start it. We did."
+    }
   ],
   "press_releases": [
-    {"date": "JUL 20, 2026", "title": "Save Godzilla Files Amicus Brief for Godzilla's Personhood", "text": "Legal team argues that Godzilla meets the criteria for non-human personhood under international law, citing demonstrated self-awareness and complex communication."},
-    {"date": "JUL 12, 2026", "title": "Study: Godzilla Correlates with 68% Fewer Kaiju Incidents", "text": "Peer-reviewed research confirms Godzilla's active territories experience a dramatic reduction in incursions by lesser hostile entities — the deterrence effect."},
-    {"date": "JUN 28, 2026", "title": "Statement on the Boston Incident Misunderstanding", "text": "Organization calls for de-escalation protocols and improved communication channels. Godzilla's actions were consistent with territorial defense, not aggression."},
-    {"date": "JUN 10, 2026", "title": "Audit: 73% of Monarch Budget Spent on Weapons", "text": "Independent audit finds the vast majority of Monarch funding goes to offensive capabilities, not the research and diplomacy mission it was originally chartered for."},
-    {"date": "MAY 22, 2026", "title": "Petition to Reclassify Godzilla Surpasses 50,000 Signatures", "text": "The petition, addressed to the UN Committee on Kaiju Affairs, represents the largest coordinated public action in support of non-human sovereign recognition."},
-    {"date": "APR 15, 2026", "title": "Bureau Awards $2.3M in Research Grants for Kaiju Communication", "text": "Funding directed toward three research institutions exploring bio-acoustic pattern analysis, behavioral interpretation AI, and historical incident data modeling."},
-    {"date": "JAN 5, 2026", "title": "2025: The Year Godzilla Saved the World Four Times", "text": "Annual report highlights Godzilla's interventions in Sydney, Rio, the Pacific Trench anomaly, and the Hong Kong bio-event."},
-    {"date": "NOV 3, 2025", "title": "Navy Declines Comment on Bay Harbor Reassessment", "text": "Requests for original sonar logs remain unanswered following our formal records request."}
+    {
+      "date": "JUL 20, 2026",
+      "title": "Save Godzilla Files Amicus Brief for Godzilla's Personhood",
+      "text": "Legal team argues that Godzilla meets the criteria for non-human personhood under international law, citing demonstrated self-awareness and complex communication."
+    },
+    {
+      "date": "JUL 12, 2026",
+      "title": "Study: Godzilla Correlates with 68% Fewer Kaiju Incidents",
+      "text": "Peer-reviewed research confirms Godzilla's active territories experience a dramatic reduction in incursions by lesser hostile entities \u2014 the deterrence effect."
+    },
+    {
+      "date": "JUN 28, 2026",
+      "title": "Statement on the Boston Incident Misunderstanding",
+      "text": "Organization calls for de-escalation protocols and improved communication channels. Godzilla's actions were consistent with territorial defense, not aggression."
+    },
+    {
+      "date": "JUN 10, 2026",
+      "title": "Audit: 73% of Monarch Budget Spent on Weapons",
+      "text": "Independent audit finds the vast majority of Monarch funding goes to offensive capabilities, not the research and diplomacy mission it was originally chartered for."
+    },
+    {
+      "date": "MAY 22, 2026",
+      "title": "Petition to Reclassify Godzilla Surpasses 50,000 Signatures",
+      "text": "The petition, addressed to the UN Committee on Kaiju Affairs, represents the largest coordinated public action in support of non-human sovereign recognition."
+    },
+    {
+      "date": "APR 15, 2026",
+      "title": "Bureau Awards $2.3M in Research Grants for Kaiju Communication",
+      "text": "Funding directed toward three research institutions exploring bio-acoustic pattern analysis, behavioral interpretation AI, and historical incident data modeling."
+    },
+    {
+      "date": "JAN 5, 2026",
+      "title": "2025: The Year Godzilla Saved the World Four Times",
+      "text": "Annual report highlights Godzilla's interventions in Sydney, Rio, the Pacific Trench anomaly, and the Hong Kong bio-event."
+    },
+    {
+      "date": "NOV 3, 2025",
+      "title": "Navy Declines Comment on Bay Harbor Reassessment",
+      "text": "Requests for original sonar logs remain unanswered following our formal records request."
+    }
   ],
   "team": [
-    {"name": "Dr. Ishiro Serizawa", "title": "Director of Kaiju Ecology", "bio": "Dr. Serizawa has spent 35 years studying Godzilla's behavioral patterns and ecological impact. His 2009 monograph 'The Thermonuclear Apex' remains the definitive text on kaiju bio-energetics. He joined the Bureau after retiring from Monarch in 2019."},
-    {"name": "Ambassador Vivienne Graham", "title": "Head of Diplomatic Affairs", "bio": "Former UN Kaiju Liaison and lead negotiator during the San Francisco MUTO crisis. Ambassador Graham brings two decades of experience in interspecies conflict resolution and international maritime law."},
-    {"name": "Mark Russell", "title": "Director of Field Operations", "bio": "A 20-year veteran of the G-Team, Mark defected from the military's kaiju containment program after the Boston incident. He now leads the Bureau's incident reclassification and documentation efforts."},
-    {"name": "Dr. Niko Tatopoulos", "title": "Chief Veterinarian", "bio": "A renowned expert in large-apex biology with a focus on radiation-adapted species. Dr. Tatopoulos has published extensively on the physiological resilience of ancient marine organisms."},
-    {"name": "Naomi Reyes", "title": "Community Outreach Coordinator", "bio": "After losing her home in the 1964 Ghidorah incident, Naomi spent decades seeking answers. She now leads the Bureau's public engagement and reconciliation programs, helping communities affected by kaiju incidents."},
-    {"name": "Hon. Marcus Whitfield", "title": "Legal Counsel", "bio": "Former chair of the Subcommittee on Emerging Persons at the International Court of Justice. Whitfield has argued six precedent-setting cases on non-human sovereignty and ecological personhood."}
+    {
+      "name": "Dr. Ishiro Serizawa",
+      "title": "Director of Kaiju Ecology",
+      "bio": "Dr. Serizawa has spent 35 years studying Godzilla's behavioral patterns and ecological impact. His 2009 monograph 'The Thermonuclear Apex' remains the definitive text on kaiju bio-energetics. He joined the Bureau after retiring from Monarch in 2019."
+    },
+    {
+      "name": "Ambassador Vivienne Graham",
+      "title": "Head of Diplomatic Affairs",
+      "bio": "Former UN Kaiju Liaison and lead negotiator during the San Francisco MUTO crisis. Ambassador Graham brings two decades of experience in interspecies conflict resolution and international maritime law."
+    },
+    {
+      "name": "Mark Russell",
+      "title": "Director of Field Operations",
+      "bio": "A 20-year veteran of the G-Team, Mark defected from the military's kaiju containment program after the Boston incident. He now leads the Bureau's incident reclassification and documentation efforts."
+    },
+    {
+      "name": "Dr. Niko Tatopoulos",
+      "title": "Chief Veterinarian",
+      "bio": "A renowned expert in large-apex biology with a focus on radiation-adapted species. Dr. Tatopoulos has published extensively on the physiological resilience of ancient marine organisms."
+    },
+    {
+      "name": "Naomi Reyes",
+      "title": "Community Outreach Coordinator",
+      "bio": "After losing her home in the 1964 Ghidorah incident, Naomi spent decades seeking answers. She now leads the Bureau's public engagement and reconciliation programs, helping communities affected by kaiju incidents."
+    },
+    {
+      "name": "Hon. Marcus Whitfield",
+      "title": "Legal Counsel",
+      "bio": "Former chair of the Subcommittee on Emerging Persons at the International Court of Justice. Whitfield has argued six precedent-setting cases on non-human sovereignty and ecological personhood."
+    }
   ],
   "office": {
     "address": "742 Kaiju Boulevard, Suite 200, Municipal Annex",
     "city": "Coastal City, CC 90210",
     "phone": "(555) 374-5296",
     "email": "hello@savegodzilla.org",
-    "hours": "Mon–Fri, 8 AM – 4:30 PM",
+    "hours": "Mon\u2013Fri, 8 AM \u2013 4:30 PM",
     "hearing_room": "Community Room, Municipal Annex, 2nd Floor"
   },
   "timeline": [
-    {"year": 1954, "event": "Bureau established in response to the Tokyo Bay incident. Original charter: 'To ensure accurate record-keeping of kaiju-related events.'"},
-    {"year": 1964, "event": "First formal request for incident reclassification filed after the Ghidorah intervention. Denied by the International Maritime Council."},
-    {"year": 1998, "event": "Bay Harbor sonar logs declassified. Bureau discovers naval vessels cornered Godzilla for 11 hours prior to contact. Public awareness begins to shift."},
-    {"year": 2014, "event": "San Francisco MUTO incident. Bureau's incident report becomes the most widely circulated document in its history. Membership grows 400%."},
-    {"year": 2019, "event": "Ghidorah intervention in Boston. Russell defects from G-Team. Bureau receives first major grant for independent research."},
-    {"year": 2023, "event": "Rio bio-event. Bureau's pandemic-averted analysis goes viral. Petition for Godzilla's personhood reaches 10,000 signatures."},
-    {"year": 2025, "event": "Sydney singularity event. Zero civilian casualties. Bureau's classification framework is adopted by two non-governmental observer missions."},
-    {"year": 2026, "event": "Petition surpasses 50,000 signatures. Amicus brief filed. Bureau opens three new regional offices."}
+    {
+      "year": 1954,
+      "event": "Bureau established in response to the Tokyo Bay incident. Original charter: 'To ensure accurate record-keeping of kaiju-related events.'"
+    },
+    {
+      "year": 1964,
+      "event": "First formal request for incident reclassification filed after the Ghidorah intervention. Denied by the International Maritime Council."
+    },
+    {
+      "year": 1998,
+      "event": "Bay Harbor sonar logs declassified. Bureau discovers naval vessels cornered Godzilla for 11 hours prior to contact. Public awareness begins to shift."
+    },
+    {
+      "year": 2014,
+      "event": "San Francisco MUTO incident. Bureau's incident report becomes the most widely circulated document in its history. Membership grows 400%."
+    },
+    {
+      "year": 2019,
+      "event": "Ghidorah intervention in Boston. Russell defects from G-Team. Bureau receives first major grant for independent research."
+    },
+    {
+      "year": 2023,
+      "event": "Rio bio-event. Bureau's pandemic-averted analysis goes viral. Petition for Godzilla's personhood reaches 10,000 signatures."
+    },
+    {
+      "year": 2025,
+      "event": "Sydney singularity event. Zero civilian casualties. Bureau's classification framework is adopted by two non-governmental observer missions."
+    },
+    {
+      "year": 2026,
+      "event": "Petition surpasses 50,000 signatures. Amicus brief filed. Bureau opens three new regional offices."
+    }
   ],
   "donation_tiers": [
-    {"name": "Citizen Supporter", "amount": 5, "perks": "Quarterly newsletter, official Bureau sticker, name listed in annual report.", "interval": "month"},
-    {"name": "Kaiju Advocate", "amount": 25, "perks": "Everything above, plus a limited-edition incident reclassification poster, priority seating at public hearings, and a personalized thank-you from our Director.", "interval": "month"},
-    {"name": "Apex Guardian", "amount": 100, "perks": "Everything above, plus an annual private briefing with our legal team, exclusive access to our incident report database, and a commemorative Bureau lapel pin.", "interval": "month"},
-    {"name": "Godzilla's Voice", "amount": 500, "perks": "Everything above, plus a named grant in your honor, direct consultation on our legal strategy, and your name inscribed on the Bureau's donor wall.", "interval": "month"}
+    {
+      "name": "Citizen Supporter",
+      "amount": 5,
+      "perks": "Quarterly newsletter, official Bureau sticker, name listed in annual report.",
+      "interval": "month"
+    },
+    {
+      "name": "Kaiju Advocate",
+      "amount": 25,
+      "perks": "Everything above, plus a limited-edition incident reclassification poster, priority seating at public hearings, and a personalized thank-you from our Director.",
+      "interval": "month"
+    },
+    {
+      "name": "Apex Guardian",
+      "amount": 100,
+      "perks": "Everything above, plus an annual private briefing with our legal team, exclusive access to our incident report database, and a commemorative Bureau lapel pin.",
+      "interval": "month"
+    },
+    {
+      "name": "Godzilla's Voice",
+      "amount": 500,
+      "perks": "Everything above, plus a named grant in your honor, direct consultation on our legal strategy, and your name inscribed on the Bureau's donor wall.",
+      "interval": "month"
+    }
   ],
   "impact_items": [
-    {"cost": 5, "action": "funds one day of incident reclassification research"},
-    {"cost": 15, "action": "publishes one corrected incident report in the public record"},
-    {"cost": 25, "action": "sponsors a community hearing on kaiju-humna relations"},
-    {"cost": 50, "action": "funds a public comment card campaign at the UN Committee"},
-    {"cost": 100, "action": "provides legal research for one amicus brief filing"},
-    {"cost": 250, "action": "supports our annual petition drive and signature collection"},
-    {"cost": 500, "action": "funds a complete incident reclassification case file"}
+    {
+      "cost": 5,
+      "action": "funds one day of incident reclassification research"
+    },
+    {
+      "cost": 15,
+      "action": "publishes one corrected incident report in the public record"
+    },
+    {
+      "cost": 25,
+      "action": "sponsors a community hearing on kaiju-humna relations"
+    },
+    {
+      "cost": 50,
+      "action": "funds a public comment card campaign at the UN Committee"
+    },
+    {
+      "cost": 100,
+      "action": "provides legal research for one amicus brief filing"
+    },
+    {
+      "cost": 250,
+      "action": "supports our annual petition drive and signature collection"
+    },
+    {
+      "cost": 500,
+      "action": "funds a complete incident reclassification case file"
+    }
   ],
   "petition": {
     "goal": 100000,
-    "signatures": 52347,
+    "signatures": 1,
     "target_date": "2026-12-31",
     "description": "Help us deliver 100,000 signatures to the UN Committee on Kaiju Affairs demanding Godzilla be reclassified as a Protected Ecological Asset."
   }

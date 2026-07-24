@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>body { margin:0; background:#ece3cd; font-family:'Nunito',Verdana,Arial,sans-serif; }
+* { box-sizing:border-box; }
+a { color:#2f4d3a; }
+::selection { background:#b8943f; color:#2b2b23; }
+.stripe { height:8px; background:repeating-linear-gradient(45deg,#2f4d3a,#2f4d3a 12px,#b8943f 12px,#b8943f 24px); }
+.page-section { padding:0 44px 64px; }
+.container { max-width:920px; margin:0 auto; }
+.form-card { background:#f4efe0; border:2px solid #6b4f36; padding:40px 48px; box-shadow:6px 6px 0 rgba(107,79,54,0.15); }
+.form-card h1 { font-size:36px; color:#2f4d3a; margin:0 0 8px; }
+.form-card p { font-size:15px; line-height:1.75; color:#3a3a2e; margin:0 0 24px; }
+.form-group { margin-bottom:20px; }
+.form-group label { display:block; font-size:12px; font-weight:700; color:#2f4d3a; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em; }
+.form-group label .required { color:#b8943f; }
+.form-group input,.form-group textarea,.form-group select { width:100%; padding:14px 16px; font-family:'Nunito',sans-serif; font-size:14px; border:2px solid #d8cba8; background:#fcf9f0; color:#2b2b23; outline:none; transition:border-color 0.2s; }
+.form-group input:focus,.form-group textarea:focus { border-color:#2f4d3a; }
+.form-group textarea { min-height:100px; resize:vertical; }
+.form-group .hint { font-size:11px; color:#6b4f36; margin-top:4px; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.btn-submit { width:100%; padding:16px; background:#2f4d3a; color:#f4efe0; font-weight:700; font-size:16px; border:2px solid #22392a; cursor:pointer; font-family:'Nunito',sans-serif; transition:background 0.2s; }
+.btn-submit:hover { background:#3a5e48; }
+.btn-submit:disabled { opacity:0.5; cursor:not-allowed; }
+.petition-count { background:#f4efe0; border:2px solid #6b4f36; padding:24px; text-align:center; margin-bottom:32px; }
+.petition-count .big { font-size:48px; font-weight:800; color:#2f4d3a; }
+.petition-count .label { font-size:13px; color:#6b4f36; }
+.petition-count .progress { height:24px; background:#d8cba8; border:1px solid #6b4f36; margin:12px 0; position:relative; overflow:hidden; }
+.petition-count .progress-fill { height:100%; background:#2f4d3a; transition:width 0.5s; }
+.petition-count .stats { display:flex; justify-content:space-between; font-size:13px; color:#3a3a2e; }
+.petition-legal { font-size:11px; color:#6b4f36; text-align:center; margin-top:16px; line-height:1.6; }
+.petition-legal a { color:#6b4f36; }
+.success-box { display:none; text-align:center; padding:40px; }
+.success-box .check { font-size:64px; color:#2f4d3a; margin-bottom:16px; }
+.success-box h2 { color:#2f4d3a; font-size:24px; margin:0 0 8px; }
+.success-box p { color:#3a3a2e; font-size:15px; line-height:1.7; }
+footer { padding:26px 44px; background:#dcd0ac; border-top:3px solid #2f4d3a; font-size:11px; color:#5c4a35; }
+.footer-inner { max-width:920px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+@media (max-width:768px) {
+  .form-row { grid-template-columns:1fr; }
+  .form-card { padding:24px 20px; }
+  .form-card h1 { font-size:28px; }
+  .page-section { padding:0 16px 36px; }
+  .container { max-width:100%; }
+}</style>
+<title>Sign the Petition — Save Godzilla</title>
+</head><body>
+<div class="stripe"></div>
+<div class="page-section" style="padding-top:48px">
+  <div class="container">
+    <div class="petition-count">
+      <div class="big">1</div>
+      <div class="label">Signatures Collected of 100,000 Goal</div>
+      <div class="progress"><div class="progress-fill" style="width:0%"></div></div>
+      <div class="stats">
+        <span>Goal: <strong>100,000</strong></span>
+        <span>Deadline: <strong>Dec 31, 2026</strong></span>
+      </div>
+    </div>
+
+    <div class="form-card" id="formCard">
+      <div style="display:inline-block;padding:5px 14px;background:#b8943f;color:#2b2b23;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:22px;">Petition &middot; Form GZ-3</div>
+      <h1>Reclassify Godzilla as a<br>Protected Ecological Asset</h1>
+      <p>Add your name to the official petition addressed to the UN Committee on Kaiju Affairs. Every signature brings us closer to the 100,000 required for formal consideration.</p>
+
+      <form id="petitionForm" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Legal Name <span class="required">*</span></label>
+            <input type="text" name="name" id="nameInput" required minlength="2" placeholder="e.g., John A. Doe">
+          </div>
+          <div class="form-group">
+            <label>Email Address <span class="required">*</span></label>
+            <input type="email" name="email" id="emailInput" required placeholder="e.g., john@example.com">
+            <div class="hint">We will send you a verification link and a copy of your certificate.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Municipality of Residence</label>
+          <input type="text" name="municipality" id="muniInput" placeholder="e.g., Coastal City, CC">
+          <div class="hint">Your municipality will be listed on the petition.</div>
+        </div>
+        <div class="form-group">
+          <label>Public Comment (Optional)</label>
+          <textarea name="comment" id="commentInput" placeholder="Why does Godzilla deserve legal standing? Your comment may be read into the public record at the next hearing."></textarea>
+        </div>
+        <div class="form-group" style="background:#ece3cd;padding:16px;border:1px solid #d8cba8;font-size:12px;color:#3a3a2e;line-height:1.6;">
+          <strong>By signing, you acknowledge:</strong> Your name and municipality will be included in the public petition. Your email will be used for verification and certificate delivery only. We will not share your information with third parties. You may request removal at any time by contacting hello@savegodzilla.org.
+        </div>
+        <button type="submit" class="btn-submit" id="submitBtn">&#9997; Sign the Petition</button>
+      </form>
+    </div>
+
+    <div class="success-box" id="successBox">
+      <div class="check">&#10003;</div>
+      <h2>Thank You for Signing!</h2>
+      <p>Your signature has been recorded. You will receive a confirmation email with your certificate.</p>
+      <p>Please share your certificate to help us reach 100,000 signatures.</p>
+      <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="/certificate.html" class="no-print" style="display:inline-block;padding:12px 24px;background:#2f4d3a;color:#f4efe0;font-weight:700;font-size:14px;text-decoration:none;border:2px solid #22392a;" id="viewCertBtn">View Your Certificate</a>
+        <a href="/" class="no-print" style="display:inline-block;padding:12px 24px;background:transparent;color:#2f4d3a;font-weight:700;font-size:14px;text-decoration:none;border:2px solid #2f4d3a;">Return to Home</a>
+      </div>
+    </div>
+
+    <div class="petition-legal">
+      This petition is addressed to the UN Committee on Kaiju Affairs. Form GZ-3 (Rev. 2026).<br>
+      Municipal Bureau of Kaiju Affairs &middot; <a href="mailto:hello@savegodzilla.org">hello@savegodzilla.org</a>
+    </div>
+  </div>
+</div>
+<footer><div class="footer-inner">
+  <div>Municipal Bureau of Kaiju Affairs &middot; Est. 1954 &middot; Office Hours: Mon&ndash;Fri, 8 AM&ndash;4:30 PM</div>
+  <div>Form GZ-3 (Rev. 2026) &middot; savegodzilla.org</div>
+</div></footer>
+
+<script>
+document.getElementById('petitionForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  var name = document.getElementById('nameInput').value.trim();
+  var email = document.getElementById('emailInput').value.trim();
+  var muni = document.getElementById('muniInput').value.trim();
+  var comment = document.getElementById('commentInput').value.trim();
+
+  // Generate a cert ID client-side
+  var certId = 'GZ-PET-' + Math.random().toString(36).substring(2,10).toUpperCase();
+
+  // Store in localStorage
+  var cert = {
+    name: name,
+    email: email,
+    municipality: muni,
+    comment: comment,
+    cert_id: certId,
+    signed_at: new Date().toISOString(),
+    total_signatures: 1
+  };
+  localStorage.setItem('petition_cert', JSON.stringify(cert));
+
+  // Try to submit to the petition server via FormSubmit
+  try {
+    var formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('municipality', muni);
+    formData.append('comment', comment);
+    formData.append('_captcha', 'true');
+    formData.append('_subject', 'Petition Signature: ' + name);
+    formData.append('_next', window.location.origin + '/certificate.html');
+
+    await fetch('https://formsubmit.co/rook@not.farm', {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors'
+    });
+  } catch(e) {
+    console.log('FormSubmit fallback:', e);
+  }
+
+  // Show success
+  document.getElementById('formCard').style.display = 'none';
+  document.getElementById('successBox').style.display = 'block';
+  document.getElementById('viewCertBtn').href = '/certificate.html';
+});
+</script>
+</body></html>

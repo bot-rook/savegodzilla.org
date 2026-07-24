@@ -24,6 +24,7 @@ def fmt_date(d):
 def nav(page, logo='Save Godzilla', sub='Municipal Bureau of Kaiju Affairs'):
     links = [
         ('index.html', 'Home'),
+        ('petition.html', 'Petition'),
         ('about.html', 'About'),
         ('incidents.html', 'Incidents'),
         ('press.html', 'Press'),
@@ -94,6 +95,7 @@ def nav(page, logo='Save Godzilla', sub='Municipal Bureau of Kaiju Affairs'):
 <div class="nav-overlay" id="navOverlay">
   <button class="close-btn" onclick="closeNav()" aria-label="Close menu">&times;</button>
   {ls}
+  <a href="petition.html" class="donate-btn" onclick="closeNav()" style="margin-bottom:12px">SIGN THE PETITION</a>
   <a href="index.html#support" class="donate-btn" onclick="closeNav()">DONATE</a>
 </div>
 <script>
@@ -334,7 +336,7 @@ def generate_index(d):
     <p style="font-size:15px;line-height:1.75;color:#3a3a2e;margin:0 0 12px;max-width:640px;">For 72 years, Godzilla has been slandered, shelled, and classified as a threat — without a single hearing, a single lawyer, or a single day in court. The Municipal Bureau of Kaiju Affairs is the only organization working to change that. We need your help.</p>
     <div style="display:flex;gap:14px;flex-wrap:wrap;">
       <a href="#support" class="btn-gold" style="text-decoration:none">Support Our Work</a>
-      <a href="#petition" class="btn-secondary" style="text-decoration:none">Sign the Petition</a>
+      <a href="petition.html" class="btn-secondary" style="text-decoration:none">Sign the Petition</a>
     </div>
   </div>
 </div>
@@ -347,6 +349,7 @@ def generate_index(d):
       <div style="font-size:12px;color:#6b4f36;margin:4px 0 8px;">{d['petition']['description']}</div>
       <div class="progress"><div class="progress-fill" style="width:{pct}%"></div></div>
       <div class="stats"><span><strong>{n:,}</strong> signatures</span><span>Goal: <strong>{d['petition']['goal']:,}</strong></span><span>Deadline: <strong>Dec 31, 2026</strong></span></div>
+      <div style="margin-top:16px"><a href="petition.html" class="btn-gold" style="text-decoration:none">Sign the Petition</a></div>
     </div>
   </div>
 </div>
