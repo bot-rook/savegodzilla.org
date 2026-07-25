@@ -1,0 +1,191 @@
+#!/usr/bin/env python3
+"""Generate donate.html for savegodzilla.org with Stripe Checkout integration."""
+import os, json
+
+OUT_DIR = '/opt/data/savegodzilla.org'
+DATA_PATH = os.path.join(OUT_DIR, 'data.json')
+
+CSS = ''':root { --bg:#ece3cd; --card:#f4efe0; --text:#3a3a2e; --heading:#2f4d3a; --muted:#6b4f36; --border:#6b4f36; --gold:#b8943f; --gold-text:#2b2b23; --accent:#2f4d3a; --nav-bg:#f4efe0; --footer-bg:#dcd0ac; --stripe1:#2f4d3a; --stripe2:#b8943f; --input-bg:#fcf9f0; }
+[data-theme="dark"] { --bg:#1a1a1a; --card:#2a2a2a; --text:#c8c8b8; --heading:#c8c89a; --muted:#9a8a6a; --border:#5a4a3a; --gold:#b8943f; --gold-text:#2b2b23; --accent:#4a7a5a; --nav-bg:#222222; --footer-bg:#1e1e1e; --stripe1:#4a7a5a; --stripe2:#b8943f; --input-bg:#333333; }
+body { margin:0; background:var(--bg); font-family:'Nunito',Verdana,Arial,sans-serif; color:var(--text); }
+* { box-sizing:border-box; }
+a { color:var(--heading); }
+::selection { background:var(--gold); color:var(--gold-text); }
+.stripe { height:8px; background:repeating-linear-gradient(45deg,var(--stripe1),var(--stripe1) 12px,var(--stripe2) 12px,var(--stripe2) 24px); }
+.page-section { padding:0 44px 64px; }
+.container { max-width:920px; margin:0 auto; }
+.section-title { display:flex; align-items:baseline; gap:12px; margin-bottom:18px; }
+.section-title h2 { font-size:26px; color:var(--heading); margin:0; }
+.section-sub { font-size:11px; color:var(--muted); }
+.tier-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-bottom:32px; }
+.tier-card { background:var(--card); border:2px solid var(--border); padding:28px 24px; text-align:center; cursor:pointer; transition:box-shadow 0.2s,transform 0.2s; }
+.tier-card:hover { box-shadow:6px 6px 0 rgba(0,0,0,0.1); transform:translateY(-2px); }
+.tier-card.featured { border-color:var(--gold); border-width:3px; position:relative; }
+.tier-card.featured::before { content:'POPULAR'; position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:var(--gold); color:var(--gold-text); font-size:9px; font-weight:800; letter-spacing:0.1em; padding:3px 12px; }
+.tier-name { font-weight:700; font-size:18px; color:var(--heading); margin-bottom:4px; }
+.tier-amount { font-size:36px; font-weight:800; color:var(--gold); margin-bottom:4px; }
+.tier-amount span { font-size:16px; font-weight:400; color:var(--muted); }
+.tier-interval { font-size:11px; color:var(--muted); margin-bottom:16px; }
+.tier-perks { font-size:12px; color:var(--text); line-height:1.6; margin-bottom:20px; }
+.btn-donate { padding:12px 24px; background:var(--accent); color:var(--card); font-weight:700; font-size:14px; border:2px solid var(--accent); cursor:pointer; font-family:'Nunito',sans-serif; width:100%; transition:background 0.2s; }
+.btn-donate:hover { background:#3a5e48; }
+.impact-list { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+.impact-item { background:var(--card); border:1px solid var(--border); padding:14px 18px; font-size:13px; color:var(--text); }
+.impact-item strong { color:var(--heading); }
+.donate-box { background:var(--card); border:2px solid var(--border); padding:40px 48px; box-shadow:8px 8px 0 rgba(0,0,0,0.15); margin-bottom:40px; }
+.info-box { background:var(--bg); border:1px solid var(--border); padding:20px; font-size:12px; color:var(--muted); line-height:1.7; margin-bottom:24px; }
+@media (max-width:768px) {
+  .tier-grid { grid-template-columns:1fr; }
+  .donate-box { padding:24px 20px; }
+  .page-section { padding:0 16px 36px; }
+  .container { max-width:100%; }
+  .impact-list { grid-template-columns:1fr; }
+}'''
+
+NAV_HTML = '''<div class="stripe"></div>
+<div class="nav" style="display:flex;align-items:center;justify-content:space-between;padding:16px 44px;background:var(--nav-bg);border-bottom:3px solid var(--accent);">
+  <div class="logo" onclick="window.location='index.html'" style="cursor:pointer;display:flex;align-items:center;gap:14px;">
+    <div class="org-name" style="font-size:19px;font-weight:700;color:var(--heading);">Save Godzilla</div>
+    <div class="org-sub" style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);">Municipal Bureau of Kaiju Affairs</div>
+  </div>
+  <div><a href="index.html" class="btn-secondary" style="padding:8px 20px;background:transparent;color:var(--heading);font-weight:700;font-size:12px;border:2px solid var(--accent);text-decoration:none;font-family:'Nunito',sans-serif;">&larr; Back to Home</a></div>
+</div>'''
+
+FOOTER = '''<footer><div class="footer-inner" style="max-width:920px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+  <div>Municipal Bureau of Kaiju Affairs &middot; Est. 1954</div>
+  <div>Form GZ-1 (Rev. 2026) &middot; savegodzilla.org</div>
+</div></footer>'''
+
+def generate():
+    d = json.load(open(DATA_PATH))
+    tiers = d['donation_tiers']
+    impacts = d['impact_items']
+
+    tier_cards = ''
+    for i, t in enumerate(tiers):
+        featured = ' featured' if t['amount'] == 25 else ''
+        interval = t['interval']
+        tier_cards += f'''<div class="tier-card{featured}" onclick="donate({t['amount']}, '{interval}')">
+  <div class="tier-name">{t['name']}</div>
+  <div class="tier-amount">${t['amount']}<span>/{interval}</span></div>
+  <div class="tier-interval">{t['perks']}</div>
+  <button class="btn-donate">Donate ${t['amount']}/{interval}</button>
+</div>'''
+
+    impact_items = ''.join(f'<div class="impact-item"><strong>${i["cost"]}</strong> {i["action"]}</div>' for i in impacts)
+
+    html = f'''<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>{CSS}</style>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon.ico" type="image/x-icon">
+<link rel="canonical" href="https://savegodzilla.org/donate.html">
+<meta name="description" content="Support the Municipal Bureau of Kaiju Affairs. Your donation funds incident reclassification, legal advocacy, and public education.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://savegodzilla.org/donate.html">
+<meta property="og:title" content="Support Our Work — Save Godzilla">
+<meta property="og:description" content="Your donation funds incident reclassification, legal advocacy, and public education for Godzilla's rights.">
+<meta property="og:image" content="https://savegodzilla.org/favicon.svg">
+<meta name="twitter:card" content="summary_large_image">
+<title>Support Our Work — Save Godzilla</title>
+</head><body>
+{NAV_HTML}
+<div class="page-section" style="padding-top:48px">
+  <div class="container">
+    <div class="donate-box">
+      <div style="display:inline-block;padding:5px 14px;background:var(--gold);color:var(--gold-text);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:22px;">Support &middot; Form GZ-9</div>
+      <h1 style="font-size:36px;font-weight:800;color:var(--heading);margin:0 0 12px;">Support Our Work</h1>
+      <p style="font-size:15px;line-height:1.75;color:var(--text);margin:0 0 24px;">Godzilla has been misrepresented for 72 years. Every day without legal standing is a day he can be legally attacked. Navies train on him. Governments budget for his destruction. He has no lawyer, no voice, no rights. <strong>We are the only organization fighting for him.</strong></p>
+
+      <div class="info-box">
+        <strong>Payment method:</strong> All donations are processed securely through <strong>Stripe</strong>. Credit cards, Apple Pay, and Google Pay accepted. Your information is encrypted and never stored on our servers.
+      </div>
+
+      <div class="tier-grid">{tier_cards}</div>
+
+      <div style="margin-bottom:24px;">
+        <div style="font-size:14px;font-weight:700;color:var(--heading);margin-bottom:12px;">Custom Amount</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+          <span style="font-size:24px;font-weight:800;color:var(--muted);">$</span>
+          <input type="number" id="customAmount" min="1" max="10000" value="10" style="width:120px;padding:12px 16px;font-family:'Nunito',sans-serif;font-size:16px;border:2px solid var(--border);background:var(--input-bg);color:var(--text);outline:none;">
+          <select id="customInterval" style="padding:12px 16px;font-family:'Nunito',sans-serif;font-size:14px;border:2px solid var(--border);background:var(--input-bg);color:var(--text);outline:none;">
+            <option value="month">Monthly</option>
+            <option value="year">Yearly</option>
+            <option value="once">One Time</option>
+          </select>
+          <button class="btn-donate" style="width:auto;padding:12px 28px;" onclick="donateCustom()">Donate</button>
+        </div>
+      </div>
+
+      <div style="margin-top:32px;">
+        <div style="font-size:14px;font-weight:700;color:var(--heading);margin-bottom:12px;">What your donation does:</div>
+        <div class="impact-list">{impact_items}</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg);border:2px solid var(--border);padding:24px;text-align:center;font-size:12px;color:var(--muted);line-height:1.7;">
+      The Municipal Bureau of Kaiju Affairs is an independent advocacy organization. We accept no government or military funding.<br>
+      Contributions are not tax-deductible at this time. Receipts provided for all donations. <a href="contact.html" style="color:var(--heading);">Contact us</a> with questions.
+    </div>
+  </div>
+</div>
+{FOOTER}
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+// Replace with your Stripe publishable key when ready
+var STRIPE_KEY = 'pk_test_REPLACE_ME';
+
+function donate(amount, interval) {{
+  if (!STRIPE_KEY || STRIPE_KEY === 'pk_test_REPLACE_ME') {{
+    alert('Stripe is not yet connected. Email hello@savegodzilla.org to donate or check back soon.');
+    return;
+  }}
+  var stripe = Stripe(STRIPE_KEY);
+  stripe.redirectToCheckout({{
+    lineItems: [{{price_data:{{
+      currency: 'usd',
+      product_data:{{name:'Donation to Municipal Bureau of Kaiju Affairs'}},
+      unit_amount: amount * 100,
+      recurring: interval !== 'once' ? {{interval: interval}} : undefined
+    }}, quantity: 1}}],
+    mode: interval === 'once' ? 'payment' : 'subscription',
+    successUrl: window.location.origin + '/donate-success.html',
+    cancelUrl: window.location.origin + '/donate.html',
+  }});
+}}
+
+function donateCustom() {{
+  var amt = parseInt(document.getElementById('customAmount').value);
+  var interval = document.getElementById('customInterval').value;
+  if (!amt || amt < 1) {{ alert('Please enter a valid amount.'); return; }}
+  donate(amt, interval);
+}}
+</script>
+</body></html>'''
+
+    path = os.path.join(OUT_DIR, 'donate.html')
+    with open(path, 'w') as f:
+        f.write(html)
+    print(f'  donate.html — {len(html):,} bytes')
+
+    # Also create a success page
+    success = '''<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Donation Received — Save Godzilla</title>
+<style>body{margin:0;background:#ece3cd;font-family:'Nunito',sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;}.box{max-width:500px;background:#f4efe0;border:2px solid #6b4f36;padding:40px;text-align:center;box-shadow:8px 8px 0 rgba(107,79,54,0.15);}h1{color:#2f4d3a;font-size:28px;margin:0 0 12px;}p{color:#3a3a2e;font-size:15px;line-height:1.7;margin:0 0 24px;}.btn{display:inline-block;padding:12px 24px;background:#2f4d3a;color:#f4efe0;font-weight:700;font-size:14px;text-decoration:none;border:2px solid #22392a;}</style>
+</head><body>
+<div class="box"><h1>&#10003; Donation Received</h1><p>Thank you for supporting the Municipal Bureau of Kaiju Affairs. Your contribution goes directly to incident reclassification, legal advocacy, and public education.</p><p style="font-size:13px;color:#6b4f36;">A receipt has been sent to your email. If you have questions, contact hello@savegodzilla.org.</p><a href="/" class="btn">Return to Home</a></div>
+</body></html>'''
+    path = os.path.join(OUT_DIR, 'donate-success.html')
+    with open(path, 'w') as f:
+        f.write(success)
+    print(f'  donate-success.html — {len(success):,} bytes')
+
+if __name__ == '__main__':
+    generate()

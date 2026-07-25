@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://savegodzilla.org/</loc><priority>1.0</priority><changefreq>daily</changefreq></url>
   <url><loc>https://savegodzilla.org/petition.html</loc><priority>0.9</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://savegodzilla.org/donate.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://savegodzilla.org/blog.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://savegodzilla.org/blog/reclassification-procedure.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://savegodzilla.org/blog/the-deterrence-effect.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>

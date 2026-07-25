@@ -88,7 +88,7 @@ def nav(page, logo='Save Godzilla', sub='Municipal Bureau of Kaiju Affairs'):
     </div>
   </div>
   <div class="nav-links">{ls}</div>
-  <div><a href="index.html#support" class="btn-primary" style="text-decoration:none">DONATE</a></div>
+  <div><a href="donate.html" class="btn-primary" style="text-decoration:none">DONATE</a></div>
   <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -99,7 +99,7 @@ def nav(page, logo='Save Godzilla', sub='Municipal Bureau of Kaiju Affairs'):
   {ls}
   <a href="blog.html" class="donate-btn" onclick="closeNav()" style="margin-bottom:12px">READ THE BLOG</a>
   <a href="petition.html" class="donate-btn" onclick="closeNav()" style="margin-bottom:12px">SIGN THE PETITION</a>
-  <a href="index.html#support" class="donate-btn" onclick="closeNav()">DONATE</a>
+  <a href="donate.html" class="donate-btn" onclick="closeNav()">DONATE</a>
   <button onclick="closeNav();toggleTheme()" style="margin-top:12px;padding:16px;background:transparent;color:var(--heading);font-weight:700;font-size:16px;text-align:center;border:2px solid #2f4d3a;border-radius:4px;cursor:pointer;font-family:'Nunito',sans-serif;">Toggle Dark Mode</button>
 </div>
 <script>
@@ -447,7 +447,7 @@ def generate_index(d):
       <div style="text-align:center;"><div style="font-size:24px;font-weight:800;color:var(--heading);">{threats}</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-top:2px;">Threats Stopped</div></div>
     </div>
     <div style="display:flex;gap:14px;flex-wrap:wrap;">
-      <a href="#support" class="btn-gold" style="text-decoration:none">Support Our Work</a>
+      <a href="donate.html" class="btn-gold" style="text-decoration:none">Support Our Work</a>
       <a href="petition.html" class="btn-secondary" style="text-decoration:none">Sign the Petition</a>
     </div>
   </div>
@@ -561,8 +561,8 @@ def generate_index(d):
       <h2 class="cta-title">The next hearing is Thursday at 7 PM.<br>Be there or file a comment.</h2>
       <p class="cta-text">{cta}</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-        <a href="about.html" class="btn-gold" style="text-decoration:none">Learn About Our Mission</a>
-        <a href="contact.html" class="btn-secondary" style="text-decoration:none;color:#f4efe0;border-color:#f4efe0;background:transparent">Contact the Bureau</a>
+        <a href="donate.html" class="btn-gold" style="text-decoration:none">Support Our Work</a>
+        <a href="contact.html" class="btn-secondary" style="text-decoration:none;color:var(--card);border-color:var(--card);background:transparent">Contact the Bureau</a>
       </div>
     </div>
   </div>
