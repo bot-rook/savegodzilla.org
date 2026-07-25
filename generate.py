@@ -100,7 +100,7 @@ def nav(page, logo='Save Godzilla', sub='Municipal Bureau of Kaiju Affairs'):
   <a href="blog.html" class="donate-btn" onclick="closeNav()" style="margin-bottom:12px">READ THE BLOG</a>
   <a href="petition.html" class="donate-btn" onclick="closeNav()" style="margin-bottom:12px">SIGN THE PETITION</a>
   <a href="index.html#support" class="donate-btn" onclick="closeNav()">DONATE</a>
-  <button onclick="closeNav();toggleTheme()" style="margin-top:12px;padding:16px;background:transparent;color:#2f4d3a;font-weight:700;font-size:16px;text-align:center;border:2px solid #2f4d3a;border-radius:4px;cursor:pointer;font-family:'Nunito',sans-serif;">Toggle Dark Mode</button>
+  <button onclick="closeNav();toggleTheme()" style="margin-top:12px;padding:16px;background:transparent;color:var(--heading);font-weight:700;font-size:16px;text-align:center;border:2px solid #2f4d3a;border-radius:4px;cursor:pointer;font-family:'Nunito',sans-serif;">Toggle Dark Mode</button>
 </div>
 <script>
 var overlay = document.getElementById('navOverlay');
@@ -233,6 +233,12 @@ a { color:var(--heading); }
 .signer-item:last-child { border-bottom:none; }
 .signer-name { font-weight:600; color:var(--heading); }
 .signer-muni { font-size:11px; color:var(--muted); }
+.blog-card { background:var(--card); border:2px solid var(--border); padding:20px 24px; margin-bottom:16px; }
+.blog-card:hover { box-shadow:6px 6px 0 rgba(0,0,0,0.1); }
+.blog-card a { text-decoration:none; display:block; }
+.blog-date { font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:4px; }
+.blog-title { font-size:16px; font-weight:700; color:var(--heading); margin-bottom:4px; line-height:1.3; }
+.blog-summary { font-size:12px; color:var(--text); line-height:1.5; }
 .petition-bar { background:var(--card); border:2px solid var(--border); padding:24px; text-align:center; }
 .petition-bar .progress { height:24px; background:#d8cba8; border:1px solid var(--border); margin:12px 0; position:relative; overflow:hidden; }
 .petition-bar .progress-fill { height:100%; background:var(--accent); transition:width 0.5s; }
@@ -419,6 +425,12 @@ def generate_index(d):
     ]
     cta = cta_lines[date.today().isocalendar()[1] % len(cta_lines)]
 
+    # Blog posts for home page (latest 3)
+    import json
+    blog_posts = json.load(open(os.path.join(os.path.dirname(__file__), 'blog_posts.json')))
+    latest_posts = blog_posts[:3]
+    blog_html = ''.join(f'<a href="blog/{p["id"]}.html" style="text-decoration:none;display:block"><div class="blog-card" style="margin-bottom:12px;"><div class="blog-date">{p["date"]}</div><div class="blog-title" style="font-size:16px;">{p["title"]}</div><div class="blog-summary" style="font-size:12px;">{p["summary"]}</div></div></a>' for p in latest_posts)
+
     body = f'''
 <div style="padding:60px 44px;background:var(--bg);">
   <div class="container" style="background:var(--card);border:2px solid var(--border);padding:48px 56px;box-shadow:8px 8px 0 rgba(0,0,0,0.15);">
@@ -443,7 +455,7 @@ def generate_index(d):
 <div class="page-section" id="petition">
   <div class="container">
     <div class="petition-bar">
-      <div style="font-size:16px;font-weight:700;color:#2f4d3a;">Petition to Reclassify Godzilla as a Protected Ecological Asset</div>
+      <div style="font-size:16px;font-weight:700;color:var(--heading);">Petition to Reclassify Godzilla as a Protected Ecological Asset</div>
       <div style="font-size:12px;color:var(--muted);margin:4px 0 8px;">{d['petition']['description']}</div>
       <div class="progress"><div class="progress-fill live-fill" style="width:{pct}%"></div></div>
       <div class="stats"><span><strong class="live-count">{n:,}</strong> signatures</span><span>Goal: <strong>{d['petition']['goal']:,}</strong></span><span>Deadline: <strong>Dec 31, 2026</strong></span></div>
@@ -456,9 +468,9 @@ def generate_index(d):
 <div class="page-section">
   <div class="container">
     <div class="section-title"><h2>Recent Signers</h2><span class="section-sub">(Live feed &middot; updated in real-time)</span></div>
-    <div style="background:#f4efe0;border:2px solid #6b4f36;padding:20px 24px;">
+    <div style="background:var(--card);border:2px solid var(--border);padding:20px 24px;">
       <div id="recentSigners">
-        <div style="padding:12px 0;text-align:center;font-size:13px;color:#6b4f36;">Loading recent signers...</div>
+        <div style="padding:12px 0;text-align:center;font-size:13px;color:var(--muted);">Loading recent signers...</div>
       </div>
       <div style="text-align:center;margin-top:16px"><a href="petition.html" class="btn-secondary" style="text-decoration:none;font-size:12px;">Join <span class="live-count">{n:,}</span> others &rarr;</a></div>
     </div>
@@ -468,13 +480,22 @@ def generate_index(d):
 <!-- METRICS -->
 <div class="page-section">
   <div class="container" style="border:2px solid #6b4f36;">
-    <div style="background:#2f4d3a;color:#f4efe0;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:10px 18px;">Bureau Statistics &middot; Fiscal Year 2026</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);background:#f4efe0;">
-      <div style="padding:24px 16px;text-align:center;border-right:1px solid #d8cba8;"><div style="font-size:32px;font-weight:700;color:#2f4d3a;">{cities}</div><div style="font-size:11px;color:#6b4f36;margin-top:6px;">Cities Protected</div></div>
-      <div style="padding:24px 16px;text-align:center;border-right:1px solid #d8cba8;"><div style="font-size:32px;font-weight:700;color:#2f4d3a;">{threats}</div><div style="font-size:11px;color:#6b4f36;margin-top:6px;">Threats Neutralized</div></div>
-      <div style="padding:24px 16px;text-align:center;border-right:1px solid #d8cba8;"><div style="font-size:32px;font-weight:700;color:#2f4d3a;">0</div><div style="font-size:11px;color:#6b4f36;margin-top:6px;">Unprovoked Attacks</div></div>
-      <div style="padding:24px 16px;text-align:center;"><div style="font-size:32px;font-weight:700;color:#2f4d3a;">{d['metrics']['years_of_service']}</div><div style="font-size:11px;color:#6b4f36;margin-top:6px;">Years of Service</div></div>
+    <div style="background:var(--accent);color:var(--card);font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:10px 18px;">Bureau Statistics &middot; Fiscal Year 2026</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);">
+      <div style="padding:24px 16px;text-align:center;border-right:1px solid var(--border);"><div style="font-size:32px;font-weight:700;color:var(--heading);">{cities}</div><div style="font-size:11px;color:var(--muted);margin-top:6px;">Cities Protected</div></div>
+      <div style="padding:24px 16px;text-align:center;border-right:1px solid var(--border);"><div style="font-size:32px;font-weight:700;color:var(--heading);">{threats}</div><div style="font-size:11px;color:var(--muted);margin-top:6px;">Threats Neutralized</div></div>
+      <div style="padding:24px 16px;text-align:center;border-right:1px solid var(--border);"><div style="font-size:32px;font-weight:700;color:var(--heading);">0</div><div style="font-size:11px;color:var(--muted);margin-top:6px;">Unprovoked Attacks</div></div>
+      <div style="padding:24px 16px;text-align:center;"><div style="font-size:32px;font-weight:700;color:var(--heading);">{d['metrics']['years_of_service']}</div><div style="font-size:11px;color:var(--muted);margin-top:6px;">Years of Service</div></div>
     </div>
+  </div>
+</div>
+
+<!-- LATEST FROM THE BLOG -->
+<div class="page-section">
+  <div class="container">
+    <div class="section-title"><h2>Latest from the Blog</h2><span class="section-sub">(Bureau dispatches)</span></div>
+    {blog_html}
+    <div style="text-align:center;margin-top:12px"><a href="blog.html" class="btn-secondary" style="text-decoration:none">View All Posts &rarr;</a></div>
   </div>
 </div>
 
@@ -521,10 +542,10 @@ def generate_index(d):
 <div class="page-section" id="support">
   <div class="container">
     <div class="section-title"><h2>Support Our Work</h2><span class="section-sub">(Your contribution goes directly to advocacy)</span></div>
-    <p style="font-size:14px;color:#3a3a2e;line-height:1.7;margin-bottom:24px;">Godzilla has been misrepresented for 72 years. Every day without legal standing is a day he can be legally attacked. Navies train on him. Governments budget for his destruction. He has no lawyer, no voice, no rights. <strong>We are the only organization fighting for him.</strong> Every dollar goes directly to incident reclassification, legal advocacy, and public education.</p>
+    <p style="font-size:14px;color:var(--text);line-height:1.7;margin-bottom:24px;">Godzilla has been misrepresented for 72 years. Every day without legal standing is a day he can be legally attacked. Navies train on him. Governments budget for his destruction. He has no lawyer, no voice, no rights. <strong>We are the only organization fighting for him.</strong> Every dollar goes directly to incident reclassification, legal advocacy, and public education.</p>
     <div class="tier-grid">{tiers}</div>
     <div style="margin-top:24px">
-      <div style="font-size:14px;font-weight:700;color:#2f4d3a;margin-bottom:12px;">What your donation does:</div>
+      <div style="font-size:14px;font-weight:700;color:var(--heading);margin-bottom:12px;">What your donation does:</div>
       <div class="impact-list">{impacts}</div>
     </div>
   </div>
@@ -553,12 +574,12 @@ def generate_about(d):
     body = f'''
 <div class="page-section" style="padding-top:64px">
   <div class="container">
-    <div style="background:#f4efe0;border:2px solid #6b4f36;padding:40px 48px;box-shadow:6px 6px 0 rgba(107,79,54,0.15);margin-bottom:40px;">
+    <div style="background:var(--card);border:2px solid var(--border);padding:40px 48px;box-shadow:8px 8px 0 rgba(0,0,0,0.15);margin-bottom:40px;">
       <div style="display:inline-block;padding:5px 14px;background:#b8943f;color:#2b2b23;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:22px;">About the Bureau &middot; Form GZ-2A</div>
-      <h1 style="font-size:36px;font-weight:700;color:#2f4d3a;margin:0 0 20px;">Our Mission</h1>
-      <p style="font-size:15px;line-height:1.75;color:#3a3a2e;margin:0 0 16px;">The Municipal Bureau of Kaiju Affairs is a public good organization dedicated to the evidence-based reconsideration of Godzilla's legal and social standing. We believe that a being who has repeatedly saved our planet from existential threats deserves due process, not depth charges.</p>
-      <p style="font-size:15px;line-height:1.75;color:#3a3a2e;margin:0 0 16px;">Founded in 1954 in the wake of the Tokyo Bay incident, the Bureau has spent seven decades documenting incidents, reclassifying encounters, and advocating for a more accurate understanding of Godzilla's role as a sovereign ecological force. We are the only organization of our kind.</p>
-      <p style="font-size:15px;line-height:1.75;color:#3a3a2e;margin:0;">Our work is funded entirely by individual supporters. We accept no government or military funding.</p>
+      <h1 style="font-size:36px;font-weight:700;color:var(--heading);margin:0 0 20px;">Our Mission</h1>
+      <p style="font-size:15px;line-height:1.75;color:var(--text);margin:0 0 16px;">The Municipal Bureau of Kaiju Affairs is a public good organization dedicated to the evidence-based reconsideration of Godzilla's legal and social standing. We believe that a being who has repeatedly saved our planet from existential threats deserves due process, not depth charges.</p>
+      <p style="font-size:15px;line-height:1.75;color:var(--text);margin:0 0 16px;">Founded in 1954 in the wake of the Tokyo Bay incident, the Bureau has spent seven decades documenting incidents, reclassifying encounters, and advocating for a more accurate understanding of Godzilla's role as a sovereign ecological force. We are the only organization of our kind.</p>
+      <p style="font-size:15px;line-height:1.75;color:var(--text);margin:0;">Our work is funded entirely by individual supporters. We accept no government or military funding.</p>
     </div>
 
     <div id="team" class="section-title"><h2>Our Team</h2><span class="section-sub">(Bureau Staff)</span></div>
@@ -577,10 +598,10 @@ def generate_incidents(d):
     body = f'''
 <div class="page-section" style="padding-top:64px">
   <div class="container">
-    <div style="background:#f4efe0;border:2px solid #6b4f36;padding:40px 48px;box-shadow:6px 6px 0 rgba(107,79,54,0.15);margin-bottom:40px;">
+    <div style="background:var(--card);border:2px solid var(--border);padding:40px 48px;box-shadow:8px 8px 0 rgba(0,0,0,0.15);margin-bottom:40px;">
       <div style="display:inline-block;padding:5px 14px;background:#b8943f;color:#2b2b23;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:22px;">Incident Tracker &middot; Form GZ-4</div>
-      <h1 style="font-size:36px;font-weight:700;color:#2f4d3a;margin:0 0 20px;">Full Incident Tracker</h1>
-      <p style="font-size:15px;line-height:1.75;color:#3a3a2e;margin:0;">All {len(d['incidents'])} case files that have been formally reviewed and reclassified by the Bureau. Each incident was originally reported as an unprovoked attack. The Bureau disagrees.</p>
+      <h1 style="font-size:36px;font-weight:700;color:var(--heading);margin:0 0 20px;">Full Incident Tracker</h1>
+      <p style="font-size:15px;line-height:1.75;color:var(--text);margin:0;">All {len(d['incidents'])} case files that have been formally reviewed and reclassified by the Bureau. Each incident was originally reported as an unprovoked attack. The Bureau disagrees.</p>
     </div>
     <div class="card-grid" style="grid-template-columns:repeat(2,1fr)">{incs}</div>
   </div>
@@ -593,10 +614,10 @@ def generate_press(d):
     body = f'''
 <div class="page-section" style="padding-top:64px">
   <div class="container">
-    <div style="background:#f4efe0;border:2px solid #6b4f36;padding:40px 48px;box-shadow:6px 6px 0 rgba(107,79,54,0.15);margin-bottom:40px;">
+    <div style="background:var(--card);border:2px solid var(--border);padding:40px 48px;box-shadow:8px 8px 0 rgba(0,0,0,0.15);margin-bottom:40px;">
       <div style="display:inline-block;padding:5px 14px;background:#b8943f;color:#2b2b23;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:22px;">Press Room &middot; Form GZ-5</div>
-      <h1 style="font-size:36px;font-weight:700;color:#2f4d3a;margin:0 0 20px;">Press Releases</h1>
-      <p style="font-size:15px;line-height:1.75;color:#3a3a2e;margin:0;">Official statements, research findings, and announcements from the Municipal Bureau of Kaiju Affairs.</p>
+      <h1 style="font-size:36px;font-weight:700;color:var(--heading);margin:0 0 20px;">Press Releases</h1>
+      <p style="font-size:15px;line-height:1.75;color:var(--text);margin:0;">Official statements, research findings, and announcements from the Municipal Bureau of Kaiju Affairs.</p>
     </div>
     <div class="bulletin-board" style="grid-template-columns:repeat(2,1fr)">{items}</div>
   </div>
@@ -608,15 +629,15 @@ def generate_contact(d):
     body = f'''
 <div class="page-section" style="padding-top:64px">
   <div class="container">
-    <div style="background:#f4efe0;border:2px solid #6b4f36;padding:40px 48px;box-shadow:6px 6px 0 rgba(107,79,54,0.15);margin-bottom:40px;">
+    <div style="background:var(--card);border:2px solid var(--border);padding:40px 48px;box-shadow:8px 8px 0 rgba(0,0,0,0.15);margin-bottom:40px;">
       <div style="display:inline-block;padding:5px 14px;background:#b8943f;color:#2b2b23;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:22px;">Contact &middot; Form GZ-6</div>
-      <h1 style="font-size:36px;font-weight:700;color:#2f4d3a;margin:0 0 20px;">Contact the Bureau</h1>
-      <p style="font-size:15px;line-height:1.75;color:#3a3a2e;margin:0 0 24px;">Public comments, hearing inquiries, and media requests are welcome. Written correspondence is preferred.</p>
+      <h1 style="font-size:36px;font-weight:700;color:var(--heading);margin:0 0 20px;">Contact the Bureau</h1>
+      <p style="font-size:15px;line-height:1.75;color:var(--text);margin:0 0 24px;">Public comments, hearing inquiries, and media requests are welcome. Written correspondence is preferred.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
         <div>
-          <div style="background:#f4efe0;border:2px solid #6b4f36;padding:24px;">
-            <div style="font-weight:700;font-size:14px;color:#2f4d3a;margin-bottom:12px;">Office</div>
-            <div style="font-size:13px;line-height:1.7;color:#3a3a2e;">
+          <div style="background:var(--card);border:2px solid var(--border);padding:24px;">
+            <div style="font-weight:700;font-size:14px;color:var(--heading);margin-bottom:12px;">Office</div>
+            <div style="font-size:13px;line-height:1.7;color:var(--text);">
               {o['address']}<br>
               {o['city']}<br><br>
               <strong>Phone:</strong> {o['phone']}<br>
@@ -627,9 +648,9 @@ def generate_contact(d):
           </div>
         </div>
         <div>
-          <div style="background:#f4efe0;border:2px solid #6b4f36;padding:24px;">
-            <div style="font-weight:700;font-size:14px;color:#2f4d3a;margin-bottom:12px;">Submit a Public Comment</div>
-            <div style="font-size:13px;color:#3a3a2e;line-height:1.7;">
+          <div style="background:var(--card);border:2px solid var(--border);padding:24px;">
+            <div style="font-weight:700;font-size:14px;color:var(--heading);margin-bottom:12px;">Submit a Public Comment</div>
+            <div style="font-size:13px;color:var(--text);line-height:1.7;">
               <p>Public comments may be submitted in person at any hearing, by mail to our office address, or via email. Comments are entered into the public record and reviewed at the next scheduled hearing.</p>
               <p>Please include your full name and municipality of residence. Anonymous comments are accepted but given reduced weight in committee deliberations.</p>
             </div>
@@ -637,8 +658,8 @@ def generate_contact(d):
         </div>
       </div>
       <div style="margin-top:24px;background:#f4efe0;border:2px solid #6b4f36;padding:24px;">
-        <div style="font-weight:700;font-size:14px;color:#2f4d3a;margin-bottom:8px;">Media Inquiries</div>
-        <div style="font-size:13px;color:#3a3a2e;line-height:1.7;">Members of the press should direct inquiries to Ambassador Vivienne Graham at {o['email']} with the subject line "MEDIA REQUEST." Please allow 2-3 business days for a response.</div>
+        <div style="font-weight:700;font-size:14px;color:var(--heading);margin-bottom:8px;">Media Inquiries</div>
+        <div style="font-size:13px;color:var(--text);line-height:1.7;">Members of the press should direct inquiries to Ambassador Vivienne Graham at {o['email']} with the subject line "MEDIA REQUEST." Please allow 2-3 business days for a response.</div>
       </div>
     </div>
   </div>
