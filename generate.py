@@ -334,11 +334,11 @@ def page(title, body, active):
 {FOOTER}
 <script>
 var API = 'https://petition-savegodzilla.loca.lt';
-(function(){{
-  fetch(API+'/api/count').then(function(r){{return r.json()}}).then(function(d){{
+function refreshLiveData() {{
+  fetch(API+'/api/count').then(function(r){{return r.json()}}).then(function(d){{ 
     var bars = document.querySelectorAll('.live-count');
     for (var i=0;i<bars.length;i++) bars[i].textContent = d.count.toLocaleString();
-    var pct = Math.min(100, Math.round(d.count/100000*100));
+    var pct = Math.min(100, Math.round(d.count/d.goal*100));
     var fills = document.querySelectorAll('.live-fill');
     for (var i=0;i<fills.length;i++) fills[i].style.width = pct+'%';
     var list = document.getElementById('recentSigners');
@@ -352,7 +352,9 @@ var API = 'https://petition-savegodzilla.loca.lt';
       }});
     }}
   }}).catch(function(e){{}});
-}})();
+}}
+refreshLiveData();
+setInterval(refreshLiveData, 30000);
 
 // Signature milestone celebration
 (function() {{
@@ -657,10 +659,34 @@ def generate_contact(d):
           </div>
         </div>
       </div>
-      <div style="margin-top:24px;background:#f4efe0;border:2px solid #6b4f36;padding:24px;">
+      <div style="margin-top:24px;background:var(--card);border:2px solid var(--border);padding:24px;">
         <div style="font-weight:700;font-size:14px;color:var(--heading);margin-bottom:8px;">Media Inquiries</div>
         <div style="font-size:13px;color:var(--text);line-height:1.7;">Members of the press should direct inquiries to Ambassador Vivienne Graham at {o['email']} with the subject line "MEDIA REQUEST." Please allow 2-3 business days for a response.</div>
       </div>
+    </div>
+
+    <!-- HEARING CALENDAR -->
+    <div class="section-title" style="margin-top:48px"><h2>Upcoming Hearings</h2><span class="section-sub">(Schedule &middot; Form GZ-10)</span></div>
+    <div style="background:var(--card);border:2px solid var(--border);padding:24px;">
+      <div style="display:grid;gap:16px;">
+        <div style="display:grid;grid-template-columns:80px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);">
+          <div style="text-align:center;"><div style="font-size:20px;font-weight:800;color:var(--heading);">JUL</div><div style="font-size:28px;font-weight:800;color:var(--gold);">31</div></div>
+          <div><div style="font-weight:700;color:var(--heading);">Regular Thursday Hearing</div><div style="font-size:12px;color:var(--muted);margin-top:4px;">7:00 PM &middot; Community Room, Municipal Annex &middot; Public comment limited to 3 minutes per resident. Refreshments provided.</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:80px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);">
+          <div style="text-align:center;"><div style="font-size:20px;font-weight:800;color:var(--heading);">AUG</div><div style="font-size:28px;font-weight:800;color:var(--gold);">7</div></div>
+          <div><div style="font-weight:700;color:var(--heading);">Special Session: Bay Harbor Reclassification Vote</div><div style="font-size:12px;color:var(--muted);margin-top:4px;">6:00 PM &middot; Community Room, Municipal Annex &middot; Final vote on reclassification of GZ-1998-G. Public comment period opens at 5:30 PM.</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:80px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);">
+          <div style="text-align:center;"><div style="font-size:20px;font-weight:800;color:var(--heading);">AUG</div><div style="font-size:28px;font-weight:800;color:var(--gold);">14</div></div>
+          <div><div style="font-weight:700;color:var(--heading);">Quarterly Town Hall</div><div style="font-size:12px;color:var(--muted);margin-top:4px;">10:00 AM &middot; Municipal Annex Atrium &middot; All residents encouraged to attend. Special presentation: The Godzilla Deterrence Effect.</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:80px 1fr;gap:16px;padding:12px 0;">
+          <div style="text-align:center;"><div style="font-size:20px;font-weight:800;color:var(--heading);">AUG</div><div style="font-size:28px;font-weight:800;color:var(--gold);">21</div></div>
+          <div><div style="font-weight:700;color:var(--heading);">Regular Thursday Hearing</div><div style="font-size:12px;color:var(--muted);margin-top:4px;">7:00 PM &middot; Community Room, Municipal Annex &middot; Petition update, incident report review, public comment period.</div></div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:20px;font-size:12px;color:var(--muted);">All hearings are free and open to the public. Schedule subject to change. Sign up for hearing notifications at <a href="mailto:{o['email']}">{o['email']}</a></div>
     </div>
   </div>
 </div>'''

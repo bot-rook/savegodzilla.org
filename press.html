@@ -302,11 +302,11 @@ function toggleTheme() {
 </footer>
 <script>
 var API = 'https://petition-savegodzilla.loca.lt';
-(function(){
-  fetch(API+'/api/count').then(function(r){return r.json()}).then(function(d){
+function refreshLiveData() {
+  fetch(API+'/api/count').then(function(r){return r.json()}).then(function(d){ 
     var bars = document.querySelectorAll('.live-count');
     for (var i=0;i<bars.length;i++) bars[i].textContent = d.count.toLocaleString();
-    var pct = Math.min(100, Math.round(d.count/100000*100));
+    var pct = Math.min(100, Math.round(d.count/d.goal*100));
     var fills = document.querySelectorAll('.live-fill');
     for (var i=0;i<fills.length;i++) fills[i].style.width = pct+'%';
     var list = document.getElementById('recentSigners');
@@ -320,7 +320,9 @@ var API = 'https://petition-savegodzilla.loca.lt';
       });
     }
   }).catch(function(e){});
-})();
+}
+refreshLiveData();
+setInterval(refreshLiveData, 30000);
 
 // Signature milestone celebration
 (function() {
