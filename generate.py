@@ -159,6 +159,7 @@ a { color:var(--heading); }
   .hamburger { display:flex; }
   .nav-links { display:none; }
   .nav .btn-primary { display:none; }
+  #themeToggle { display:none; }
   .nav-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:var(--card); z-index:1000; flex-direction:column; padding:90px 24px 40px; overflow-y:auto; }
   .nav-overlay.open { display:flex; }
   .nav-overlay a { display:block; padding:18px 0; font-size:20px; font-weight:700; color:var(--heading); text-decoration:none; border-bottom:1px solid var(--border); margin:0; }
