@@ -159,9 +159,12 @@ a { color:var(--heading); }
   .hamburger { display:flex; }
   .nav-links { display:none; }
   .nav .btn-primary { display:none; }
-  .nav-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:var(--card); z-index:1000; flex-direction:column; padding:80px 24px 24px; overflow-y:auto; }
+  .nav-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:var(--card); z-index:1000; flex-direction:column; padding:90px 24px 40px; overflow-y:auto; }
   .nav-overlay.open { display:flex; }
-  .nav-overlay .close-btn { position:absolute; top:16px; right:16px; background:none; border:2px solid var(--accent); border-radius:4px; min-width:44px; min-height:44px; display:flex; align-items:center; justify-content:center; font-size:24px; color:var(--heading); cursor:pointer; }
+  .nav-overlay a { display:block; padding:18px 0; font-size:20px; font-weight:700; color:var(--heading); text-decoration:none; border-bottom:1px solid var(--border); margin:0; }
+  .nav-overlay a:hover { color:var(--gold); }
+  .nav-overlay .donate-btn { margin-top:16px; padding:18px; background:var(--accent); color:var(--card); font-weight:700; font-size:17px; text-align:center; border:2px solid var(--accent); text-decoration:none; border-radius:4px; display:block; }
+  .nav-overlay .close-btn { position:absolute; top:16px; right:16px; background:none; border:2px solid var(--accent); border-radius:4px; min-width:48px; min-height:48px; display:flex; align-items:center; justify-content:center; font-size:28px; color:var(--heading); cursor:pointer; }
 }
 .btn-primary { padding:13px 26px; background:var(--accent); color:var(--card); font-weight:700; font-size:13px; border:2px solid var(--accent); display:inline-block; cursor:pointer; }
 .btn-primary:hover { background:#3a5e48; }
