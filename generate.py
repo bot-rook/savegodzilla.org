@@ -25,6 +25,7 @@ def nav(page, logo='Save Godzilla', sub='Municipal Bureau of Kaiju Affairs'):
     links = [
         ('index.html', 'Home'),
         ('petition.html', 'Petition'),
+        ('blog.html', 'Blog'),
         ('about.html', 'About'),
         ('incidents.html', 'Incidents'),
         ('press.html', 'Press'),
@@ -96,6 +97,7 @@ def nav(page, logo='Save Godzilla', sub='Municipal Bureau of Kaiju Affairs'):
 <div class="nav-overlay" id="navOverlay">
   <button class="close-btn" onclick="closeNav()" aria-label="Close menu">&times;</button>
   {ls}
+  <a href="blog.html" class="donate-btn" onclick="closeNav()" style="margin-bottom:12px">READ THE BLOG</a>
   <a href="petition.html" class="donate-btn" onclick="closeNav()" style="margin-bottom:12px">SIGN THE PETITION</a>
   <a href="index.html#support" class="donate-btn" onclick="closeNav()">DONATE</a>
   <button onclick="closeNav();toggleTheme()" style="margin-top:12px;padding:16px;background:transparent;color:#2f4d3a;font-weight:700;font-size:16px;text-align:center;border:2px solid #2f4d3a;border-radius:4px;cursor:pointer;font-family:'Nunito',sans-serif;">Toggle Dark Mode</button>
