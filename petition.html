@@ -122,6 +122,19 @@ footer { padding:26px 44px; background:#dcd0ac; border-top:3px solid #2f4d3a; fo
       <p>Your signature has been recorded. You are <strong>signature #<span id="sigCountDisplay">—</span></strong>.</p>
       <p>Your certificate number: <strong id="certNumDisplay">—</strong></p>
       <p style="font-size:13px">You will receive a confirmation email. Please share your certificate to help us reach 1,000 signatures.</p>
+
+      <!-- SHARE WIDGET -->
+      <div style="margin-top:20px;padding:20px;background:var(--bg);border:1px solid var(--border);text-align:center;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:12px;">Tell a Friend — Every Signature Counts</div>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <button onclick="shareVia('whatsapp')" style="padding:10px 18px;background:#25D366;color:white;font-weight:700;font-size:13px;border:none;border-radius:4px;cursor:pointer;font-family:'Nunito',sans-serif;">WhatsApp</button>
+          <button onclick="shareVia('email')" style="padding:10px 18px;background:#EA4335;color:white;font-weight:700;font-size:13px;border:none;border-radius:4px;cursor:pointer;font-family:'Nunito',sans-serif;">Email</button>
+          <button onclick="shareVia('copy')" style="padding:10px 18px;background:var(--accent);color:var(--card);font-weight:700;font-size:13px;border:none;border-radius:4px;cursor:pointer;font-family:'Nunito',sans-serif;">Copy Link</button>
+          <button onclick="shareVia('text')" style="padding:10px 18px;background:var(--muted);color:white;font-weight:700;font-size:13px;border:none;border-radius:4px;cursor:pointer;font-family:'Nunito',sans-serif;">Copy Text</button>
+        </div>
+        <div id="shareFeedback" style="font-size:12px;color:var(--gold);margin-top:8px;display:none;"></div>
+      </div>
+
       <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
         <a href="/certificate.html" class="no-print" style="display:inline-block;padding:12px 24px;background:#2f4d3a;color:#f4efe0;font-weight:700;font-size:14px;text-decoration:none;border:2px solid #22392a;" id="viewCertBtn">View Your Certificate</a>
         <a href="/" class="no-print" style="display:inline-block;padding:12px 24px;background:transparent;color:#2f4d3a;font-weight:700;font-size:14px;text-decoration:none;border:2px solid #2f4d3a;">Return to Home</a>
@@ -202,6 +215,30 @@ document.getElementById('petitionForm').addEventListener('submit', async functio
   document.getElementById('certNumDisplay').textContent = certId;
   document.getElementById('sigCountDisplay').textContent = totalSig.toLocaleString();
 });
+
+// Share functions
+function shareVia(method) {
+  var sig = document.getElementById('sigCountDisplay').textContent;
+  var cert = document.getElementById('certNumDisplay').textContent;
+  var url = window.location.origin + '/petition.html';
+  var text = 'I just signed the petition to reclassify Godzilla as a Protected Ecological Asset! I\'m signature #' + sig + '. My certificate: ' + cert + '. Sign here:';
+  var fb = document.getElementById('shareFeedback');
+  fb.style.display = 'none';
+  switch(method) {
+    case 'whatsapp':
+      window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank');
+      break;
+    case 'email':
+      window.location.href = 'mailto:?subject=' + encodeURIComponent('Sign the petition to save Godzilla') + '&body=' + encodeURIComponent(text + '\n\n' + url);
+      break;
+    case 'copy':
+      navigator.clipboard.writeText(url).then(function() { fb.textContent = 'Link copied!'; fb.style.display = 'block'; });
+      break;
+    case 'text':
+      navigator.clipboard.writeText(text + ' ' + url).then(function() { fb.textContent = 'Text copied! Send it to a friend.'; fb.style.display = 'block'; });
+      break;
+  }
+}
 
 // Countdown timer
 (function() {
