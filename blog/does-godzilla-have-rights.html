@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>body { margin:0; background:var(--bg); font-family:'Nunito',Verdana,Arial,sans-serif; color:var(--text); }
+* { box-sizing:border-box; }
+a { color:var(--heading); }
+::selection { background:var(--gold); color:var(--gold-text); }
+.stripe { height:8px; background:repeating-linear-gradient(45deg,var(--stripe1),var(--stripe1) 12px,var(--stripe2) 12px,var(--stripe2) 24px); }
+.nav { display:flex; align-items:center; justify-content:space-between; padding:16px 44px; background:var(--nav-bg); border-bottom:3px solid var(--accent); flex-wrap:wrap; gap:12px; }
+.logo { display:flex; align-items:center; gap:14px; }
+.logo-icon { width:52px; height:52px; border-radius:50%; border:2px solid var(--accent); background:var(--nav-bg); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.org-name { font-size:19px; font-weight:700; color:var(--heading); line-height:1.1; }
+.org-sub { font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); }
+.page-section { padding:0 44px 64px; }
+.container { max-width:920px; margin:0 auto; }
+.section-title { display:flex; align-items:baseline; gap:12px; margin-bottom:18px; }
+.section-title h2 { font-size:26px; color:var(--heading); margin:0; }
+.section-sub { font-size:11px; color:var(--muted); }
+.blog-card { background:var(--card); border:2px solid var(--border); padding:24px; margin-bottom:16px; transition:box-shadow 0.2s; }
+.blog-card:hover { box-shadow:6px 6px 0 rgba(0,0,0,0.1); }
+.blog-card a { text-decoration:none; display:block; }
+.blog-date { font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:6px; }
+.blog-title { font-size:20px; font-weight:700; color:var(--heading); margin-bottom:8px; line-height:1.3; }
+.blog-author { font-size:11px; color:var(--muted); margin-bottom:8px; }
+.blog-summary { font-size:14px; line-height:1.7; color:var(--text); }
+.blog-post { background:var(--card); border:2px solid var(--border); padding:40px 48px; box-shadow:8px 8px 0 rgba(0,0,0,0.15); }
+.blog-post h1 { font-size:32px; color:var(--heading); margin:0 0 8px; line-height:1.25; }
+.blog-post .meta { font-size:12px; color:var(--muted); margin-bottom:24px; }
+.blog-post .body { font-size:15px; line-height:1.85; color:var(--text); }
+.blog-post .body p { margin-bottom:16px; }
+.blog-post .body strong { color:var(--heading); }
+.back-link { display:inline-block; margin-bottom:24px; color:var(--muted); text-decoration:none; font-size:13px; }
+.back-link:hover { color:var(--heading); }
+footer { padding:26px 44px; background:var(--footer-bg); border-top:3px solid var(--accent); font-size:11px; color:var(--muted); }
+.footer-inner { max-width:920px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+@media (max-width:768px) {
+  .blog-card { padding:18px; }
+  .blog-title { font-size:17px; }
+  .blog-post { padding:24px 20px; }
+  .blog-post h1 { font-size:24px; }
+  .page-section { padding:0 16px 36px; }
+  .container { max-width:100%; }
+}</style>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon.ico" type="image/x-icon">
+<link rel="canonical" href="https://savegodzilla.org/blog/does-godzilla-have-rights.html">
+<meta name="description" content="Under current international law, Godzilla has no legal standing whatsoever. He cannot be sued, cannot file a claim, and cannot be represented in court. The Bureau is working to change that.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://savegodzilla.org/blog/does-godzilla-have-rights.html">
+<meta property="og:title" content="Does Godzilla Have Legal Rights? The Answer May Surprise You — Save Godzilla">
+<meta property="og:description" content="Under current international law, Godzilla has no legal standing whatsoever. He cannot be sued, cannot file a claim, and cannot be represented in court. The Bureau is working to change that.">
+<meta property="og:image" content="https://savegodzilla.org/favicon.svg">
+<meta name="twitter:card" content="summary_large_image">
+<title>Does Godzilla Have Legal Rights? The Answer May Surprise You — Save Godzilla</title>
+</head><body>
+<div class="stripe"></div>
+<div class="nav">
+  <div class="logo" onclick="window.location='index.html'" style="cursor:pointer">
+    <div class="logo-icon">
+      <svg viewBox="0 0 120 120" style="width:52px;height:52px;">
+        <circle cx="60" cy="60" r="56" fill="var(--card)" stroke="var(--accent)" stroke-width="3"/>
+        <circle cx="60" cy="60" r="52" fill="none" stroke="var(--accent)" stroke-width="0.5"/>
+        <circle cx="60" cy="60" r="49" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <path id="toparc" d="M 20 60 A 40 40 0 0 1 100 60" fill="none"/>
+        <text font-size="6.5" font-weight="800" fill="var(--heading)" font-family="Nunito" letter-spacing="2"><textPath href="#toparc" startOffset="50%" text-anchor="middle">MUNICIPAL BUREAU</textPath></text>
+        <path id="botarc" d="M 100 60 A 40 40 0 0 1 20 60" fill="none"/>
+        <text font-size="6.5" font-weight="800" fill="var(--heading)" font-family="Nunito" letter-spacing="1.5"><textPath href="#botarc" startOffset="50%" text-anchor="middle">KAIJU AFFAIRS</textPath></text>
+        <text x="60" y="113" text-anchor="middle" font-size="5" font-weight="700" fill="var(--muted)" font-family="Nunito" letter-spacing="1">EST. 1954</text>
+        <circle cx="60" cy="58" r="24" fill="var(--card)" stroke="var(--accent)" stroke-width="1"/>
+        <g transform="translate(60,56)" fill="var(--heading)">
+          <path d="M-14 4 L-10 -2 L-6 -4 L-4 -10 L0 -14 L4 -14 L8 -10 L12 -8 L14 -4 L16 0 L16 6 L12 8 L10 10 L8 14 L4 16 L0 18 L-4 18 L-8 16 L-12 14 L-14 10 L-16 6 L-14 4 Z"/>
+          <path d="M-14 4 L-18 0 L-16 -4 L-14 -2 Z"/>
+          <path d="M-8 16 L-10 20 L-6 20 L-4 16 Z"/>
+          <path d="M4 16 L6 20 L10 20 L8 16 Z"/>
+          <path d="M-2 -12 L0 -18 L2 -12 Z" fill="var(--gold)"/>
+          <path d="M2 -10 L4 -15 L6 -10 Z" fill="var(--gold)"/>
+          <path d="M6 -8 L8 -12 L10 -8 Z" fill="var(--gold)"/>
+          <circle cx="10" cy="-6" r="1.5" fill="var(--gold)"/>
+          <line x1="12" y1="-4" x2="18" y2="-8" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="-3" x2="17" y2="-6" stroke="var(--gold)" stroke-width="0.5" stroke-linecap="round" opacity="0.6"/>
+        </g>
+        <circle cx="30" cy="30" r="1.5" fill="var(--gold)" opacity="0.5"/>
+        <circle cx="90" cy="30" r="1.5" fill="var(--gold)" opacity="0.5"/>
+        <circle cx="30" cy="86" r="1.5" fill="var(--gold)" opacity="0.5"/>
+        <circle cx="90" cy="86" r="1.5" fill="var(--gold)" opacity="0.5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="org-name">Save Godzilla</div>
+      <div class="org-sub">Municipal Bureau of Kaiju Affairs</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="petition.html">Petition</a>
+    <a href="blog.html" style="font-weight:700;color:var(--heading)">Blog</a>
+    <a href="about.html">About</a>
+    <a href="incidents.html">Incidents</a>
+    <a href="press.html">Press</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div><a href="index.html#support" class="btn-primary" style="text-decoration:none">DONATE</a></div>
+</div>
+<main>
+<div class="page-section" style="padding-top:48px">
+  <div class="container">
+    <a href="/blog.html" class="back-link">&larr; Back to Blog</a>
+    <article class="blog-post">
+      <div style="display:inline-block;padding:4px 12px;background:var(--gold);color:var(--gold-text);font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">Bureau Dispatch</div>
+      <h1>Does Godzilla Have Legal Rights? The Answer May Surprise You</h1>
+      <div class="meta">JUN 28, 2026 &middot; By Legal Affairs Division</div>
+      <div class="body"><p>The short answer is no. Godzilla has no legal rights under any existing jurisdiction. He is classified as a 'natural phenomenon' by the UN, a designation that places him outside the framework of law entirely. He cannot be sued. He cannot be defended. He has no standing to file a claim, no right to legal counsel, and no mechanism for appeal.</p><p>This is not a minor oversight. It means that any nation that chooses to engage Godzilla with military force faces no legal consequences for doing so. It means that Godzilla's interventions — which the Bureau has documented as consistently protective — are recorded as 'attacks' with no method of rebuttal.</p><p>The Bureau's petition seeks to reclassify Godzilla as a Protected Ecological Asset under international environmental law. This would grant him the same kind of legal standing that has been extended to rivers, forests, and ecosystems in several jurisdictions worldwide. It is not personhood — but it is a start.</p><p>Several countries have granted legal personhood to natural entities: New Zealand to the Whanganui River, India to the Ganges and Yamuna rivers, and Ecuador to nature itself under its constitution. The Bureau believes Godzilla qualifies under the same reasoning.</p></div>
+    </article>
+  </div>
+</div>
+</main>
+<footer><div class="footer-inner">
+  <div>Municipal Bureau of Kaiju Affairs &middot; Est. 1954 &middot; Office Hours: Mon&ndash;Fri, 8 AM&ndash;4:30 PM</div>
+  <div>Form GZ-1 (Rev. 2026) &middot; savegodzilla.org</div>
+</div></footer>
+</body></html>
